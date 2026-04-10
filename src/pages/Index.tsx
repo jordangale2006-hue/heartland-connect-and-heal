@@ -179,14 +179,14 @@ const Index = () => {
                   <Mail className="h-5 w-5 text-primary" />
                 </div>
                 <h3 className="font-heading font-semibold text-foreground">Email Us</h3>
-                <p className="text-sm text-muted-foreground">info@heartlandmhs.com</p>
+                <p className="text-sm text-muted-foreground">heartlandmentalhealthservices@gmail.com</p>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
                   <MapPin className="h-5 w-5 text-primary" />
                 </div>
                 <h3 className="font-heading font-semibold text-foreground">Visit Us</h3>
-                <p className="text-sm text-muted-foreground">Tucson, Arizona</p>
+                <p className="text-sm text-muted-foreground text-center">21168 E Ocotillo Rd #1146<br />Queen Creek, AZ 85142</p>
               </div>
             </div>
           </div>
