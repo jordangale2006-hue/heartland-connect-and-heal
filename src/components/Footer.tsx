@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Heart, Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
+import logo from "@/assets/logo.jpg";
 
 const Footer = () => {
   return (
@@ -8,9 +9,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <Heart className="h-6 w-6 text-accent fill-accent/30" />
-              <span className="font-heading text-lg font-semibold">Heartland Mental Health</span>
+            <div className="mb-4">
+              <img src={logo} alt="Heartland Mental Health Services" className="h-12 w-auto brightness-0 invert" />
             </div>
             <p className="text-primary-foreground/70 text-sm leading-relaxed">
               Compassionate mental health care for individuals seeking support, growth, and healing.

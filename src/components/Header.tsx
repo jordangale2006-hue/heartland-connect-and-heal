@@ -18,10 +18,7 @@ const Header = () => {
     <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
       <div className="container-narrow mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16 sm:h-20">
         <Link to="/" className="flex items-center gap-2">
-          <Heart className="h-7 w-7 text-accent fill-accent/20" />
-          <span className="font-heading text-lg sm:text-xl font-semibold text-foreground leading-tight">
-            Heartland<span className="hidden sm:inline"> Mental Health</span>
-          </span>
+          <img src={logo} alt="Heartland Mental Health Services" className="h-10 sm:h-12 w-auto" />
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">
