@@ -41,7 +41,7 @@ const About = () => {
               <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-foreground mb-6">Rebecca Nabosa, APRN, PMHNP</h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  Rebecca Nabosa is the Psychiatric Mental Health Provider behind Heartland Mental Health Services. With a Master of Science in Nursing from Walden University and over 14 years of healthcare experience, she is dedicated to delivering compassionate, patient-centered care to adolescents and adults.
+                  Rebecca Nabosa is the Psychiatric Mental Health Provider behind Heartland Mental Health Services. With a Master of Science in Nursing from Walden University and over 16 years of healthcare experience, she is dedicated to delivering compassionate, patient-centered care to adolescents and adults.
                 </p>
                 <p>
                   Her clinical background spans a wide range of settings — from long-term care and assisted living to inpatient and outpatient mental health, crisis units, admissions, and community-based services. These experiences have given her a deep understanding of how to meet patients where they are and provide care tailored to their unique needs.
