@@ -115,8 +115,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="font-medium text-foreground text-sm">Office Hours</p>
-                    <p className="text-sm text-muted-foreground">Monday – Friday: 9am – 5pm</p>
-                    <p className="text-sm text-muted-foreground">Saturday: By appointment</p>
+                    <p className="text-sm text-muted-foreground">Monday – Friday: 8am – 5pm</p>
+                    <p className="text-sm text-muted-foreground">Saturday: 9am – 2pm</p>
                     <p className="text-sm text-muted-foreground">Sunday: Closed</p>
                   </div>
                 </div>
