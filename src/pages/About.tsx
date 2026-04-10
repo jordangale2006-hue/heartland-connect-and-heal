@@ -8,7 +8,7 @@ const credentials = [
   "Master of Science in Nursing – Walden University (2022)",
   "Board Certified Psychiatric Mental Health Nurse Practitioner (PMHNP)",
   "American Nurses Association Member",
-  "14+ Years of Healthcare Experience",
+  "16+ Years of Healthcare Experience",
 ];
 
 const values = [
