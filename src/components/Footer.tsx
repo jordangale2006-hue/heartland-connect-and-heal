@@ -52,11 +52,11 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4 shrink-0 text-accent" />
-                <span>info@heartlandmhs.com</span>
+                <span>heartlandmentalhealthservices@gmail.com</span>
               </div>
-              <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 shrink-0 text-accent" />
-                <span>Tucson, Arizona</span>
+              <div className="flex items-start gap-2">
+                <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-accent" />
+                <span>21168 E Ocotillo Rd #1146<br />Queen Creek, AZ 85142</span>
               </div>
             </div>
           </div>
@@ -70,13 +70,19 @@ const Footer = () => {
               <p>Sunday: Closed</p>
             </div>
             <div className="flex gap-3 mt-4">
-              {["Facebook", "Instagram", "LinkedIn"].map((social) => (
+              {[
+                { label: "Facebook", url: "https://www.facebook.com/HeartlandMentalHealthServices" },
+                { label: "Instagram", url: "https://www.instagram.com/Heartlandmhservices" },
+                { label: "LinkedIn", url: "https://www.linkedin.com/company/heart-land-mental-health-services/" },
+              ].map((social) => (
                 <a
-                  key={social}
-                  href="#"
+                  key={social.label}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-xs px-3 py-1.5 rounded-full border border-primary-foreground/20 text-primary-foreground/70 hover:border-accent hover:text-accent transition-colors"
                 >
-                  {social}
+                  {social.label}
                 </a>
               ))}
             </div>

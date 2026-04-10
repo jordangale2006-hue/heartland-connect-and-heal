@@ -96,7 +96,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="font-medium text-foreground text-sm">Email</p>
-                    <p className="text-sm text-muted-foreground">info@heartlandmhs.com</p>
+                    <p className="text-sm text-muted-foreground">heartlandmentalhealthservices@gmail.com</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -105,7 +105,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="font-medium text-foreground text-sm">Location</p>
-                    <p className="text-sm text-muted-foreground">Tucson, Arizona</p>
+                    <p className="text-sm text-muted-foreground">21168 E Ocotillo Rd #1146</p>
+                    <p className="text-sm text-muted-foreground">Queen Creek, AZ 85142</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -125,7 +126,7 @@ const Contact = () => {
               <div className="bg-card rounded-2xl border border-border/50 overflow-hidden">
                 <iframe
                   title="Location Map"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d215886.47068498382!2d-111.09790084999999!3d32.1545515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86d665410b2ced2b%3A0x73c32d384d16c715!2sTucson%2C%20AZ!5e0!3m2!1sen!2sus!4v1700000000000"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3331.0!2d-111.6346!3d33.2148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s21168+E+Ocotillo+Rd+Queen+Creek+AZ+85142!5e0!3m2!1sen!2sus"
                   width="100%"
                   height="280"
                   style={{ border: 0 }}
