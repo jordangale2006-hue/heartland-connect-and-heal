@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="mb-4">
-              <img src={logo} alt="Heartland Mental Health Services" className="h-12 w-auto brightness-0 invert" />
+              <img src={logo} alt="Heartland Mental Health Services" className="h-16 w-auto brightness-0 invert" />
             </div>
             <p className="text-primary-foreground/70 text-sm leading-relaxed">
               Compassionate mental health care for individuals seeking support, growth, and healing.

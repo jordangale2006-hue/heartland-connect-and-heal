@@ -13,9 +13,9 @@ const benefits = [
 ];
 
 const testimonials = [
-  { text: "I finally feel heard and supported. The care I've received has truly changed my life.", author: "A.M.", stars: 5 },
-  { text: "A safe, welcoming space where I can be myself. I'm so grateful I took the first step.", author: "R.K.", stars: 5 },
-  { text: "Professional, compassionate, and understanding. I highly recommend their services.", author: "J.T.", stars: 5 },
+  { text: "Rebecca was awesome! She's a great listener and gave me insight on how I was feeling and suggestions on how to overcome it.", author: "Roni K.", stars: 5 },
+  { text: "Very insightful and patient. I left my appointment feeling seen, heard, and understood. Highly recommend.", author: "Alicia C.", stars: 5 },
+  { text: "Very thorough and personable. Easy to talk to. I felt hopeful after my first visit that I was on a path to healing.", author: "Lori C.", stars: 5 },
 ];
 
 const faqs = [

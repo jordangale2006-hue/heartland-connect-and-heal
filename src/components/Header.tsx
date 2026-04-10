@@ -19,7 +19,7 @@ const Header = () => {
     <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
       <div className="container-narrow mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16 sm:h-20">
         <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="Heartland Mental Health Services" className="h-10 sm:h-12 w-auto" />
+          <img src={logo} alt="Heartland Mental Health Services" className="h-14 sm:h-16 w-auto" />
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">

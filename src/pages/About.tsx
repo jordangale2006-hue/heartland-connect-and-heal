@@ -1,22 +1,21 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Award, BookOpen, Heart, Users } from "lucide-react";
-import providerImage from "@/assets/provider-headshot.jpg";
+import providerImage from "@/assets/provider-headshot.png";
 import officeImage from "@/assets/office-interior.jpg";
 
 const credentials = [
-  "Licensed Professional Counselor (LPC)",
-  "Board Certified in Clinical Mental Health",
-  "Master's in Clinical Psychology",
-  "Certified Trauma-Informed Care Specialist",
-  "10+ Years of Clinical Experience",
+  "Master of Science in Nursing – Walden University (2022)",
+  "Board Certified Psychiatric Mental Health Nurse Practitioner (PMHNP)",
+  "American Nurses Association Member",
+  "14+ Years of Healthcare Experience",
 ];
 
 const values = [
   { icon: Heart, title: "Compassion First", desc: "Every interaction is guided by genuine care and empathy for your experience." },
   { icon: Users, title: "Individualized Care", desc: "No two journeys are the same. Your treatment plan is uniquely yours." },
   { icon: BookOpen, title: "Evidence-Based", desc: "We use proven therapeutic approaches grounded in the latest research." },
-  { icon: Award, title: "Professional Excellence", desc: "Committed to ongoing education and the highest standards of care." },
+  { icon: Award, title: "Culturally Responsive", desc: "Respectful, inclusive care that honors each patient's background and identity." },
 ];
 
 const About = () => {
@@ -35,25 +34,28 @@ const About = () => {
         <div className="container-narrow mx-auto">
           <div className="grid md:grid-cols-5 gap-12 items-start">
             <div className="md:col-span-2">
-              <img src={providerImage} alt="Mental health provider portrait" width={640} height={800} loading="lazy" className="rounded-2xl shadow-xl w-full object-cover aspect-[4/5]" />
+              <img src={providerImage} alt="Rebecca Nabosa, APRN, PMHNP" width={640} height={800} loading="lazy" className="rounded-2xl shadow-xl w-full object-cover aspect-[4/5]" />
             </div>
             <div className="md:col-span-3">
               <p className="text-accent font-semibold text-sm uppercase tracking-wider mb-2">Meet Your Provider</p>
-              <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-foreground mb-6">A Warm Welcome From Our Founder</h2>
+              <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-foreground mb-6">Rebecca Nabosa, APRN, PMHNP</h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  Welcome to Heartland Mental Health Services. I founded this practice with a simple belief: everyone deserves access to compassionate, high-quality mental health care in a safe and supportive environment.
+                  Rebecca Nabosa is the Psychiatric Mental Health Provider behind Heartland Mental Health Services. With a Master of Science in Nursing from Walden University and over 14 years of healthcare experience, she is dedicated to delivering compassionate, patient-centered care to adolescents and adults.
                 </p>
                 <p>
-                  With over a decade of experience in clinical mental health, I've had the privilege of walking alongside individuals through some of life's most challenging moments. My approach is rooted in empathy, respect, and the understanding that healing is not a linear journey.
+                  Her clinical background spans a wide range of settings — from long-term care and assisted living to inpatient and outpatient mental health, crisis units, admissions, and community-based services. These experiences have given her a deep understanding of how to meet patients where they are and provide care tailored to their unique needs.
                 </p>
                 <p>
-                  I specialize in treating anxiety, depression, trauma, and stress-related conditions, using evidence-based therapeutic methods tailored to each individual's unique needs and goals. Whether you're navigating a difficult transition, processing past experiences, or simply seeking a space to be heard — I'm here for you.
+                  Rebecca specializes in treating substance use disorders, mood disorders, anxiety, PTSD, ADHD, psychosis, and other complex mental health concerns. Her approach emphasizes culturally responsive, individualized treatment, ensuring every patient feels heard, respected, and supported throughout their journey.
+                </p>
+                <p>
+                  She is committed to creating a safe, supportive environment where patients can build trust and make meaningful progress. Rebecca offers virtual services, making high-quality mental health care accessible, convenient, and comfortable from the privacy of your own home.
                 </p>
               </div>
 
               <div className="mt-8">
-                <h3 className="font-heading font-semibold text-foreground mb-3">Credentials & Certifications</h3>
+                <h3 className="font-heading font-semibold text-foreground mb-3">Credentials & Background</h3>
                 <ul className="space-y-2">
                   {credentials.map((c) => (
                     <li key={c} className="flex items-center gap-2 text-sm text-muted-foreground">
