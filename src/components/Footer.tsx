@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
-import logo from "@/assets/logo.jpg";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
@@ -65,8 +65,8 @@ const Footer = () => {
           <div>
             <h4 className="font-heading font-semibold mb-4">Office Hours</h4>
             <div className="text-sm text-primary-foreground/70 space-y-1">
-              <p>Monday – Friday: 9am – 5pm</p>
-              <p>Saturday: By appointment</p>
+              <p>Monday – Friday: 8am – 5pm</p>
+              <p>Saturday: 9am – 2pm</p>
               <p>Sunday: Closed</p>
             </div>
             <div className="flex gap-3 mt-4">
