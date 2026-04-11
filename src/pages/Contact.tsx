@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 import { toast } from "sonner";
+import arizonaImage from "@/assets/arizona-landscape.jpg";
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -18,10 +19,15 @@ const Contact = () => {
 
   return (
     <main>
-      <section className="relative py-20 bg-primary/5">
-        <div className="container-narrow mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="font-heading text-4xl sm:text-5xl font-bold text-foreground mb-4">Contact Us</h1>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+      {/* Hero with background image */}
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0">
+          <img src={arizonaImage} alt="Peaceful Arizona landscape" width={1920} height={800} className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-foreground/60" />
+        </div>
+        <div className="relative container-narrow mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="font-heading text-4xl sm:text-5xl font-bold text-primary-foreground mb-4">Contact Us</h1>
+          <p className="text-primary-foreground/85 text-lg max-w-2xl mx-auto">
             We'd love to hear from you. Reach out with questions or to schedule your first visit.
           </p>
         </div>
@@ -122,7 +128,6 @@ const Contact = () => {
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>

@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Brain, CloudRain, HeartCrack, Flame, MessageCircle, Sparkles, Users, ChevronRight } from "lucide-react";
+import arizonaImage from "@/assets/arizona-landscape.jpg";
+import comfortImage from "@/assets/comfort-hands.jpg";
 
 const services = [
   {
@@ -44,11 +46,15 @@ const services = [
 const Services = () => {
   return (
     <main>
-      {/* Hero */}
-      <section className="relative py-20 bg-primary/5">
-        <div className="container-narrow mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="font-heading text-4xl sm:text-5xl font-bold text-foreground mb-4">Our Services</h1>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+      {/* Hero with background image */}
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0">
+          <img src={arizonaImage} alt="Arizona desert landscape at golden hour" width={1920} height={800} className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-foreground/60" />
+        </div>
+        <div className="relative container-narrow mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="font-heading text-4xl sm:text-5xl font-bold text-primary-foreground mb-4">Our Services</h1>
+          <p className="text-primary-foreground/85 text-lg max-w-2xl mx-auto">
             Comprehensive mental health support tailored to your unique needs and goals.
           </p>
         </div>
@@ -72,8 +78,30 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Insurance */}
+      {/* Comfort image + virtual care callout */}
       <section className="section-padding bg-card">
+        <div className="container-narrow mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <img src={comfortImage} alt="Hands holding a warm cup of tea" width={800} height={800} loading="lazy" className="rounded-2xl shadow-xl w-full object-cover aspect-square" />
+            <div>
+              <p className="text-accent font-semibold text-sm uppercase tracking-wider mb-2">Virtual Care</p>
+              <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-foreground mb-4">Healing from the comfort of home</h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                All of our services are available through secure telehealth sessions, allowing you to receive high-quality mental health care from wherever you feel most comfortable.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                No commute, no waiting rooms — just compassionate, focused care designed around your schedule and your life.
+              </p>
+              <Button variant="warmCta" size="lg" asChild>
+                <Link to="/book">Book a Virtual Session</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Insurance */}
+      <section className="section-padding">
         <div className="container-narrow mx-auto text-center">
           <div className="flex items-center justify-center gap-2 mb-4">
             <Users className="h-6 w-6 text-primary" />

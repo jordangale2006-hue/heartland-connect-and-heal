@@ -1,15 +1,20 @@
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, ExternalLink } from "lucide-react";
+import comfortImage from "@/assets/comfort-hands.jpg";
 
 const SCHEDULING_URL = "https://www.optimantra.com/optimus/patient/patientaccess/servicesall?pid=QlFYZ050NjhIYUdXVlFiMTdyMEJGQT09&lid=ek9EZkY4WjFZOVhZTWtNa25OcHFTQT09";
 
 const BookAppointment = () => {
   return (
     <main>
-      <section className="relative py-20 bg-primary/5">
-        <div className="container-narrow mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="font-heading text-4xl sm:text-5xl font-bold text-foreground mb-4">Book Your Appointment</h1>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0">
+          <img src={comfortImage} alt="Warm comforting scene" width={800} height={800} className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-foreground/65" />
+        </div>
+        <div className="relative container-narrow mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="font-heading text-4xl sm:text-5xl font-bold text-primary-foreground mb-4">Book Your Appointment</h1>
+          <p className="text-primary-foreground/85 text-lg max-w-2xl mx-auto">
             Taking the first step is the hardest part — and we're so glad you're here. Choose a time that works for you.
           </p>
         </div>
@@ -71,7 +76,7 @@ const BookAppointment = () => {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="w-5 h-5 rounded-full bg-primary/20 text-primary text-xs flex items-center justify-center shrink-0 mt-0.5 font-semibold">4</span>
-                    Attend your session in-person or via telehealth
+                    Attend your session via secure telehealth
                   </li>
                 </ul>
               </div>
