@@ -27,6 +27,7 @@ const Footer = () => {
                 { label: "About", path: "/about" },
                 { label: "Book Appointment", path: "/book" },
                 { label: "Contact", path: "/contact" },
+                { label: "Careers", path: "/careers" },
               ].map((item) => (
                 <Link
                   key={item.path}
