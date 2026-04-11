@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Award, BookOpen, Heart, Users } from "lucide-react";
 import providerImage from "@/assets/provider-headshot.png";
-import officeImage from "@/assets/office-interior.jpg";
+import telehealthImage from "@/assets/telehealth-session.jpg";
+import sunriseImage from "@/assets/sunrise-field.jpg";
 
 const credentials = [
   "Master of Science in Nursing – Walden University (2022)",
@@ -21,11 +22,15 @@ const values = [
 const About = () => {
   return (
     <main>
-      {/* Hero */}
-      <section className="relative py-20 bg-primary/5">
-        <div className="container-narrow mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="font-heading text-4xl sm:text-5xl font-bold text-foreground mb-4">About Us</h1>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">Get to know the heart behind Heartland Mental Health Services.</p>
+      {/* Hero with sunrise image */}
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0">
+          <img src={sunriseImage} alt="Sunrise over a peaceful meadow" width={1920} height={800} className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-foreground/50" />
+        </div>
+        <div className="relative container-narrow mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="font-heading text-4xl sm:text-5xl font-bold text-primary-foreground mb-4">About Us</h1>
+          <p className="text-primary-foreground/85 text-lg max-w-2xl mx-auto">Get to know the heart behind Heartland Mental Health Services.</p>
         </div>
       </section>
 
@@ -91,23 +96,24 @@ const About = () => {
         </div>
       </section>
 
-      {/* Office */}
+      {/* Telehealth section (replaces "Our Welcoming Space") */}
       <section className="section-padding">
         <div className="container-narrow mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="font-heading text-3xl font-semibold text-foreground mb-4">Our Welcoming Space</h2>
+              <p className="text-accent font-semibold text-sm uppercase tracking-wider mb-2">Virtual Care</p>
+              <h2 className="font-heading text-3xl font-semibold text-foreground mb-4">Care from the comfort of home</h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Our office is designed to feel like a safe haven — warm lighting, comfortable seating, and a calming atmosphere that puts you at ease from the moment you walk in.
+                We provide all of our services through secure telehealth sessions, so you can receive expert mental health care without leaving your home. No commute, no waiting rooms — just focused, compassionate care.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                We also offer telehealth appointments for those who prefer the comfort of their own home.
+                Our virtual platform is easy to use and fully HIPAA-compliant, ensuring your privacy and comfort every step of the way.
               </p>
               <Button variant="warmCta" asChild>
-                <Link to="/book">Book a Visit</Link>
+                <Link to="/book">Book a Virtual Session</Link>
               </Button>
             </div>
-            <img src={officeImage} alt="Comfortable therapy office" width={800} height={800} loading="lazy" className="rounded-2xl shadow-xl w-full object-cover aspect-square" />
+            <img src={telehealthImage} alt="Patient having a comfortable telehealth session from home" width={1280} height={864} loading="lazy" className="rounded-2xl shadow-xl w-full object-cover aspect-[4/3]" />
           </div>
         </div>
       </section>

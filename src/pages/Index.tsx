@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Heart, Shield, Clock, Users, Phone, Mail, MapPin, Star, ChevronRight } from "lucide-react";
 import heroImage from "@/assets/hero-nature.jpg";
 import lakeImage from "@/assets/calm-lake.jpg";
-import officeImage from "@/assets/office-interior.jpg";
+import telehealthImage from "@/assets/telehealth-session.jpg";
+import supportiveImage from "@/assets/supportive-conversation.jpg";
 
 const benefits = [
   { icon: Heart, title: "Patient-Centered Care", desc: "Your well-being is at the heart of everything we do." },
@@ -76,12 +77,12 @@ const Index = () => {
         </div>
       </section>
 
-      {/* About preview */}
+      {/* About preview with supportive image */}
       <section className="section-padding">
         <div className="container-narrow mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <img src={officeImage} alt="Welcoming therapy office with natural light" width={800} height={800} loading="lazy" className="rounded-2xl shadow-xl w-full object-cover aspect-square" />
+              <img src={supportiveImage} alt="Warm supportive conversation between two people" width={800} height={640} loading="lazy" className="rounded-2xl shadow-xl w-full object-cover aspect-square" />
             </div>
             <div>
               <p className="text-accent font-semibold text-sm uppercase tracking-wider mb-2">About Our Practice</p>
@@ -98,6 +99,27 @@ const Index = () => {
                 </Link>
               </Button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Telehealth callout */}
+      <section className="section-padding bg-card">
+        <div className="container-narrow mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-accent font-semibold text-sm uppercase tracking-wider mb-2">Virtual Care</p>
+              <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-foreground mb-4">Quality care from the comfort of home</h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                All of our appointments are conducted through secure, HIPAA-compliant telehealth sessions. No commute, no waiting rooms — just focused, compassionate care designed around your schedule.
+              </p>
+              <Button variant="warmCta" asChild>
+                <Link to="/book" className="inline-flex items-center gap-2">
+                  Book a Virtual Session <ChevronRight className="h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+            <img src={telehealthImage} alt="Patient having a telehealth therapy session from home" width={1280} height={864} loading="lazy" className="rounded-2xl shadow-xl w-full object-cover aspect-[4/3]" />
           </div>
         </div>
       </section>
