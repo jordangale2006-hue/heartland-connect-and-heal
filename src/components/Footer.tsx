@@ -56,7 +56,10 @@ const Footer = () => {
               </div>
               <div className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-accent" />
-                <span>21168 E Ocotillo Rd #1146<br />Queen Creek, AZ 85142</span>
+                <div>
+                  <span>21168 E Ocotillo Rd #1146<br />Queen Creek, AZ 85142</span>
+                  <p className="text-xs text-primary-foreground/50 mt-0.5 italic">Mailing address only</p>
+                </div>
               </div>
             </div>
           </div>

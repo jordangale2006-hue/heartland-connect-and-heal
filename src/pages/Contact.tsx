@@ -104,9 +104,10 @@ const Contact = () => {
                     <MapPin className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <p className="font-medium text-foreground text-sm">Location</p>
+                    <p className="font-medium text-foreground text-sm">Mailing Address</p>
                     <p className="text-sm text-muted-foreground">21168 E Ocotillo Rd #1146</p>
                     <p className="text-sm text-muted-foreground">Queen Creek, AZ 85142</p>
+                    <p className="text-xs text-muted-foreground/70 mt-1 italic">This is a mailing address only, not a walk-in location.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -122,20 +123,6 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* Map placeholder */}
-              <div className="bg-card rounded-2xl border border-border/50 overflow-hidden">
-                <iframe
-                  title="Location Map"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3331.0!2d-111.6346!3d33.2148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s21168+E+Ocotillo+Rd+Queen+Creek+AZ+85142!5e0!3m2!1sen!2sus"
-                  width="100%"
-                  height="280"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="w-full"
-                />
-              </div>
             </div>
           </div>
         </div>
