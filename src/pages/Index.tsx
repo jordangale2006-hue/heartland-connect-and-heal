@@ -185,8 +185,9 @@ const Index = () => {
                 <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
                   <MapPin className="h-5 w-5 text-primary" />
                 </div>
-                <h3 className="font-heading font-semibold text-foreground">Visit Us</h3>
+                <h3 className="font-heading font-semibold text-foreground">Mailing Address</h3>
                 <p className="text-sm text-muted-foreground text-center">21168 E Ocotillo Rd #1146<br />Queen Creek, AZ 85142</p>
+                <p className="text-xs text-muted-foreground italic">Mailing address only</p>
               </div>
             </div>
           </div>
