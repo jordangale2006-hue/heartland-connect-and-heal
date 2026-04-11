@@ -104,9 +104,10 @@ const Contact = () => {
                     <MapPin className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <p className="font-medium text-foreground text-sm">Location</p>
+                    <p className="font-medium text-foreground text-sm">Mailing Address</p>
                     <p className="text-sm text-muted-foreground">21168 E Ocotillo Rd #1146</p>
                     <p className="text-sm text-muted-foreground">Queen Creek, AZ 85142</p>
+                    <p className="text-xs text-muted-foreground/70 mt-1 italic">This is a mailing address only, not a walk-in location.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
