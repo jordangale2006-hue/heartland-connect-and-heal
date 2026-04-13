@@ -131,28 +131,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="section-padding bg-primary/5">
-        <div className="container-narrow mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-foreground mb-4">What Our Clients Say</h2>
-            <p className="text-muted-foreground">Your trust means everything to us.</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {testimonials.map((t, i) => (
-              <div key={i} className="bg-card rounded-xl p-6 shadow-sm border border-border/50">
-                <div className="flex gap-1 mb-4">
-                  {Array.from({ length: t.stars }).map((_, j) => (
-                    <Star key={j} className="h-4 w-4 text-accent fill-accent" />
-                  ))}
-                </div>
-                <p className="text-foreground italic leading-relaxed mb-4">"{t.text}"</p>
-                <p className="text-sm text-muted-foreground font-medium">— {t.author}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Testimonials Slider */}
+      <TestimonialsSlider />
 
       {/* CTA Banner */}
       <section className="relative py-20">
