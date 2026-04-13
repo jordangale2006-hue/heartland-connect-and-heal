@@ -70,7 +70,7 @@ const About = () => {
               <div className="mt-8">
                 <h3 className="font-heading font-semibold text-foreground mb-3">Credentials & Background</h3>
                 <ul className="space-y-2">
-                  {credentials.map((c) => (
+                  {rebeccaCredentials.map((c) => (
                     <li key={c} className="flex items-center gap-2 text-sm text-muted-foreground">
                       <Award className="h-4 w-4 text-accent shrink-0" />
                       {c}
