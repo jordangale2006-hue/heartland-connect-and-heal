@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Award, BookOpen, Heart, Users } from "lucide-react";
 import providerImage from "@/assets/provider-headshot.png";
+import gwenImage from "@/assets/gwen-headshot.png";
 import telehealthImage from "@/assets/telehealth-session.jpg";
 import sunriseImage from "@/assets/sunrise-field.jpg";
 
