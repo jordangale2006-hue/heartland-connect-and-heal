@@ -93,7 +93,15 @@ const Footer = () => {
                   className="hover:opacity-80 transition-opacity"
                   aria-label={social.label}
                 >
-                  <img src={social.icon} alt={social.label} width={36} height={36} className="rounded-lg" loading="lazy" />
+                  <img
+                    src={social.icon}
+                    alt={social.label}
+                    className="w-9 h-9 rounded-lg object-contain"
+                    loading="lazy"
+                    style={{
+                      filter: "brightness(0) saturate(100%) invert(56%) sepia(60%) saturate(600%) hue-rotate(350deg) brightness(100%) contrast(95%)",
+                    }}
+                  />
                 </a>
               ))}
             </div>
