@@ -2,14 +2,22 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Award, BookOpen, Heart, Users } from "lucide-react";
 import providerImage from "@/assets/provider-headshot.png";
+import gwenImage from "@/assets/gwen-headshot.png";
 import telehealthImage from "@/assets/telehealth-session.jpg";
 import sunriseImage from "@/assets/sunrise-field.jpg";
 
-const credentials = [
+const rebeccaCredentials = [
   "Master of Science in Nursing – Walden University (2022)",
   "Board Certified Psychiatric Mental Health Nurse Practitioner (PMHNP)",
   "American Nurses Association Member",
   "16+ Years of Healthcare Experience",
+];
+
+const gwenCredentials = [
+  "Master of Science in Nursing – Walden University (2024)",
+  "Board Certified Psychiatric Mental Health Nurse Practitioner (PMHNP-BC)",
+  "15+ Years of Nursing Experience",
+  "Specialties: Mood Disorders, Trauma, Psychotic Disorders, Substance Use",
 ];
 
 const values = [
@@ -62,7 +70,48 @@ const About = () => {
               <div className="mt-8">
                 <h3 className="font-heading font-semibold text-foreground mb-3">Credentials & Background</h3>
                 <ul className="space-y-2">
-                  {credentials.map((c) => (
+                  {rebeccaCredentials.map((c) => (
+                    <li key={c} className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Award className="h-4 w-4 text-accent shrink-0" />
+                      {c}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Provider Bio – Gwen */}
+      <section className="section-padding bg-card">
+        <div className="container-narrow mx-auto">
+          <div className="grid md:grid-cols-5 gap-12 items-start">
+            <div className="md:col-span-2">
+              <img src={gwenImage} alt="Gwendoline Besong, RN, MSN, PMHNP-BC" width={640} height={800} loading="lazy" className="rounded-2xl shadow-xl w-full object-cover aspect-[4/5]" />
+            </div>
+            <div className="md:col-span-3">
+              <p className="text-accent font-semibold text-sm uppercase tracking-wider mb-2">Meet Your Provider</p>
+              <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-foreground mb-6">Gwendoline ("Gwen") Besong, RN, MSN, PMHNP-BC</h2>
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <p>
+                  Gwen Besong is a board-certified Psychiatric Mental Health Nurse Practitioner at Heartland Mental Health Services. She earned her Master of Science in Nursing from Walden University in 2024 and brings over 15 years of diverse nursing experience to her practice.
+                </p>
+                <p>
+                  Her extensive clinical background includes inpatient and outpatient psychiatry, community mental health, crisis stabilization, and substance-use treatment — giving her a well-rounded perspective on the many challenges patients face. Gwen is known for her warm, client-centered approach and her ability to connect with individuals from all walks of life.
+                </p>
+                <p>
+                  Gwen specializes in the treatment of mood disorders, trauma-related conditions, psychotic disorders, substance use disorders, and chronic mental illness. She provides comprehensive psychiatric assessments and medication management rooted in evidence-based, individualized, and collaborative care.
+                </p>
+                <p>
+                  She is deeply committed to fostering a supportive, stigma-free environment where every client feels empowered to take an active role in their healing journey and long-term wellness.
+                </p>
+              </div>
+
+              <div className="mt-8">
+                <h3 className="font-heading font-semibold text-foreground mb-3">Credentials & Background</h3>
+                <ul className="space-y-2">
+                  {gwenCredentials.map((c) => (
                     <li key={c} className="flex items-center gap-2 text-sm text-muted-foreground">
                       <Award className="h-4 w-4 text-accent shrink-0" />
                       {c}
