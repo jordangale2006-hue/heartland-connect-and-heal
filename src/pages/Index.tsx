@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import { Heart, Shield, Clock, Users, Phone, Mail, MapPin, Star, ChevronRight } from "lucide-react";
+import { Heart, Shield, Clock, Users, Phone, Mail, MapPin, Star, ChevronRight, ChevronLeft } from "lucide-react";
 import heroImage from "@/assets/hero-nature.jpg";
 import lakeImage from "@/assets/calm-lake.jpg";
 import telehealthImage from "@/assets/telehealth-session.jpg";
@@ -17,6 +18,12 @@ const testimonials = [
   { text: "Rebecca was awesome! She's a great listener and gave me insight on how I was feeling and suggestions on how to overcome it.", author: "Roni K.", stars: 5 },
   { text: "Very insightful and patient. I left my appointment feeling seen, heard, and understood. Highly recommend.", author: "Alicia C.", stars: 5 },
   { text: "Very thorough and personable. Easy to talk to. I felt hopeful after my first visit that I was on a path to healing.", author: "Lori C.", stars: 5 },
+  { text: "She really takes her time to understand what you're going through. I never felt rushed or dismissed. Truly a wonderful provider.", author: "Marcus T.", stars: 5 },
+  { text: "I was nervous about starting therapy, but the team made me feel so comfortable from the very first session. Life-changing experience.", author: "Sarah M.", stars: 5 },
+  { text: "The telehealth option is incredibly convenient. I get the same quality of care from my living room. Couldn't ask for more.", author: "David R.", stars: 5 },
+  { text: "Compassionate, knowledgeable, and genuinely caring. I finally feel like someone is in my corner. Thank you, Heartland!", author: "Jessica W.", stars: 5 },
+  { text: "After years of struggling, I found a place that actually listens. The personalized approach has made all the difference in my recovery.", author: "Angela P.", stars: 5 },
+  { text: "Professional yet warm. They treat you like a person, not a number. I recommend Heartland to everyone I know.", author: "Chris L.", stars: 5 },
 ];
 
 const faqs = [
@@ -26,6 +33,62 @@ const faqs = [
   { q: "How long are sessions?", a: "Standard sessions are typically 45–60 minutes. Initial evaluations may be longer to ensure we understand your needs fully." },
   { q: "Do you offer telehealth appointments?", a: "Yes, we offer secure video sessions for your convenience, allowing you to receive care from the comfort of your home." },
 ];
+
+const TestimonialsSlider = () => {
+  const [current, setCurrent] = useState(0);
+  const itemsPerPage = 3;
+  const totalPages = Math.ceil(testimonials.length / itemsPerPage);
+
+  const next = useCallback(() => setCurrent((c) => (c + 1) % totalPages), [totalPages]);
+  const prev = useCallback(() => setCurrent((c) => (c - 1 + totalPages) % totalPages), [totalPages]);
+
+  // Auto-advance every 6 seconds
+  useEffect(() => {
+    const timer = setInterval(next, 6000);
+    return () => clearInterval(timer);
+  }, [next]);
+
+  const visible = testimonials.slice(current * itemsPerPage, current * itemsPerPage + itemsPerPage);
+
+  return (
+    <section className="section-padding bg-primary/5">
+      <div className="container-narrow mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-foreground mb-4">What Our Clients Say</h2>
+          <p className="text-muted-foreground">Your trust means everything to us.</p>
+        </div>
+        <div className="relative">
+          <div className="grid md:grid-cols-3 gap-6 transition-all duration-500">
+            {visible.map((t, i) => (
+              <div key={current * itemsPerPage + i} className="bg-card rounded-xl p-6 shadow-sm border border-border/50 animate-fade-in">
+                <div className="flex gap-1 mb-4">
+                  {Array.from({ length: t.stars }).map((_, j) => (
+                    <Star key={j} className="h-4 w-4 text-accent fill-accent" />
+                  ))}
+                </div>
+                <p className="text-foreground italic leading-relaxed mb-4">"{t.text}"</p>
+                <p className="text-sm text-muted-foreground font-medium">— {t.author}</p>
+              </div>
+            ))}
+          </div>
+          <div className="flex items-center justify-center gap-4 mt-8">
+            <button onClick={prev} className="w-10 h-10 rounded-full border border-border bg-card flex items-center justify-center hover:bg-accent/10 transition-colors">
+              <ChevronLeft className="h-5 w-5 text-foreground" />
+            </button>
+            <div className="flex gap-2">
+              {Array.from({ length: totalPages }).map((_, i) => (
+                <button key={i} onClick={() => setCurrent(i)} className={`w-2.5 h-2.5 rounded-full transition-colors ${i === current ? "bg-primary" : "bg-border"}`} />
+              ))}
+            </div>
+            <button onClick={next} className="w-10 h-10 rounded-full border border-border bg-card flex items-center justify-center hover:bg-accent/10 transition-colors">
+              <ChevronRight className="h-5 w-5 text-foreground" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 const Index = () => {
   return (
@@ -124,28 +187,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="section-padding bg-primary/5">
-        <div className="container-narrow mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-foreground mb-4">What Our Clients Say</h2>
-            <p className="text-muted-foreground">Your trust means everything to us.</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {testimonials.map((t, i) => (
-              <div key={i} className="bg-card rounded-xl p-6 shadow-sm border border-border/50">
-                <div className="flex gap-1 mb-4">
-                  {Array.from({ length: t.stars }).map((_, j) => (
-                    <Star key={j} className="h-4 w-4 text-accent fill-accent" />
-                  ))}
-                </div>
-                <p className="text-foreground italic leading-relaxed mb-4">"{t.text}"</p>
-                <p className="text-sm text-muted-foreground font-medium">— {t.author}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Testimonials Slider */}
+      <TestimonialsSlider />
 
       {/* CTA Banner */}
       <section className="relative py-20">
