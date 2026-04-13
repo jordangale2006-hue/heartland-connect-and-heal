@@ -6,11 +6,18 @@ import gwenImage from "@/assets/gwen-headshot.png";
 import telehealthImage from "@/assets/telehealth-session.jpg";
 import sunriseImage from "@/assets/sunrise-field.jpg";
 
-const credentials = [
+const rebeccaCredentials = [
   "Master of Science in Nursing – Walden University (2022)",
   "Board Certified Psychiatric Mental Health Nurse Practitioner (PMHNP)",
   "American Nurses Association Member",
   "16+ Years of Healthcare Experience",
+];
+
+const gwenCredentials = [
+  "Master of Science in Nursing – Walden University (2024)",
+  "Board Certified Psychiatric Mental Health Nurse Practitioner (PMHNP-BC)",
+  "15+ Years of Nursing Experience",
+  "Specialties: Mood Disorders, Trauma, Psychotic Disorders, Substance Use",
 ];
 
 const values = [
