@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
 import logo from "@/assets/logo.png";
+import facebookIcon from "@/assets/facebook-icon.png";
+import instagramIcon from "@/assets/instagram-icon.png";
+import linkedinIcon from "@/assets/linkedin-icon.png";
+
+const socials = [
+  { label: "Facebook", url: "https://www.facebook.com/HeartlandMentalHealthServices", icon: facebookIcon },
+  { label: "Instagram", url: "https://www.instagram.com/Heartlandmhservices", icon: instagramIcon },
+  { label: "LinkedIn", url: "https://www.linkedin.com/company/heart-land-mental-health-services/", icon: linkedinIcon },
+];
 
 const Footer = () => {
   return (
@@ -73,20 +82,18 @@ const Footer = () => {
               <p>Saturday: 9am – 2pm</p>
               <p>Sunday: Closed</p>
             </div>
-            <div className="flex gap-3 mt-4">
-              {[
-                { label: "Facebook", url: "https://www.facebook.com/HeartlandMentalHealthServices" },
-                { label: "Instagram", url: "https://www.instagram.com/Heartlandmhservices" },
-                { label: "LinkedIn", url: "https://www.linkedin.com/company/heart-land-mental-health-services/" },
-              ].map((social) => (
+            <h4 className="font-heading font-semibold mt-5 mb-3">Follow Us</h4>
+            <div className="flex gap-4">
+              {socials.map((social) => (
                 <a
                   key={social.label}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs px-3 py-1.5 rounded-full border border-primary-foreground/20 text-primary-foreground/70 hover:border-accent hover:text-accent transition-colors"
+                  className="hover:opacity-80 transition-opacity"
+                  aria-label={social.label}
                 >
-                  {social.label}
+                  <img src={social.icon} alt={social.label} width={36} height={36} className="rounded-lg" loading="lazy" />
                 </a>
               ))}
             </div>
