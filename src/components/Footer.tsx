@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
 import logo from "@/assets/logo.png";
 import facebookIcon from "@/assets/facebook-icon.png";
-import instagramIcon from "@/assets/instagram-icon.png";
+import instagramIcon from "@/assets/instagram-icon.svg";
 import linkedinIcon from "@/assets/linkedin-icon.png";
 
 const socials = [
@@ -14,7 +14,7 @@ const socials = [
 const Footer = () => {
   return (
     <footer className="bg-foreground text-primary-foreground">
-      <div className="container-narrow mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+      <div className="container-narrow mx-auto sm:px-6 lg:px-8 py-12 sm:py-16 px-[2px]">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
@@ -96,7 +96,7 @@ const Footer = () => {
                   <img
                     src={social.icon}
                     alt={social.label}
-                    className="w-9 h-9 rounded-lg object-contain"
+                    className="w-9 h-9 rounded-lg object-fill"
                     loading="lazy"
                     style={{
                       filter: "brightness(0) saturate(100%) invert(56%) sepia(60%) saturate(600%) hue-rotate(350deg) brightness(100%) contrast(95%)",
