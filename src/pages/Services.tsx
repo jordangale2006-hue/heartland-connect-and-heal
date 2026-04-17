@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Users, ChevronRight, Check } from "lucide-react";
 import arizonaImage from "@/assets/arizona-landscape.jpg";
 import comfortImage from "@/assets/comfort-hands.jpg";
-import { useState } from "react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const serviceCategories = [
   {
