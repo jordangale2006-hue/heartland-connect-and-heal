@@ -95,8 +95,6 @@ const serviceCategories = [
 ];
 
 const Services = () => {
-  const [openCategory, setOpenCategory] = useState<number | null>(null);
-
   return (
     <main>
       {/* Hero */}
@@ -119,21 +117,21 @@ const Services = () => {
           <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
             Click on any category below to see the specific conditions and services we offer. Our providers are experienced in treating all of the following.
           </p>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {serviceCategories.map((cat, i) => (
-              <div key={cat.name} className="border border-border/50 rounded-xl overflow-hidden bg-card">
-                <button
-                  onClick={() => setOpenCategory(openCategory === i ? null : i)}
-                  className="w-full flex items-center justify-between p-5 text-left hover:bg-muted/50 transition-colors"
+          <div className="sm:columns-2 sm:gap-4">
+            <Accordion type="multiple" className="contents">
+              {serviceCategories.map((cat, i) => (
+                <AccordionItem
+                  key={cat.name}
+                  value={`item-${i}`}
+                  className="mb-4 break-inside-avoid border border-border/50 rounded-xl overflow-hidden bg-card block"
                 >
-                  <h3 className="font-heading text-lg font-semibold text-foreground">{cat.name}</h3>
-                  <span className="flex items-center gap-2 shrink-0">
-                    <span className="text-xs text-muted-foreground">{cat.items.length} services</span>
-                    <ChevronRight className={`h-4 w-4 text-muted-foreground transition-transform ${openCategory === i ? "rotate-90" : ""}`} />
-                  </span>
-                </button>
-                {openCategory === i && (
-                  <div className="px-5 pb-5 border-t border-border/30">
+                  <AccordionTrigger className="px-5 py-5 hover:bg-muted/50 hover:no-underline transition-colors">
+                    <div className="flex items-center justify-between w-full gap-3">
+                      <h3 className="font-heading text-lg font-semibold text-foreground text-left">{cat.name}</h3>
+                      <span className="text-xs text-muted-foreground shrink-0">{cat.items.length} services</span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-5 pb-5 border-t border-border/30">
                     <ul className="grid grid-cols-1 gap-1.5 pt-4">
                       {cat.items.map((item) => (
                         <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
@@ -142,10 +140,10 @@ const Services = () => {
                         </li>
                       ))}
                     </ul>
-                  </div>
-                )}
-              </div>
-            ))}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         </div>
       </section>
