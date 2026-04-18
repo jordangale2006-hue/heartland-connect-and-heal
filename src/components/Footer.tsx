@@ -34,7 +34,7 @@ const Footer = () => {
                 { label: "Home", path: "/" },
                 { label: "Services", path: "/services" },
                 { label: "About", path: "/about" },
-                { label: "Book Appointment", path: "/book" },
+              { label: "Book Appointment", path: "/book" },
                 { label: "Contact", path: "/contact" },
                 { label: "Careers", path: "/careers" },
               ].map((item) => (
@@ -46,6 +46,14 @@ const Footer = () => {
                   {item.label}
                 </Link>
               ))}
+              <a
+                href="https://www.optimantra.com/optimus/om/patient/login?accessPoint=c0tJNlJ2Y2UrYXNXRk5CRTgvMlBOZz09"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-accent hover:text-accent/80 transition-colors font-medium"
+              >
+                Patient Portal ↗
+              </a>
             </nav>
           </div>
 
