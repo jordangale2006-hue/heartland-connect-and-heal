@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Lock } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { useState } from "react";
 
@@ -39,7 +39,18 @@ const Header = () => {
           ))}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden md:flex items-center gap-2">
+          <Button variant="ghost" size="sm" asChild>
+            <a
+              href="https://www.optimantra.com/optimus/om/patient/login?accessPoint=c0tJNlJ2Y2UrYXNXRk5CRTgvMlBOZz09"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Patient Portal (opens in new tab)"
+            >
+              <Lock className="h-4 w-4 mr-1.5" />
+              Patient Portal
+            </a>
+          </Button>
           <Button variant="warmCta" size="lg" asChild>
             <Link to="/book">Schedule Appointment</Link>
           </Button>
@@ -71,6 +82,16 @@ const Header = () => {
                 {item.label}
               </Link>
             ))}
+            <a
+              href="https://www.optimantra.com/optimus/om/patient/login?accessPoint=c0tJNlJ2Y2UrYXNXRk5CRTgvMlBOZz09"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileOpen(false)}
+              className="px-4 py-3 rounded-lg text-sm font-medium text-muted-foreground hover:bg-secondary/50 flex items-center gap-2"
+            >
+              <Lock className="h-4 w-4" />
+              Patient Portal
+            </a>
             <Button variant="warmCta" className="mt-2" asChild>
               <Link to="/book" onClick={() => setMobileOpen(false)}>Schedule Appointment</Link>
             </Button>
