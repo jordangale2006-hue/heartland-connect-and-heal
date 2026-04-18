@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo-white.png";
 import facebookIcon from "@/assets/facebook-icon.png";
 import instagramIcon from "@/assets/instagram-icon.svg";
 import linkedinIcon from "@/assets/linkedin-icon.png";
@@ -19,7 +19,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="mb-4">
-              <img src={logo} alt="Heartland Mental Health Services" className="h-28 sm:h-32 w-auto brightness-0 invert" />
+              <img src={logo} alt="Heartland Mental Health Services" className="h-24 sm:h-28 w-auto object-contain" />
             </div>
             <p className="text-primary-foreground/70 text-sm leading-relaxed">
               Compassionate mental health care for individuals seeking support, growth, and healing.
