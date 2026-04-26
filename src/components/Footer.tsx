@@ -18,7 +18,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="mb-4 inline-block bg-white rounded-lg p-2">
+            <div className="mb-4">
               <img src={logo} alt="Heartland Mental Health Services" className="h-20 sm:h-24 w-auto object-contain" />
             </div>
             <p className="text-primary-foreground/70 text-sm leading-relaxed">
