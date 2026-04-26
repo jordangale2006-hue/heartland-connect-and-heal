@@ -36,19 +36,37 @@ const faqs = [
 
 const TestimonialsSlider = () => {
   const [current, setCurrent] = useState(0);
-  const itemsPerPage = 3;
+  const [itemsPerPage, setItemsPerPage] = useState(3);
+  const [isPaused, setIsPaused] = useState(false);
+
+  // Responsive items per page
+  useEffect(() => {
+    const update = () => {
+      if (window.innerWidth < 640) setItemsPerPage(1);
+      else if (window.innerWidth < 1024) setItemsPerPage(2);
+      else setItemsPerPage(3);
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
   const totalPages = Math.ceil(testimonials.length / itemsPerPage);
+
+  // Reset current if it exceeds new totalPages
+  useEffect(() => {
+    if (current >= totalPages) setCurrent(0);
+  }, [totalPages, current]);
 
   const next = useCallback(() => setCurrent((c) => (c + 1) % totalPages), [totalPages]);
   const prev = useCallback(() => setCurrent((c) => (c - 1 + totalPages) % totalPages), [totalPages]);
 
   // Auto-advance every 6 seconds
   useEffect(() => {
+    if (isPaused) return;
     const timer = setInterval(next, 6000);
     return () => clearInterval(timer);
-  }, [next]);
-
-  const visible = testimonials.slice(current * itemsPerPage, current * itemsPerPage + itemsPerPage);
+  }, [next, isPaused]);
 
   return (
     <section className="section-padding bg-primary/5">
@@ -57,30 +75,57 @@ const TestimonialsSlider = () => {
           <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-foreground mb-4">What Our Clients Say</h2>
           <p className="text-muted-foreground">Your trust means everything to us.</p>
         </div>
-        <div className="relative">
-          <div className="grid md:grid-cols-3 gap-6 transition-all duration-500">
-            {visible.map((t, i) => (
-              <div key={current * itemsPerPage + i} className="bg-card rounded-xl p-6 shadow-sm border border-border/50 animate-fade-in">
-                <div className="flex gap-1 mb-4">
-                  {Array.from({ length: t.stars }).map((_, j) => (
-                    <Star key={j} className="h-4 w-4 text-accent fill-accent" />
-                  ))}
-                </div>
-                <p className="text-foreground italic leading-relaxed mb-4">"{t.text}"</p>
-                <p className="text-sm text-muted-foreground font-medium">— {t.author}</p>
-              </div>
-            ))}
+        <div
+          className="relative"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <div className="overflow-hidden px-1">
+            <div
+              className="flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+              style={{ transform: `translateX(-${current * 100}%)` }}
+            >
+              {Array.from({ length: totalPages }).map((_, pageIdx) => {
+                const pageItems = testimonials.slice(
+                  pageIdx * itemsPerPage,
+                  pageIdx * itemsPerPage + itemsPerPage
+                );
+                return (
+                  <div key={pageIdx} className="w-full shrink-0 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 px-1">
+                    {pageItems.map((t, i) => (
+                      <div
+                        key={pageIdx * itemsPerPage + i}
+                        className="bg-card rounded-xl p-6 shadow-sm border border-border/50 hover:shadow-lg transition-shadow duration-300"
+                      >
+                        <div className="flex gap-1 mb-4">
+                          {Array.from({ length: t.stars }).map((_, j) => (
+                            <Star key={j} className="h-4 w-4 text-accent fill-accent" />
+                          ))}
+                        </div>
+                        <p className="text-foreground italic leading-relaxed mb-4">"{t.text}"</p>
+                        <p className="text-sm text-muted-foreground font-medium">— {t.author}</p>
+                      </div>
+                    ))}
+                  </div>
+                );
+              })}
+            </div>
           </div>
           <div className="flex items-center justify-center gap-4 mt-8">
-            <button onClick={prev} className="w-10 h-10 rounded-full border border-border bg-card flex items-center justify-center hover:bg-accent/10 transition-colors">
+            <button onClick={prev} aria-label="Previous testimonials" className="w-10 h-10 rounded-full border border-border bg-card flex items-center justify-center hover:bg-accent/10 hover:scale-110 transition-all duration-200">
               <ChevronLeft className="h-5 w-5 text-foreground" />
             </button>
             <div className="flex gap-2">
               {Array.from({ length: totalPages }).map((_, i) => (
-                <button key={i} onClick={() => setCurrent(i)} className={`w-2.5 h-2.5 rounded-full transition-colors ${i === current ? "bg-primary" : "bg-border"}`} />
+                <button
+                  key={i}
+                  onClick={() => setCurrent(i)}
+                  aria-label={`Go to slide ${i + 1}`}
+                  className={`h-2.5 rounded-full transition-all duration-300 ${i === current ? "bg-primary w-8" : "bg-border w-2.5 hover:bg-primary/40"}`}
+                />
               ))}
             </div>
-            <button onClick={next} className="w-10 h-10 rounded-full border border-border bg-card flex items-center justify-center hover:bg-accent/10 transition-colors">
+            <button onClick={next} aria-label="Next testimonials" className="w-10 h-10 rounded-full border border-border bg-card flex items-center justify-center hover:bg-accent/10 hover:scale-110 transition-all duration-200">
               <ChevronRight className="h-5 w-5 text-foreground" />
             </button>
           </div>
