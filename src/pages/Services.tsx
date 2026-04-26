@@ -117,34 +117,32 @@ const Services = () => {
           <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
             Click on any category below to see the specific conditions and services we offer. Our providers are experienced in treating all of the following.
           </p>
-          <div className="sm:columns-2 sm:gap-4">
-            <Accordion type="multiple" className="contents">
-              {serviceCategories.map((cat, i) => (
-                <AccordionItem
-                  key={cat.name}
-                  value={`item-${i}`}
-                  className="mb-4 break-inside-avoid border border-border/50 rounded-xl overflow-hidden bg-card block"
-                >
-                  <AccordionTrigger className="px-5 py-5 hover:bg-muted/50 hover:no-underline transition-colors">
-                    <div className="flex items-center justify-between w-full gap-3">
-                      <h3 className="font-heading text-lg font-semibold text-foreground text-left">{cat.name}</h3>
-                      <span className="text-xs text-muted-foreground shrink-0">{cat.items.length} services</span>
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent className="px-5 pb-5 border-t border-border/30">
-                    <ul className="grid grid-cols-1 gap-1.5 pt-4">
-                      {cat.items.map((item) => (
-                        <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
-                          <Check className="h-4 w-4 text-accent shrink-0 mt-0.5" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
+          <Accordion type="multiple" className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-start">
+            {serviceCategories.map((cat, i) => (
+              <AccordionItem
+                key={cat.name}
+                value={`item-${i}`}
+                className="border border-border/50 rounded-xl overflow-hidden bg-card transition-shadow duration-300 hover:shadow-md self-start"
+              >
+                <AccordionTrigger className="px-5 py-5 hover:bg-muted/50 hover:no-underline transition-colors">
+                  <div className="flex items-center justify-between w-full gap-3">
+                    <h3 className="font-heading text-lg font-semibold text-foreground text-left">{cat.name}</h3>
+                    <span className="text-xs text-muted-foreground shrink-0">{cat.items.length} services</span>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="px-5 pb-5 border-t border-border/30">
+                  <ul className="grid grid-cols-1 gap-1.5 pt-4">
+                    {cat.items.map((item) => (
+                      <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <Check className="h-4 w-4 text-accent shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </section>
 
