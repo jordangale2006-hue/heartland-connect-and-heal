@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Heart, Shield, Clock, Users, Phone, Mail, MapPin, Star, ChevronRight, ChevronLeft } from "lucide-react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import heroImage from "@/assets/hero-nature.jpg";
 import lakeImage from "@/assets/calm-lake.jpg";
 import telehealthImage from "@/assets/telehealth-session.jpg";
@@ -258,17 +259,22 @@ const Index = () => {
           <div className="text-center mb-12">
             <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-foreground mb-4">Frequently Asked Questions</h2>
           </div>
-          <div className="max-w-3xl mx-auto space-y-4">
+          <Accordion type="multiple" className="max-w-3xl mx-auto space-y-4">
             {faqs.map((faq, i) => (
-              <details key={i} className="group bg-background rounded-xl border border-border/50 overflow-hidden">
-                <summary className="cursor-pointer px-6 py-4 font-heading font-medium text-foreground flex items-center justify-between list-none">
+              <AccordionItem
+                key={i}
+                value={`faq-${i}`}
+                className="bg-background rounded-xl border border-border/50 overflow-hidden transition-shadow duration-300 hover:shadow-md"
+              >
+                <AccordionTrigger className="px-6 py-4 font-heading font-medium text-foreground hover:bg-muted/50 hover:no-underline transition-colors text-left">
                   {faq.q}
-                  <ChevronRight className="h-4 w-4 text-muted-foreground group-open:rotate-90 transition-transform" />
-                </summary>
-                <div className="px-6 pb-4 text-muted-foreground text-sm leading-relaxed">{faq.a}</div>
-              </details>
+                </AccordionTrigger>
+                <AccordionContent className="px-6 pb-4 text-muted-foreground text-sm leading-relaxed border-t border-border/30 pt-4">
+                  {faq.a}
+                </AccordionContent>
+              </AccordionItem>
             ))}
-          </div>
+          </Accordion>
         </div>
       </section>
 
