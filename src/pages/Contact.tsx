@@ -128,8 +128,8 @@ const Contact = () => {
                     className="w-full rounded-lg border border-input bg-background px-4 py-3 text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none"
                   />
                 </div>
-                <Button type="submit" variant="warmCta" size="lg" className="w-full text-base">
-                  Send Message <Send className="h-4 w-4" />
+                <Button type="submit" variant="warmCta" size="lg" disabled={submitting} className="w-full text-base">
+                  {submitting ? (<><Loader2 className="h-4 w-4 animate-spin" /> Sending…</>) : (<>Send Message <Send className="h-4 w-4" /></>)}
                 </Button>
               </form>
             </div>
