@@ -1,20 +1,72 @@
 import { useState } from "react";
+import { z } from "zod";
 import { Button } from "@/components/ui/button";
-import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Send, Loader2 } from "lucide-react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 import arizonaImage from "@/assets/arizona-landscape.jpg";
+
+const contactSchema = z.object({
+  name: z.string().trim().min(1, "Please enter your name").max(100),
+  email: z.string().trim().email("Please enter a valid email").max(255),
+  message: z.string().trim().min(5, "Please share a bit more").max(1000),
+});
 
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Message sent! We'll get back to you soon.");
-    setName("");
-    setEmail("");
-    setMessage("");
+    const parsed = contactSchema.safeParse({ name, email, message });
+    if (!parsed.success) {
+      toast.error(parsed.error.issues[0].message);
+      return;
+    }
+
+    setSubmitting(true);
+    try {
+      const id = crypto.randomUUID();
+      const { error: insertError } = await supabase
+        .from("contact_submissions")
+        .insert({ id, name: parsed.data.name, email: parsed.data.email, message: parsed.data.message });
+      if (insertError) throw insertError;
+
+      // Send confirmation to client and notification to staff (don't block on errors)
+      await Promise.allSettled([
+        supabase.functions.invoke("send-transactional-email", {
+          body: {
+            templateName: "contact-confirmation",
+            recipientEmail: parsed.data.email,
+            idempotencyKey: `contact-confirm-${id}`,
+            templateData: { name: parsed.data.name },
+          },
+        }),
+        supabase.functions.invoke("send-transactional-email", {
+          body: {
+            templateName: "contact-notification",
+            idempotencyKey: `contact-notify-${id}`,
+            templateData: {
+              name: parsed.data.name,
+              email: parsed.data.email,
+              message: parsed.data.message,
+            },
+          },
+        }),
+      ]);
+
+      toast.success("Message sent! We'll get back to you soon.");
+      setName("");
+      setEmail("");
+      setMessage("");
+    } catch (err) {
+      console.error(err);
+      toast.error("Something went wrong. Please try again or email us directly.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
