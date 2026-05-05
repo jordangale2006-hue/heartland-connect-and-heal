@@ -130,6 +130,17 @@ const TestimonialsSlider = () => {
               <ChevronRight className="h-5 w-5 text-foreground" />
             </button>
           </div>
+          <div className="mt-10 text-center">
+            <a
+              href="https://www.zocdoc.com/doctor/rebecca-nabosa-aprn-pmhnp-466350?insuranceCarrier=-1&insurancePlan=-1&reason_visit=171"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-primary font-semibold hover:text-accent transition-colors duration-200 group"
+            >
+              Read more reviews on Zocdoc
+              <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
+            </a>
+          </div>
         </div>
       </div>
     </section>
