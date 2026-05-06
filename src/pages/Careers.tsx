@@ -2,9 +2,46 @@ import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Upload, Briefcase } from "lucide-react";
+import { Upload, Briefcase, Loader2 } from "lucide-react";
 import { toast } from "sonner";
+import { z } from "zod";
+import { supabase } from "@/integrations/supabase/client";
 import careersHero from "@/assets/careers-hero.jpg";
+
+const ALLOWED_RESUME_TYPES = [
+  "application/pdf",
+  "application/msword",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+];
+const MAX_RESUME_BYTES = 10 * 1024 * 1024;
+
+const applicationSchema = z
+  .object({
+    firstName: z.string().trim().min(1, "First name is required").max(80),
+    lastName: z.string().trim().min(1, "Last name is required").max(80),
+    phone: z.string().trim().min(7, "Enter a valid phone number").max(30),
+    email: z.string().trim().email("Enter a valid email").max(255),
+    convicted: z.enum(["yes", "no"], { required_error: "Please answer this question" }),
+    convictionDetails: z.string().trim().max(2000).optional().or(z.literal("")),
+    fingerprintCard: z.enum(["yes", "no"], { required_error: "Please answer this question" }),
+  })
+  .refine((d) => d.convicted !== "yes" || (d.convictionDetails && d.convictionDetails.length > 0), {
+    message: "Please provide details about your conviction",
+    path: ["convictionDetails"],
+  });
+
+function fileToBase64(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = reader.result as string;
+      const base64 = result.split(",")[1] ?? "";
+      resolve(base64);
+    };
+    reader.onerror = () => reject(reader.error);
+    reader.readAsDataURL(file);
+  });
+}
 
 const Careers = () => {
   const [firstName, setFirstName] = useState("");
@@ -15,19 +52,10 @@ const Careers = () => {
   const [convictionDetails, setConvictionDetails] = useState("");
   const [fingerprintCard, setFingerprintCard] = useState<"" | "yes" | "no">("");
   const [resume, setResume] = useState<File | null>(null);
+  const [submitting, setSubmitting] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!firstName || !email || !lastName || !phone || !convicted || !fingerprintCard) {
-      toast.error("Please fill in all required fields.");
-      return;
-    }
-    if (convicted === "yes" && !convictionDetails.trim()) {
-      toast.error("Please provide details about your conviction.");
-      return;
-    }
-    toast.success("Application submitted! We'll review it and get back to you.");
+  const resetForm = () => {
     setFirstName("");
     setLastName("");
     setPhone("");
@@ -37,6 +65,66 @@ const Careers = () => {
     setFingerprintCard("");
     setResume(null);
     if (fileInputRef.current) fileInputRef.current.value = "";
+  };
+
+  const handleResumeChange = (file: File | null) => {
+    if (!file) {
+      setResume(null);
+      return;
+    }
+    if (!ALLOWED_RESUME_TYPES.includes(file.type)) {
+      toast.error("Resume must be a PDF, DOC, or DOCX file.");
+      if (fileInputRef.current) fileInputRef.current.value = "";
+      return;
+    }
+    if (file.size > MAX_RESUME_BYTES) {
+      toast.error("Resume must be 10MB or smaller.");
+      if (fileInputRef.current) fileInputRef.current.value = "";
+      return;
+    }
+    setResume(file);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (submitting) return;
+
+    const parsed = applicationSchema.safeParse({
+      firstName,
+      lastName,
+      phone,
+      email,
+      convicted: convicted || undefined,
+      convictionDetails,
+      fingerprintCard: fingerprintCard || undefined,
+    });
+
+    if (!parsed.success) {
+      toast.error(parsed.error.errors[0]?.message ?? "Please check your inputs.");
+      return;
+    }
+
+    setSubmitting(true);
+    try {
+      let resumePayload: { filename: string; contentType: string; base64: string } | undefined;
+      if (resume) {
+        const base64 = await fileToBase64(resume);
+        resumePayload = { filename: resume.name, contentType: resume.type, base64 };
+      }
+
+      const { error } = await supabase.functions.invoke("submit-application", {
+        body: { ...parsed.data, resume: resumePayload },
+      });
+      if (error) throw error;
+
+      toast.success("Application submitted! Check your inbox for a confirmation.");
+      resetForm();
+    } catch (err) {
+      console.error(err);
+      toast.error("We couldn't submit your application. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -85,7 +173,6 @@ const Careers = () => {
                 </div>
               </div>
 
-              {/* Criminal conviction question */}
               <div>
                 <label className="block text-sm font-medium text-foreground mb-2">
                   Have you ever been convicted of a crime, including felonies or misdemeanors? *
@@ -121,7 +208,6 @@ const Careers = () => {
                 )}
               </div>
 
-              {/* Fingerprint clearance card */}
               <div>
                 <label className="block text-sm font-medium text-foreground mb-2">
                   Do you have a valid Fingerprint Clearance Card? *
@@ -143,7 +229,6 @@ const Careers = () => {
                 </div>
               </div>
 
-              {/* Resume upload */}
               <div>
                 <label className="block text-sm font-medium text-foreground mb-1.5">Attach Resume</label>
                 <div
@@ -152,20 +237,27 @@ const Careers = () => {
                 >
                   <Upload className="h-8 w-8 text-muted-foreground mx-auto mb-2" />
                   <p className="text-sm text-muted-foreground">
-                    {resume ? resume.name : "Click to upload your resume (PDF, DOC, DOCX)"}
+                    {resume ? resume.name : "Click to upload your resume (PDF, DOC, DOCX — max 10MB)"}
                   </p>
                   <input
                     ref={fileInputRef}
                     type="file"
-                    accept=".pdf,.doc,.docx"
+                    accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                     className="hidden"
-                    onChange={(e) => setResume(e.target.files?.[0] || null)}
+                    onChange={(e) => handleResumeChange(e.target.files?.[0] || null)}
                   />
                 </div>
               </div>
 
-              <Button type="submit" variant="warmCta" size="lg" className="w-full">
-                Submit Application
+              <Button type="submit" variant="warmCta" size="lg" className="w-full" disabled={submitting}>
+                {submitting ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                    Submitting...
+                  </>
+                ) : (
+                  "Submit Application"
+                )}
               </Button>
             </form>
           </div>
