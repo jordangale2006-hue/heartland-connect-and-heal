@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Upload, Briefcase } from "lucide-react";
 import { toast } from "sonner";
+import careersHero from "@/assets/careers-hero.jpg";
 
 const Careers = () => {
   const [firstName, setFirstName] = useState("");
@@ -40,8 +41,15 @@ const Careers = () => {
 
   return (
     <main>
-      <section className="relative py-20 bg-primary/5">
-        <div className="container-narrow mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative py-20 bg-primary/5 overflow-hidden">
+        <img
+          src={careersHero}
+          alt="Welcoming team of mental health professionals collaborating around a sunlit table"
+          width={1536}
+          height={768}
+          className="absolute inset-0 w-full h-full object-cover opacity-20"
+        />
+        <div className="container-narrow mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
           <Briefcase className="h-12 w-12 text-primary mx-auto mb-4" />
           <h1 className="font-heading text-4xl sm:text-5xl font-bold text-foreground mb-4">Careers</h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import blogHero from "@/assets/blog-hero.jpg";
 
 interface BlogPost {
   id: string;
@@ -37,11 +38,20 @@ const Blog = () => {
 
   return (
     <main className="container-narrow mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-      <header className="text-center mb-12">
-        <h1 className="font-serif text-4xl sm:text-5xl text-foreground mb-3">Blog</h1>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
-          Compassionate insights and resources to support your mental wellness journey.
-        </p>
+      <header className="mb-12">
+        <img
+          src={blogHero}
+          alt="Open journal and warm cup of tea by a sunlit window"
+          width={1536}
+          height={768}
+          className="w-full h-56 sm:h-72 object-cover rounded-2xl mb-8 shadow-sm"
+        />
+        <div className="text-center">
+          <h1 className="font-serif text-4xl sm:text-5xl text-foreground mb-3">Blog</h1>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Compassionate insights and resources to support your mental wellness journey.
+          </p>
+        </div>
       </header>
 
       {loading ? (
