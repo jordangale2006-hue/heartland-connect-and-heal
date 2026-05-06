@@ -82,6 +82,30 @@ const BookAppointment = () => {
                   </li>
                 </ul>
               </div>
+
+              <div className="bg-card rounded-2xl border border-border/50 p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <ShieldCheck className="h-5 w-5 text-primary" />
+                  <h3 className="font-heading font-semibold text-foreground">Insurances Accepted</h3>
+                </div>
+                <ul className="space-y-2 mb-4">
+                  {ACCEPTED_INSURANCES.map((name) => (
+                    <li key={name} className="text-sm text-muted-foreground flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                      {name}
+                    </li>
+                  ))}
+                </ul>
+                <div className="flex items-start gap-2 p-3 rounded-lg bg-accent/10 border border-accent/20">
+                  <AlertCircle className="h-4 w-4 text-accent shrink-0 mt-0.5" />
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    We do <strong>not</strong> accept Arizona or California AHCCCS plans. Please verify with your insurance provider that you are in-network before booking.
+                  </p>
+                </div>
+                <p className="text-xs text-muted-foreground mt-3">
+                  Don't see your plan? We may still be able to help — <a href="/contact" className="text-primary hover:text-accent underline">contact us</a> to ask about out-of-network options.
+                </p>
+              </div>
             </div>
           </div>
         </div>
