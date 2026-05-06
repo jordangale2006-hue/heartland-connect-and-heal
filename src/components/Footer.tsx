@@ -35,6 +35,7 @@ const Footer = () => {
                 { label: "Services", path: "/services" },
                 { label: "About", path: "/about" },
               { label: "Book Appointment", path: "/book" },
+                { label: "Blog", path: "/blog" },
                 { label: "Contact", path: "/contact" },
                 { label: "Careers", path: "/careers" },
               ].map((item) => (
