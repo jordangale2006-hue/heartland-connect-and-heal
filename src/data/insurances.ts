@@ -5,6 +5,7 @@ export const FEATURED_INSURANCES = [
   "Medicare",
   "UnitedHealthcare",
   "Tricare",
+  "MultiPlan PHCS",
   "Cashpay",
 ];
 
