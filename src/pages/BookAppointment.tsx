@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { Phone, Mail, ExternalLink } from "lucide-react";
+import { Phone, Mail, ExternalLink, ShieldCheck, AlertCircle } from "lucide-react";
 import comfortImage from "@/assets/comfort-hands.jpg";
 
 const SCHEDULING_URL = "https://www.optimantra.com/optimus/patient/patientaccess/servicesall?pid=QlFYZ050NjhIYUdXVlFiMTdyMEJGQT09&lid=ek9EZkY4WjFZOVhZTWtNa25OcHFTQT09";
+
+const ACCEPTED_INSURANCES = ["Aetna", "BlueCross BlueShield", "Cigna", "Medicare"];
 
 const BookAppointment = () => {
   return (
