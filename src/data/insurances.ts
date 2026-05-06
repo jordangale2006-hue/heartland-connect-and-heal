@@ -3,6 +3,9 @@ export const FEATURED_INSURANCES = [
   "BlueCross BlueShield",
   "Cigna",
   "Medicare",
+  "UnitedHealthcare",
+  "Tricare",
+  "Cashpay",
 ];
 
 // Comprehensive list of 200+ in-network plans we accept

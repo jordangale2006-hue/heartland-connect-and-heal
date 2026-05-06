@@ -104,7 +104,7 @@ const InsurancesAccepted = ({ variant = "section" }: Props) => {
       <div className="max-w-3xl mx-auto mt-6 flex items-start gap-2 p-4 rounded-xl bg-accent/10 border border-accent/20">
         <AlertCircle className="h-5 w-5 text-accent shrink-0 mt-0.5" />
         <p className="text-sm text-muted-foreground leading-relaxed">
-          We do <strong>not</strong> accept Arizona or California AHCCCS plans. Plan availability may vary by state and product. Please verify with your insurance provider that you are in-network with this provider before booking.
+          We do <strong>not</strong> accept Arizona AHCCCS plans. Plan availability may vary by state and product. Please verify with your insurance provider that you are in-network with this provider before booking.
         </p>
       </div>
     </>
