@@ -12,6 +12,8 @@ import Services from "./pages/Services";
 import BookAppointment from "./pages/BookAppointment";
 import Contact from "./pages/Contact";
 import Careers from "./pages/Careers";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import Unsubscribe from "./pages/Unsubscribe";
 import NotFound from "./pages/NotFound";
 
@@ -32,6 +34,8 @@ const App = () => (
           <Route path="/book" element={<BookAppointment />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/careers" element={<Careers />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/unsubscribe" element={<Unsubscribe />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
