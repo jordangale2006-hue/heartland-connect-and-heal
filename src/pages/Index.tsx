@@ -7,6 +7,7 @@ import heroImage from "@/assets/hero-nature.jpg";
 import lakeImage from "@/assets/calm-lake.jpg";
 import telehealthImage from "@/assets/telehealth-session.jpg";
 import supportiveImage from "@/assets/supportive-conversation.jpg";
+import InsurancesAccepted from "@/components/InsurancesAccepted";
 
 const benefits = [
   { icon: Heart, title: "Patient-Centered Care", desc: "Your well-being is at the heart of everything we do." },
@@ -243,6 +244,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Insurances Accepted */}
+      <InsurancesAccepted />
 
       {/* Testimonials Slider */}
       <TestimonialsSlider />
