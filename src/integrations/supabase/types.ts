@@ -167,6 +167,48 @@ export type Database = {
         }
         Relationships: []
       }
+      job_applications: {
+        Row: {
+          convicted: string
+          conviction_details: string | null
+          created_at: string
+          email: string
+          fingerprint_card: string
+          first_name: string
+          id: string
+          last_name: string
+          phone: string
+          resume_path: string | null
+          status: string
+        }
+        Insert: {
+          convicted: string
+          conviction_details?: string | null
+          created_at?: string
+          email: string
+          fingerprint_card: string
+          first_name: string
+          id?: string
+          last_name: string
+          phone: string
+          resume_path?: string | null
+          status?: string
+        }
+        Update: {
+          convicted?: string
+          conviction_details?: string | null
+          created_at?: string
+          email?: string
+          fingerprint_card?: string
+          first_name?: string
+          id?: string
+          last_name?: string
+          phone?: string
+          resume_path?: string | null
+          status?: string
+        }
+        Relationships: []
+      }
       suppressed_emails: {
         Row: {
           created_at: string
