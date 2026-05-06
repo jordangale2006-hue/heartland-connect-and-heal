@@ -28,34 +28,14 @@ const Contact = () => {
 
     setSubmitting(true);
     try {
-      const id = crypto.randomUUID();
-      const { error: insertError } = await supabase
-        .from("contact_submissions")
-        .insert({ id, name: parsed.data.name, email: parsed.data.email, message: parsed.data.message });
-      if (insertError) throw insertError;
-
-      // Send confirmation to client and notification to staff (don't block on errors)
-      await Promise.allSettled([
-        supabase.functions.invoke("send-transactional-email", {
-          body: {
-            templateName: "contact-confirmation",
-            recipientEmail: parsed.data.email,
-            idempotencyKey: `contact-confirm-${id}`,
-            templateData: { name: parsed.data.name },
-          },
-        }),
-        supabase.functions.invoke("send-transactional-email", {
-          body: {
-            templateName: "contact-notification",
-            idempotencyKey: `contact-notify-${id}`,
-            templateData: {
-              name: parsed.data.name,
-              email: parsed.data.email,
-              message: parsed.data.message,
-            },
-          },
-        }),
-      ]);
+      const { data, error } = await supabase.functions.invoke("submit-contact", {
+        body: {
+          name: parsed.data.name,
+          email: parsed.data.email,
+          message: parsed.data.message,
+        },
+      });
+      if (error || !data?.success) throw error || new Error("Submission failed");
 
       toast.success("Message sent! We'll get back to you soon.");
       setName("");
