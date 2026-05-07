@@ -13,10 +13,10 @@ const InsurancesAccepted = ({ variant = "section" }: Props) => {
         <p className="text-accent font-semibold text-sm uppercase tracking-wider">In-Network Insurance</p>
       </div>
       <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-foreground text-center mb-3">
-        We accept 200+ insurance plans
+        Insurances we accept
       </h2>
       <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-8">
-        Quality mental health care should be accessible. Search below to see if your insurance is in-network with Heartland.
+        Quality mental health care should be accessible. Below are the insurance plans currently in-network with Heartland.
       </p>
 
       {/* Featured insurances */}
