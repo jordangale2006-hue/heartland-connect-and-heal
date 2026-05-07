@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, ExternalLink, ShieldCheck, AlertCircle } from "lucide-react";
 import comfortImage from "@/assets/comfort-hands.jpg";
+import { FEATURED_INSURANCES } from "@/data/insurances";
 
 const SCHEDULING_URL = "https://www.optimantra.com/optimus/patient/patientaccess/servicesall?pid=QlFYZ050NjhIYUdXVlFiMTdyMEJGQT09&lid=ek9EZkY4WjFZOVhZTWtNa25OcHFTQT09";
 
-const ACCEPTED_INSURANCES = ["Aetna", "BlueCross BlueShield", "Cigna", "Medicare"];
+const ACCEPTED_INSURANCES = FEATURED_INSURANCES;
 
 const BookAppointment = () => {
   return (
@@ -99,7 +100,7 @@ const BookAppointment = () => {
                 <div className="flex items-start gap-2 p-3 rounded-lg bg-accent/10 border border-accent/20">
                   <AlertCircle className="h-4 w-4 text-accent shrink-0 mt-0.5" />
                   <p className="text-xs text-muted-foreground leading-relaxed">
-                    We do <strong>not</strong> accept Arizona or California AHCCCS plans. Please verify with your insurance provider that you are in-network before booking.
+                    We do <strong>not</strong> accept Arizona AHCCCS/Medicaid plans. Please verify with your insurance provider that you are in-network before booking.
                   </p>
                 </div>
                 <p className="text-xs text-muted-foreground mt-3">
