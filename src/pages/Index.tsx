@@ -163,7 +163,7 @@ const Index = () => {
         jsonLd={[medicalBusinessSchema(), faqPageSchema(faqs)]}
       />
       <Helmet>
-        <link rel="preload" as="image" href={heroImage} fetchpriority="high" />
+        <link rel="preload" as="image" href={heroImage} fetchPriority="high" />
       </Helmet>
       {/* Hero */}
       <section className="relative min-h-[85vh] flex items-center">
