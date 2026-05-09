@@ -14,6 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
+      appointment_requests: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          insurance: string | null
+          name: string
+          phone: string
+          preferred_time: string | null
+          reason: string | null
+          status: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          insurance?: string | null
+          name: string
+          phone: string
+          preferred_time?: string | null
+          reason?: string | null
+          status?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          insurance?: string | null
+          name?: string
+          phone?: string
+          preferred_time?: string | null
+          reason?: string | null
+          status?: string
+        }
+        Relationships: []
+      }
       blog_posts: {
         Row: {
           author: string | null
