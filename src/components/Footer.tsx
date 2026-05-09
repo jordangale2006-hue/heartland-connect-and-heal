@@ -122,7 +122,7 @@ const Footer = () => {
               <a href="#" className="hover:text-accent transition-colors">HIPAA Notice</a>
             </div>
           </div>
-          <p className="text-xs text-primary-foreground/70 mt-4 leading-relaxed">
+          <p className="text-xs text-primary-foreground/40 mt-4 leading-relaxed">
             Disclaimer: This website is for informational purposes only and does not constitute medical advice. 
             All communications are handled in accordance with HIPAA privacy regulations.
           </p>
