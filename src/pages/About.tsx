@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Award, BookOpen, Heart, Users } from "lucide-react";
 import providerImage from "@/assets/provider-headshot.png";
 import gwenImage from "@/assets/gwen-headshot.png";
-import telehealthImage from "@/assets/telehealth-session.jpg";
+import telehealthImage from "@/assets/telehealth-session.webp";
 import sunriseImage from "@/assets/sunrise-field.jpg";
 import SEO from "@/components/SEO";
 
