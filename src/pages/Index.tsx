@@ -122,14 +122,18 @@ const TestimonialsSlider = () => {
             <button onClick={prev} aria-label="Previous testimonials" className="w-10 h-10 rounded-full border border-border bg-card flex items-center justify-center hover:bg-accent/10 hover:scale-110 transition-all duration-200">
               <ChevronLeft className="h-5 w-5 text-foreground" />
             </button>
-            <div className="flex gap-2">
+            <div className="flex gap-1">
               {Array.from({ length: totalPages }).map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setCurrent(i)}
                   aria-label={`Go to slide ${i + 1}`}
-                  className={`h-2.5 rounded-full transition-all duration-300 ${i === current ? "bg-primary w-8" : "bg-border w-2.5 hover:bg-primary/40"}`}
-                />
+                  className="h-6 w-6 flex items-center justify-center"
+                >
+                  <span
+                    className={`block h-2.5 rounded-full transition-all duration-300 ${i === current ? "bg-primary w-8" : "bg-border w-2.5 hover:bg-primary/40"}`}
+                  />
+                </button>
               ))}
             </div>
             <button onClick={next} aria-label="Next testimonials" className="w-10 h-10 rounded-full border border-border bg-card flex items-center justify-center hover:bg-accent/10 hover:scale-110 transition-all duration-200">
