@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Phone, Mail, ExternalLink, ShieldCheck, AlertCircle } from "lucide-react";
 import comfortImage from "@/assets/comfort-hands.jpg";
 import { FEATURED_INSURANCES } from "@/data/insurances";
+import SEO from "@/components/SEO";
 
 const SCHEDULING_URL = "https://www.optimantra.com/optimus/patient/patientaccess/servicesall?pid=QlFYZ050NjhIYUdXVlFiMTdyMEJGQT09&lid=ek9EZkY4WjFZOVhZTWtNa25OcHFTQT09";
 
