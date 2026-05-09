@@ -5,6 +5,7 @@ import providerImage from "@/assets/provider-headshot.png";
 import gwenImage from "@/assets/gwen-headshot.png";
 import telehealthImage from "@/assets/telehealth-session.jpg";
 import sunriseImage from "@/assets/sunrise-field.jpg";
+import SEO from "@/components/SEO";
 
 const rebeccaCredentials = [
   "Master of Science in Nursing – Walden University (2022)",
@@ -30,6 +31,11 @@ const values = [
 const About = () => {
   return (
     <main>
+      <SEO
+        title="About Heartland Mental Health | Arizona Telehealth Psychiatry"
+        description="Meet our board-certified psychiatric providers offering virtual mental health care to patients across Phoenix, Tucson, Mesa, Scottsdale and all of Arizona."
+        path="/about"
+      />
       {/* Hero with sunrise image */}
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0">

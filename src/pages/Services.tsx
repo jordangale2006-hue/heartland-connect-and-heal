@@ -4,6 +4,7 @@ import { Users, ChevronRight, Check } from "lucide-react";
 import arizonaImage from "@/assets/arizona-landscape.jpg";
 import comfortImage from "@/assets/comfort-hands.jpg";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import SEO from "@/components/SEO";
 
 const serviceCategories = [
   {
