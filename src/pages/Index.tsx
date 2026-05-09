@@ -11,6 +11,7 @@ import InsurancesAccepted from "@/components/InsurancesAccepted";
 import InsuranceChecker from "@/components/InsuranceChecker";
 import PsychiatryQuiz from "@/components/PsychiatryQuiz";
 import SEO from "@/components/SEO";
+import { Helmet } from "react-helmet-async";
 import { medicalBusinessSchema, faqPageSchema } from "@/lib/structured-data";
 
 const benefits = [
