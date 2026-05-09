@@ -4,6 +4,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import SEO from "@/components/SEO";
+import { articleSchema, SITE_URL } from "@/lib/structured-data";
 
 interface BlogPostData {
   id: string;
@@ -35,9 +37,6 @@ const BlogPost = () => {
         setNotFound(true);
       } else {
         setPost(data as BlogPostData);
-        document.title = `${data.title} | Heartland Mental Health Services`;
-        const meta = document.querySelector('meta[name="description"]');
-        if (meta && data.excerpt) meta.setAttribute("content", data.excerpt);
       }
       setLoading(false);
     };
