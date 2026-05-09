@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { Phone, Mail, ExternalLink, ShieldCheck, AlertCircle } from "lucide-react";
+import { Phone, Mail, ExternalLink, ShieldCheck, AlertCircle, CalendarClock } from "lucide-react";
 import comfortImage from "@/assets/comfort-hands.jpg";
 import { FEATURED_INSURANCES } from "@/data/insurances";
 import SEO from "@/components/SEO";
+import QuickAppointmentForm from "@/components/QuickAppointmentForm";
 
 const SCHEDULING_URL = "https://www.optimantra.com/optimus/patient/patientaccess/servicesall?pid=QlFYZ050NjhIYUdXVlFiMTdyMEJGQT09&lid=ek9EZkY4WjFZOVhZTWtNa25OcHFTQT09";
 
@@ -24,7 +25,7 @@ const BookAppointment = () => {
         <div className="relative container-narrow mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="font-heading text-4xl sm:text-5xl font-bold text-primary-foreground mb-4">Book Your Appointment</h1>
           <p className="text-primary-foreground/85 text-lg max-w-2xl mx-auto">
-            Taking the first step is the hardest part — and we're so glad you're here. Choose a time that works for you.
+            Two easy ways to get started — request a callback, or self-schedule below.
           </p>
         </div>
       </section>
@@ -32,23 +33,39 @@ const BookAppointment = () => {
       <section className="section-padding">
         <div className="container-narrow mx-auto">
           <div className="grid lg:grid-cols-3 gap-12">
-            {/* Scheduling embed */}
-            <div className="lg:col-span-2">
-              <div className="bg-card rounded-2xl border border-border/50 shadow-sm overflow-hidden">
-                <iframe
-                  src={SCHEDULING_URL}
-                  title="Schedule an Appointment"
-                  className="w-full border-0"
-                  style={{ minHeight: "700px" }}
-                  loading="lazy"
-                />
+            {/* Left column: quick form + scheduling embed */}
+            <div className="lg:col-span-2 space-y-8">
+              {/* Quick request form */}
+              <div className="bg-card rounded-2xl border border-border/50 shadow-sm p-6 sm:p-8">
+                <div className="flex items-center gap-2 mb-4">
+                  <CalendarClock className="h-5 w-5 text-primary" />
+                  <h2 className="font-heading text-2xl font-semibold text-foreground">Request an Appointment</h2>
+                </div>
+                <QuickAppointmentForm />
               </div>
-              <p className="text-xs text-muted-foreground mt-3 text-center">
-                Having trouble with the scheduler?{" "}
-                <a href={SCHEDULING_URL} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-accent underline inline-flex items-center gap-1">
-                  Open in a new window <ExternalLink className="h-3 w-3" />
-                </a>
-              </p>
+
+              <div className="relative">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="flex-1 h-px bg-border" />
+                  <span className="text-xs uppercase tracking-wider text-muted-foreground">or self-schedule below</span>
+                  <div className="flex-1 h-px bg-border" />
+                </div>
+                <div className="bg-card rounded-2xl border border-border/50 shadow-sm overflow-hidden">
+                  <iframe
+                    src={SCHEDULING_URL}
+                    title="Schedule an Appointment"
+                    className="w-full border-0"
+                    style={{ minHeight: "700px" }}
+                    loading="lazy"
+                  />
+                </div>
+                <p className="text-xs text-muted-foreground mt-3 text-center">
+                  Having trouble with the scheduler?{" "}
+                  <a href={SCHEDULING_URL} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-accent underline inline-flex items-center gap-1">
+                    Open in a new window <ExternalLink className="h-3 w-3" />
+                  </a>
+                </p>
+              </div>
             </div>
 
             {/* Sidebar */}
