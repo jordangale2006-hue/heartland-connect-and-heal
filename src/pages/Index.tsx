@@ -170,18 +170,24 @@ const Index = () => {
         <div className="relative container-narrow mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="max-w-2xl">
             <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-6 animate-fade-in-up">
-              Helping you connect with the support you need.
+              Online Psychiatry in Arizona — often booked within the week.
             </h1>
-            <p className="text-lg sm:text-xl text-primary-foreground/85 mb-8 leading-relaxed font-light" style={{ animationDelay: "0.15s" }}>
-              Compassionate, confidential mental health care in a warm and welcoming environment. You don't have to face this alone.
+            <p className="text-lg sm:text-xl text-primary-foreground/85 mb-6 leading-relaxed font-light" style={{ animationDelay: "0.15s" }}>
+              Compassionate, virtual mental health care from Arizona-licensed providers.
+              Most major insurance accepted. Same-week openings often available.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4" style={{ animationDelay: "0.3s" }}>
+            <div className="flex flex-col sm:flex-row gap-4 mb-6" style={{ animationDelay: "0.3s" }}>
               <Button variant="warmCta" size="lg" className="text-base px-8 py-6" asChild>
-                <Link to="/book">Schedule an Appointment</Link>
+                <Link to="/book">Book Appointment</Link>
               </Button>
               <Button variant="outlineWarm" size="lg" className="text-base px-8 py-6 border-primary-foreground/50 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground" asChild>
-                <Link to="/contact">Contact Us</Link>
+                <a href="tel:+15205955709"><Phone className="h-4 w-4 mr-2" />Call (520) 595-5709</a>
               </Button>
+            </div>
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-primary-foreground/85">
+              <span className="inline-flex items-center gap-1.5"><Shield className="h-4 w-4" /> HIPAA-secure telehealth</span>
+              <span className="inline-flex items-center gap-1.5"><Star className="h-4 w-4 fill-accent text-accent" /> 5-star ZocDoc reviews</span>
+              <span className="inline-flex items-center gap-1.5"><Clock className="h-4 w-4" /> Mon–Sat appointments</span>
             </div>
           </div>
         </div>
