@@ -264,6 +264,12 @@ const Index = () => {
       {/* Insurances Accepted */}
       <InsurancesAccepted />
 
+      {/* Insurance Checker — interactive */}
+      <InsuranceChecker />
+
+      {/* Self-check quiz — interactive */}
+      <PsychiatryQuiz />
+
       {/* Testimonials Slider */}
       <TestimonialsSlider />
 
