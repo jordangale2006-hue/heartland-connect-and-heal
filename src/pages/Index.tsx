@@ -11,6 +11,7 @@ import InsurancesAccepted from "@/components/InsurancesAccepted";
 import InsuranceChecker from "@/components/InsuranceChecker";
 import PsychiatryQuiz from "@/components/PsychiatryQuiz";
 import SEO from "@/components/SEO";
+import { Helmet } from "react-helmet-async";
 import { medicalBusinessSchema, faqPageSchema } from "@/lib/structured-data";
 
 const benefits = [
@@ -161,6 +162,9 @@ const Index = () => {
         path="/"
         jsonLd={[medicalBusinessSchema(), faqPageSchema(faqs)]}
       />
+      <Helmet>
+        <link rel="preload" as="image" href={heroImage} fetchPriority="high" />
+      </Helmet>
       {/* Hero */}
       <section className="relative min-h-[85vh] flex items-center">
         <div className="absolute inset-0">
