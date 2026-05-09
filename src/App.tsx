@@ -6,6 +6,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import StickyMobileCTA from "@/components/StickyMobileCTA";
+import ExitIntentDialog from "@/components/ExitIntentDialog";
+import { AppointmentDialogProvider } from "@/components/AppointmentDialogProvider";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Services from "./pages/Services";
@@ -26,20 +29,26 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
-        <Header />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/book" element={<BookAppointment />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/careers" element={<Careers />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
-          <Route path="/unsubscribe" element={<Unsubscribe />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <Footer />
+        <AppointmentDialogProvider>
+          <Header />
+          <div className="pb-20 md:pb-0">
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/book" element={<BookAppointment />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/careers" element={<Careers />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/unsubscribe" element={<Unsubscribe />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </div>
+          <Footer />
+          <StickyMobileCTA />
+          <ExitIntentDialog />
+        </AppointmentDialogProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
