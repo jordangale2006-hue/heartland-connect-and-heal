@@ -8,6 +8,8 @@ import lakeImage from "@/assets/calm-lake.jpg";
 import telehealthImage from "@/assets/telehealth-session.jpg";
 import supportiveImage from "@/assets/supportive-conversation.jpg";
 import InsurancesAccepted from "@/components/InsurancesAccepted";
+import InsuranceChecker from "@/components/InsuranceChecker";
+import PsychiatryQuiz from "@/components/PsychiatryQuiz";
 import SEO from "@/components/SEO";
 import { medicalBusinessSchema, faqPageSchema } from "@/lib/structured-data";
 
