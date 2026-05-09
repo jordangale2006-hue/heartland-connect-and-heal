@@ -53,6 +53,29 @@
       speaking-text="Speaking"
       override-language="en"
     ></elevenlabs-convai>
-    <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" defer type="text/javascript"></script>
+    <script>
+      // Lazy-load the ElevenLabs widget to keep it off the critical main-thread path.
+      (function () {
+        var loaded = false;
+        function loadWidget() {
+          if (loaded) return;
+          loaded = true;
+          var s = document.createElement('script');
+          s.src = 'https://unpkg.com/@elevenlabs/convai-widget-embed';
+          s.async = true;
+          document.body.appendChild(s);
+        }
+        var trigger = function () { loadWidget(); };
+        ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (e) {
+          window.addEventListener(e, trigger, { once: true, passive: true });
+        });
+        // Fallback: load when the browser is idle, or after a short delay.
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(loadWidget, { timeout: 5000 });
+        } else {
+          setTimeout(loadWidget, 4000);
+        }
+      })();
+    </script>
   </body>
 </html>
