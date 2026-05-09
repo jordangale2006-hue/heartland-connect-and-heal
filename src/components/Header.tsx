@@ -20,8 +20,8 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
       <div className="container-narrow mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-20 sm:h-28 overflow-visible">
-        <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="Heartland Mental Health Services" className="h-28 sm:h-64 w-auto object-contain -my-10" />
+        <Link to="/" className="flex items-center gap-2 sm:-ml-4">
+          <img src={logo} alt="Heartland Mental Health Services" className="h-28 sm:h-72 w-auto object-contain -my-12" />
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">
