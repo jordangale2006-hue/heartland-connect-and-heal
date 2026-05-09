@@ -32,7 +32,7 @@ const InsuranceChecker = () => {
 
           <div className="max-w-md mx-auto">
             <Select value={selected} onValueChange={setSelected}>
-              <SelectTrigger className="h-12 text-base">
+              <SelectTrigger className="h-12 text-base" aria-label="Select your insurance">
                 <SelectValue placeholder="Select your insurance" />
               </SelectTrigger>
               <SelectContent>
