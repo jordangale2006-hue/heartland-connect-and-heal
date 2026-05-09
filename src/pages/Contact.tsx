@@ -52,6 +52,11 @@ const Contact = () => {
 
   return (
     <main>
+      <SEO
+        title="Contact Heartland Mental Health | Arizona Telehealth"
+        description="Reach our Arizona telehealth psychiatry team. Verify insurance, ask questions, or request a callback. Serving Phoenix, Tucson, Mesa, Scottsdale and beyond."
+        path="/contact"
+      />
       {/* Hero with background image */}
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0">

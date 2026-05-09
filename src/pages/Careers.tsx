@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import careersHero from "@/assets/careers-hero.jpg";
+import SEO from "@/components/SEO";
 
 const ALLOWED_RESUME_TYPES = [
   "application/pdf",
@@ -129,6 +130,11 @@ const Careers = () => {
 
   return (
     <main>
+      <SEO
+        title="Careers | Arizona Telehealth Psychiatry Jobs"
+        description="Join Heartland Mental Health Services — a virtual psychiatric practice serving Arizona. View open clinical and support roles and apply online."
+        path="/careers"
+      />
       <section className="relative py-20 bg-primary/5 overflow-hidden">
         <img
           src={careersHero}
