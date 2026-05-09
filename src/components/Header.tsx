@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Lock } from "lucide-react";
+import { Menu, X, Lock, Phone } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { useState } from "react";
 
@@ -41,6 +41,12 @@ const Header = () => {
         </nav>
 
         <div className="hidden md:flex items-center gap-2">
+          <Button variant="ghost" size="sm" asChild>
+            <a href="tel:+15205955709" aria-label="Call (520) 595-5709">
+              <Phone className="h-4 w-4 mr-1.5" />
+              (520) 595-5709
+            </a>
+          </Button>
           <Button variant="ghost" size="sm" asChild>
             <a
               href="https://www.optimantra.com/optimus/om/patient/login?accessPoint=c0tJNlJ2Y2UrYXNXRk5CRTgvMlBOZz09"

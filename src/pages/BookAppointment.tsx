@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+
 import { Phone, Mail, ExternalLink, ShieldCheck, AlertCircle, CalendarClock } from "lucide-react";
 import comfortImage from "@/assets/comfort-hands.jpg";
 import { FEATURED_INSURANCES } from "@/data/insurances";
