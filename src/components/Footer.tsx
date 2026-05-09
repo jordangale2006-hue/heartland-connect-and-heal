@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 import facebookIcon from "@/assets/facebook-icon.png";
 import instagramIcon from "@/assets/instagram-icon.svg";
 import linkedinIcon from "@/assets/linkedin-icon.png";
