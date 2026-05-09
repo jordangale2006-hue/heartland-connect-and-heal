@@ -4,6 +4,7 @@ import { Users, ChevronRight, Check } from "lucide-react";
 import arizonaImage from "@/assets/arizona-landscape.jpg";
 import comfortImage from "@/assets/comfort-hands.jpg";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import SEO from "@/components/SEO";
 
 const serviceCategories = [
   {
@@ -97,6 +98,11 @@ const serviceCategories = [
 const Services = () => {
   return (
     <main>
+      <SEO
+        title="Conditions We Treat | Online Psychiatry in Arizona"
+        description="ADHD, anxiety, depression, bipolar, PTSD, OCD and more — treated virtually by Arizona-licensed psychiatric providers. Telehealth across the state."
+        path="/services"
+      />
       {/* Hero */}
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0">

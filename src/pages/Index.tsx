@@ -8,6 +8,8 @@ import lakeImage from "@/assets/calm-lake.jpg";
 import telehealthImage from "@/assets/telehealth-session.jpg";
 import supportiveImage from "@/assets/supportive-conversation.jpg";
 import InsurancesAccepted from "@/components/InsurancesAccepted";
+import SEO from "@/components/SEO";
+import { medicalBusinessSchema, faqPageSchema } from "@/lib/structured-data";
 
 const benefits = [
   { icon: Heart, title: "Patient-Centered Care", desc: "Your well-being is at the heart of everything we do." },
@@ -151,6 +153,12 @@ const TestimonialsSlider = () => {
 const Index = () => {
   return (
     <main>
+      <SEO
+        title="Online Psychiatrist in Arizona"
+        description="Virtual psychiatry & medication management across Arizona. Aetna, BCBS, Cigna, Medicare, Tricare & UnitedHealthcare accepted. Book a telehealth visit today."
+        path="/"
+        jsonLd={[medicalBusinessSchema(), faqPageSchema(faqs)]}
+      />
       {/* Hero */}
       <section className="relative min-h-[85vh] flex items-center">
         <div className="absolute inset-0">

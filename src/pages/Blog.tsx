@@ -4,6 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import blogHero from "@/assets/blog-hero.jpg";
+import SEO from "@/components/SEO";
 
 interface BlogPost {
   id: string;
@@ -20,10 +21,6 @@ const Blog = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    document.title = "Blog | Heartland Mental Health Services";
-    const meta = document.querySelector('meta[name="description"]');
-    if (meta) meta.setAttribute("content", "Mental health insights, education, and resources from the Heartland Mental Health Services team.");
-
     const load = async () => {
       const { data } = await supabase
         .from("blog_posts")
@@ -38,6 +35,11 @@ const Blog = () => {
 
   return (
     <main className="container-narrow mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+      <SEO
+        title="Mental Health Blog | Heartland Mental Health Arizona"
+        description="Articles on ADHD, anxiety, depression, medication management and what to expect from telehealth psychiatry — from the Heartland team in Arizona."
+        path="/blog"
+      />
       <header className="mb-12">
         <img
           src={blogHero}

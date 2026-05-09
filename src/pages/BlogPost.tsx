@@ -4,6 +4,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import SEO from "@/components/SEO";
+import { articleSchema, SITE_URL } from "@/lib/structured-data";
 
 interface BlogPostData {
   id: string;
@@ -35,9 +37,6 @@ const BlogPost = () => {
         setNotFound(true);
       } else {
         setPost(data as BlogPostData);
-        document.title = `${data.title} | Heartland Mental Health Services`;
-        const meta = document.querySelector('meta[name="description"]');
-        if (meta && data.excerpt) meta.setAttribute("content", data.excerpt);
       }
       setLoading(false);
     };
@@ -69,6 +68,21 @@ const BlogPost = () => {
 
   return (
     <main className="container-narrow mx-auto px-4 sm:px-6 lg:px-8 py-12 max-w-3xl">
+      <SEO
+        title={post.title}
+        description={post.excerpt || `${post.title} — Heartland Mental Health Services blog.`}
+        path={`/blog/${post.slug}`}
+        type="article"
+        image={post.cover_image_url || undefined}
+        jsonLd={articleSchema({
+          title: post.title,
+          description: post.excerpt || undefined,
+          image: post.cover_image_url || undefined,
+          author: post.author || undefined,
+          datePublished: post.published_at || undefined,
+          url: `${SITE_URL}/blog/${post.slug}`,
+        })}
+      />
       <Link to="/blog" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-6">
         <ArrowLeft className="h-4 w-4 mr-1" /> Back to Blog
       </Link>

@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Phone, Mail, ExternalLink, ShieldCheck, AlertCircle } from "lucide-react";
 import comfortImage from "@/assets/comfort-hands.jpg";
 import { FEATURED_INSURANCES } from "@/data/insurances";
+import SEO from "@/components/SEO";
 
 const SCHEDULING_URL = "https://www.optimantra.com/optimus/patient/patientaccess/servicesall?pid=QlFYZ050NjhIYUdXVlFiMTdyMEJGQT09&lid=ek9EZkY4WjFZOVhZTWtNa25OcHFTQT09";
 
@@ -10,6 +11,11 @@ const ACCEPTED_INSURANCES = FEATURED_INSURANCES;
 const BookAppointment = () => {
   return (
     <main>
+      <SEO
+        title="Book a Virtual Appointment | Heartland Mental Health AZ"
+        description="Schedule a secure telehealth psychiatry visit in Arizona. Most insurance accepted including Aetna, BCBS, Cigna, Medicare, Tricare and UnitedHealthcare."
+        path="/book"
+      />
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0">
           <img src={comfortImage} alt="Warm comforting scene" width={800} height={800} className="w-full h-full object-cover" />

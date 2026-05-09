@@ -5,6 +5,7 @@ import { Phone, Mail, MapPin, Clock, Send, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import arizonaImage from "@/assets/arizona-landscape.jpg";
+import SEO from "@/components/SEO";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Please enter your name").max(100),
@@ -51,6 +52,11 @@ const Contact = () => {
 
   return (
     <main>
+      <SEO
+        title="Contact Heartland Mental Health | Arizona Telehealth"
+        description="Reach our Arizona telehealth psychiatry team. Verify insurance, ask questions, or request a callback. Serving Phoenix, Tucson, Mesa, Scottsdale and beyond."
+        path="/contact"
+      />
       {/* Hero with background image */}
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0">
