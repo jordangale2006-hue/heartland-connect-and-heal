@@ -164,7 +164,7 @@ const Index = () => {
       {/* Hero */}
       <section className="relative min-h-[85vh] flex items-center">
         <div className="absolute inset-0">
-          <img src={heroImage} alt="Peaceful sunlit meadow with rolling hills" width={1920} height={1080} className="w-full h-full object-cover" />
+          <img src={heroImage} alt="Peaceful sunlit meadow with rolling hills" width={1920} height={1080} fetchPriority="high" decoding="async" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-foreground/70 via-foreground/50 to-foreground/20" />
         </div>
         <div className="relative container-narrow mx-auto px-4 sm:px-6 lg:px-8 py-20">
