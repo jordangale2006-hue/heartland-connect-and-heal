@@ -9,7 +9,11 @@ import telehealthImage from "@/assets/telehealth-session.webp";
 import supportiveImage from "@/assets/supportive-conversation.webp";
 import InsurancesAccepted from "@/components/InsurancesAccepted";
 import InsuranceChecker from "@/components/InsuranceChecker";
+import InsuranceLogosStrip from "@/components/InsuranceLogosStrip";
 import PsychiatryQuiz from "@/components/PsychiatryQuiz";
+import ProviderCards from "@/components/ProviderCards";
+import CostEstimate from "@/components/CostEstimate";
+import TrustStrip from "@/components/TrustStrip";
 import SEO from "@/components/SEO";
 import { Helmet } from "react-helmet-async";
 import { medicalBusinessSchema, faqPageSchema } from "@/lib/structured-data";
@@ -197,6 +201,15 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Trust strip */}
+      <TrustStrip />
+
+      {/* Insurance logo strip — above-the-fold trust */}
+      <InsuranceLogosStrip />
+
+      {/* Provider cards with availability + 1-click book */}
+      <ProviderCards />
+
       {/* Benefits */}
       <section className="section-padding bg-card">
         <div className="container-narrow mx-auto">
@@ -267,6 +280,9 @@ const Index = () => {
 
       {/* Insurances Accepted */}
       <InsurancesAccepted />
+
+      {/* Cost estimate */}
+      <CostEstimate />
 
       {/* Insurance Checker — interactive */}
       <InsuranceChecker />

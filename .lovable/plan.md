@@ -1,92 +1,68 @@
+# Competitor Gap Build — Full Plan
 
-# Engagement Boost Plan
+You picked: build everything possible, static availability badges, generic safe cost ranges, all 10+ condition pages.
 
-Your analytics tell a clear story: **91% mobile, 79% bounce rate, 1.59 pages/visit, ~27s sessions, almost everyone lands on `/` and leaves**. The plan below is built to fix exactly that — get mobile visitors to act on the homepage instead of bouncing.
+## What ships now (8 items)
 
----
+### 1. Condition-specific landing pages (biggest SEO win)
+Create dynamic route `/conditions/:slug` plus an index `/conditions`. One data file (`src/data/conditions.ts`) drives 12 SEO pages:
 
-## 1. Stronger homepage hook + sticky CTA
+ADHD, Anxiety, Depression, Bipolar Disorder, PTSD, OCD, Insomnia, Substance Use, Postpartum Depression, Panic Disorder, Schizophrenia/Psychosis, Adolescent Mental Health.
 
-Goal: make the value clear in the first 2 seconds and keep a "Book" button in reach at all times.
+Each page has: H1, symptoms list, treatment approach, "Which provider treats this", FAQ, JSON-LD `MedicalCondition` + `FAQPage` schema, unique meta title/description, internal links to providers + booking, CTA.
 
-- Tighten the hero headline to a benefit-led line, e.g. *"Online Psychiatry in Arizona — Often Booked Within the Week."*
-- Sub-headline highlights: virtual visits, most insurance accepted, Arizona-licensed providers.
-- Two clear buttons: **Book Appointment** (primary) and **Verify My Insurance** (secondary).
-- Trust strip directly under the hero: insurance logos/names, ZocDoc rating, "Board-certified" badge, "Mon–Sat appointments".
-- **Sticky bottom CTA bar on mobile**: "Book Appointment" + "Call" — always visible while scrolling.
+### 2. Provider cards with static availability + 1-click book
+New `ProviderCard` component used on Home + About. Shows photo, name, credentials, specialties, **green "Typically books within 5–7 days" badge**, and a Book button that opens the existing appointment dialog. Two cards: Rebecca Nabosa, Gwendoline Besong.
 
-## 2. Quick "Request Appointment" lead form (mobile-friendly)
+### 3. Insurance carrier logo strip on homepage
+Above-the-fold strip below hero: grayscale logos (Aetna, BCBS, Cigna, UHC, Medicare, AHCCCS, etc. — pulled from existing `insurances.ts`). Links to insurance checker.
 
-The OptiMantra iframe is heavy on mobile and a known drop-off point. We'll add a lightweight form as the first step.
+### 4. Cost estimate strip (safe generic ranges)
+New `CostEstimate` section on Home + Services:
+- "Most insured patients pay **$0–$40** per visit"
+- "Self-pay: initial eval **$250**, follow-up **$150**" (placeholder — confirm in chat or I'll mark TBD)
+- Disclaimer: "Final cost depends on your specific plan. Verify with your insurer."
 
-- Short form on `/book` (and as a modal from CTAs): **Name, phone, email, insurance (dropdown of accepted plans + Cashpay), reason for visit (short), preferred contact time**.
-- HIPAA-friendly disclaimer ("Please do not include sensitive health information").
-- Submits via existing `submit-contact` style edge function → emails the practice + sends a confirmation email to the patient.
-- Full OptiMantra portal stays available below as "Prefer to self-schedule? Use our patient portal."
-- Validated with zod (length limits, valid email/phone), spam-resistant, never logs PHI.
+### 5. Trust strip (stats + credentials)
+Compact bar: "16+ years experience · Board-certified PMHNP · HIPAA-compliant · Licensed in Arizona". Adds board-cert badge SVGs.
 
-## 3. Interactive tools to keep visitors on-site
+### 6. Crisis & safety resources
+- Persistent footer line: "In crisis? Call or text **988**" (link `tel:988`)
+- New `/crisis` page with 988, ER guidance, SAMHSA, veterans line, warmline
+- Subtle banner at top of every condition page
 
-Pick-one-or-both lightweight tools that turn passive readers into engaged leads:
+### 7. PWA (installable, offline shell)
+Add `vite-plugin-pwa` config, manifest, icons, service worker. Lighthouse PWA score, no UX change. Brand colors per design memory.
 
-- **"Do I need to see a psychiatrist?" 60-second quiz** — 5–7 gentle yes/no questions (sleep, focus, mood, anxiety, energy). Result page shows a warm, non-diagnostic summary + "Talk to a provider" CTA → opens the quick lead form.
-- **Insurance checker** — dropdown of accepted plans; selecting one shows "Yes, we accept [Plan] for telehealth psychiatry in Arizona" with a Book CTA. Selecting AHCCCS/Medicaid shows the existing disclaimer + Cashpay info.
+### 8. Patient education content scaffold
+- Blog already exists. Seed **6 starter posts** (drafts in DB) targeting long-tail: "ADHD diagnosis as an adult in Arizona", "Does insurance cover online psychiatry?", "What to expect at your first telepsychiatry appointment", "SSRIs vs SNRIs", "Anxiety vs panic attacks", "Bipolar I vs II".
+- Add `/blog` link to main nav if missing; add related-posts on each condition page.
 
-Both add a real second pageview and a clear next action (directly attacks the 1.59 pages/visit number).
+## Flagged — need your input later (2 items)
 
-## 4. Exit-intent / scroll popup (used sparingly, once per session)
+- **Provider video intros** — I'll add a video slot on each provider card that's hidden until you upload MP4s. Send me the files and I'll wire them up.
+- **Async messaging between visits** — Requires HIPAA BAA + OptiMantra integration. Not safe to build without your sign-off on the messaging vendor. I'll skip for now.
 
-- Trigger: 60% scroll on mobile or mouse-leave on desktop.
-- Soft offer: *"Not ready to book? We can verify your insurance and call you back."* → opens the quick lead form.
-- Dismissible, remembered via `localStorage` so it never re-pops in the same session.
+## Routing changes
+```
+/conditions              → index of all conditions
+/conditions/:slug        → 12 SEO landing pages
+/crisis                  → safety resources
+```
+Header nav adds "Conditions" dropdown linking to top 6 + "View all".
 
-## 5. Mobile-first polish
+## Technical notes
+- All pages use existing `<SEO>` component for meta/canonical/JSON-LD.
+- Condition data lives in one file → easy to edit copy later.
+- No backend schema changes. No new tables.
+- Sitemap.xml updated to include new routes.
+- Design tokens only (orange `#ee975a`, Lora/Source Sans 3) — no new colors.
+- Mobile-first since 92% of traffic is mobile per your analytics.
 
-- Larger tap targets (min 44px) on all CTAs.
-- Compress hero image, lazy-load below-the-fold images.
-- Tap-to-call link on phone numbers (`tel:`).
-- Condensed mobile hero (no large empty space above the fold).
-- Faster perceived load: skeleton placeholders for the OptiMantra iframe.
-- Verify viewport, font sizes (min 16px body), and contrast across breakpoints.
+## Out of scope
+- Real-time OptiMantra availability sync (not API-accessible without contract).
+- Mobile native app.
+- Per-insurer copay table (using generic ranges per your answer).
 
-## 6. Light social proof additions
-
-- Pull 2–3 short ZocDoc quotes directly into the hero area (currently the slider sits lower).
-- Add an "As featured / verified on" row with ZocDoc + Psychology Today logos (only ones you're actually listed on).
-- "X+ Arizona patients seen this year" stat (only if you're comfortable with a number).
-
----
-
-## Technical implementation
-
-- New components:
-  - `src/components/StickyMobileCTA.tsx` — fixed bottom bar, mobile-only.
-  - `src/components/QuickAppointmentForm.tsx` — zod-validated form, used inline and inside a modal.
-  - `src/components/QuickAppointmentDialog.tsx` — wraps the form in a `Dialog`, opened from any CTA.
-  - `src/components/InsuranceChecker.tsx` — dropdown + result panel, reads from `src/data/insurances.ts`.
-  - `src/components/PsychiatryQuiz.tsx` — multi-step quiz with state, ends in result + CTA.
-  - `src/components/ExitIntentDialog.tsx` — listens for `mouseleave` (desktop) / scroll depth (mobile), respects `localStorage` flag.
-- Updates:
-  - `src/pages/Index.tsx` — new hero copy, trust strip, embed `InsuranceChecker` + quiz teaser, FAQ schema covers new questions.
-  - `src/pages/BookAppointment.tsx` — `QuickAppointmentForm` above the OptiMantra iframe, iframe gets a skeleton + lazy load.
-  - `src/components/Header.tsx` / `Footer.tsx` — add `tel:` links.
-  - `src/App.tsx` — mount `StickyMobileCTA` and `ExitIntentDialog` globally.
-- Backend:
-  - New edge function `submit-appointment-request` (mirrors `submit-contact`) → sends notification + patient confirmation via existing transactional email infra. No new DB table required (or optional `appointment_requests` table with RLS allowing inserts only).
-- No design-system color changes; keep Lora/Source Sans 3 + warm palette per project memory.
-- Mobile-first Tailwind classes; existing `use-mobile` hook for sticky bar visibility.
-
-## What to expect
-
-If we ship all of the above, the realistic targets within ~30 days are:
-- Bounce rate: **79% → 55–60%**
-- Pages/visit: **1.59 → 2.2–2.8**
-- Booking-form starts: clear new metric to track in analytics
-- Mobile session duration: meaningful lift from the quiz/insurance checker
-
-## Out of scope (call out explicitly)
-
-- No paid ads.
-- No changes to the booking platform itself (OptiMantra stays).
-- No design system overhaul — only copy, layout, and new components.
-- No PHI stored in the new lead form (disclaimer + minimal fields only).
+## After implementation
+You'll review, then I publish. Expected impact: more indexable surface area for condition keywords, lower bounce via clearer next-step CTAs, and PWA score boost.

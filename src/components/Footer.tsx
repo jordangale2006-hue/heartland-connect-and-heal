@@ -31,13 +31,15 @@ const Footer = () => {
             <h4 className="font-heading font-semibold mb-4">Quick Links</h4>
             <nav className="flex flex-col gap-2">
               {[
-                { label: "Home", path: "/" },
+              { label: "Home", path: "/" },
+                { label: "Conditions", path: "/conditions" },
                 { label: "Services", path: "/services" },
                 { label: "About", path: "/about" },
-              { label: "Book Appointment", path: "/book" },
+                { label: "Book Appointment", path: "/book" },
                 { label: "Blog", path: "/blog" },
                 { label: "Contact", path: "/contact" },
                 { label: "Careers", path: "/careers" },
+                { label: "Crisis Resources", path: "/crisis" },
               ].map((item) => (
                 <Link
                   key={item.path}
@@ -114,7 +116,13 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-primary-foreground/10">
+        <div className="mt-10 p-4 rounded-xl bg-accent/10 border border-accent/20 text-sm text-primary-foreground/90 text-center">
+          <strong>In a mental health crisis?</strong> Call or text{" "}
+          <a href="tel:988" className="text-accent font-semibold hover:underline">988</a>{" "}
+          for 24/7 support, or <Link to="/crisis" className="text-accent font-semibold hover:underline">view all crisis resources</Link>.
+        </div>
+
+        <div className="mt-8 pt-8 border-t border-primary-foreground/10">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-primary-foreground/50">
             <p>© {new Date().getFullYear()} Heartland Mental Health Services. All rights reserved.</p>
             <div className="flex gap-4">
