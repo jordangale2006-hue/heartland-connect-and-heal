@@ -201,6 +201,15 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Trust strip */}
+      <TrustStrip />
+
+      {/* Insurance logo strip — above-the-fold trust */}
+      <InsuranceLogosStrip />
+
+      {/* Provider cards with availability + 1-click book */}
+      <ProviderCards />
+
       {/* Benefits */}
       <section className="section-padding bg-card">
         <div className="container-narrow mx-auto">
@@ -271,6 +280,9 @@ const Index = () => {
 
       {/* Insurances Accepted */}
       <InsurancesAccepted />
+
+      {/* Cost estimate */}
+      <CostEstimate />
 
       {/* Insurance Checker — interactive */}
       <InsuranceChecker />
