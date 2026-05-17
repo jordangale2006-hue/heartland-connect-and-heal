@@ -1,10 +1,37 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Users, ChevronRight, Check } from "lucide-react";
+import { Users, ChevronRight, Check, ArrowUpRight } from "lucide-react";
 import arizonaImage from "@/assets/arizona-landscape.jpg";
 import comfortImage from "@/assets/comfort-hands.jpg";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import SEO from "@/components/SEO";
+
+// Map specific service-list items to their dedicated condition landing page slug.
+// Items without a mapping render as plain text.
+const CONDITION_SLUG_MAP: Record<string, string> = {
+  "Anxiety": "anxiety",
+  "Anxiety Disorder": "anxiety",
+  "Social Anxiety": "anxiety",
+  "Depression": "depression",
+  "Bipolar Disorder": "bipolar-disorder",
+  "Panic Attack": "panic-disorder",
+  "Panic Disorder": "panic-disorder",
+  "Postpartum Anxiety": "postpartum-depression",
+  "Postpartum Depression": "postpartum-depression",
+  "Postpartum Obsessive-Compulsive Disorder (OCD)": "ocd",
+  "Post-Traumatic Stress Disorder (PTSD)": "ptsd",
+  "Attention-Deficit / Hyperactivity Disorder (ADHD)": "adhd",
+  "Obsessive Compulsive Disorder (OCD)": "ocd",
+  "Addiction / Substance Abuse": "substance-use",
+  "Drug Addiction": "substance-use",
+  "Alcoholism": "substance-use",
+  "Psychotic Disorder": "psychosis",
+  "Schizoaffective Disorder": "psychosis",
+  "Schizophrenia": "psychosis",
+  "Adolescent / Teen Issues": "adolescent-mental-health",
+  "Adolescent Psychiatry": "adolescent-mental-health",
+  "Child and Adolescent Psychiatry": "adolescent-mental-health",
+};
 
 const serviceCategories = [
   {
