@@ -1,10 +1,37 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Users, ChevronRight, Check } from "lucide-react";
+import { Users, ChevronRight, Check, ArrowUpRight } from "lucide-react";
 import arizonaImage from "@/assets/arizona-landscape.jpg";
 import comfortImage from "@/assets/comfort-hands.jpg";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import SEO from "@/components/SEO";
+
+// Map specific service-list items to their dedicated condition landing page slug.
+// Items without a mapping render as plain text.
+const CONDITION_SLUG_MAP: Record<string, string> = {
+  "Anxiety": "anxiety",
+  "Anxiety Disorder": "anxiety",
+  "Social Anxiety": "anxiety",
+  "Depression": "depression",
+  "Bipolar Disorder": "bipolar-disorder",
+  "Panic Attack": "panic-disorder",
+  "Panic Disorder": "panic-disorder",
+  "Postpartum Anxiety": "postpartum-depression",
+  "Postpartum Depression": "postpartum-depression",
+  "Postpartum Obsessive-Compulsive Disorder (OCD)": "ocd",
+  "Post-Traumatic Stress Disorder (PTSD)": "ptsd",
+  "Attention-Deficit / Hyperactivity Disorder (ADHD)": "adhd",
+  "Obsessive Compulsive Disorder (OCD)": "ocd",
+  "Addiction / Substance Abuse": "substance-use",
+  "Drug Addiction": "substance-use",
+  "Alcoholism": "substance-use",
+  "Psychotic Disorder": "psychosis",
+  "Schizoaffective Disorder": "psychosis",
+  "Schizophrenia": "psychosis",
+  "Adolescent / Teen Issues": "adolescent-mental-health",
+  "Adolescent Psychiatry": "adolescent-mental-health",
+  "Child and Adolescent Psychiatry": "adolescent-mental-health",
+};
 
 const serviceCategories = [
   {
@@ -99,8 +126,8 @@ const Services = () => {
   return (
     <main>
       <SEO
-        title="Conditions We Treat | Online Psychiatry in Arizona"
-        description="ADHD, anxiety, depression, bipolar, PTSD, OCD and more — treated virtually by Arizona-licensed psychiatric providers. Telehealth across the state."
+        title="Full List of Conditions Treated A–Z | Heartland Mental Health Arizona"
+        description="The complete A–Z list of 90+ mental health conditions and services treated by our Arizona telepsychiatry team. Featured conditions link to detailed care pages."
         path="/services"
       />
       {/* Hero */}
@@ -117,11 +144,30 @@ const Services = () => {
         </div>
       </section>
 
+      {/* Featured conditions callout */}
+      <section className="section-padding pb-0">
+        <div className="container-narrow mx-auto">
+          <div className="bg-primary/5 border border-primary/20 rounded-xl p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h2 className="font-heading text-lg font-semibold text-foreground mb-1">
+                Looking for in-depth information?
+              </h2>
+              <p className="text-sm text-muted-foreground">
+                Our most-treated conditions have dedicated care pages with symptoms, treatment approach, and FAQs.
+              </p>
+            </div>
+            <Button variant="warmCta" asChild className="shrink-0">
+              <Link to="/conditions">Browse Featured Conditions</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* Categories */}
       <section className="section-padding">
         <div className="container-narrow mx-auto">
           <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
-            Click on any category below to see the specific conditions and services we offer. Our providers are experienced in treating all of the following.
+            Click on any category below to see the specific conditions and services we offer. Items marked with an arrow link to a detailed care page.
           </p>
           <Accordion type="multiple" className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-start">
             {serviceCategories.map((cat, i) => (
@@ -138,12 +184,25 @@ const Services = () => {
                 </AccordionTrigger>
                 <AccordionContent className="px-5 pb-5 border-t border-border/30">
                   <ul className="grid grid-cols-1 gap-1.5 pt-4">
-                    {cat.items.map((item) => (
-                      <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
-                        <Check className="h-4 w-4 text-accent shrink-0 mt-0.5" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
+                    {cat.items.map((item) => {
+                      const slug = CONDITION_SLUG_MAP[item];
+                      return (
+                        <li key={item} className="flex items-start gap-2 text-sm">
+                          <Check className="h-4 w-4 text-accent shrink-0 mt-0.5" />
+                          {slug ? (
+                            <Link
+                              to={`/conditions/${slug}`}
+                              className="text-foreground hover:text-primary transition-colors inline-flex items-center gap-1 group"
+                            >
+                              <span className="underline-offset-2 group-hover:underline">{item}</span>
+                              <ArrowUpRight className="h-3.5 w-3.5 text-primary shrink-0" />
+                            </Link>
+                          ) : (
+                            <span className="text-muted-foreground">{item}</span>
+                          )}
+                        </li>
+                      );
+                    })}
                   </ul>
                 </AccordionContent>
               </AccordionItem>
