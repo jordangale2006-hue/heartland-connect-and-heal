@@ -126,8 +126,8 @@ const Services = () => {
   return (
     <main>
       <SEO
-        title="Conditions We Treat | Online Psychiatry in Arizona"
-        description="ADHD, anxiety, depression, bipolar, PTSD, OCD and more — treated virtually by Arizona-licensed psychiatric providers. Telehealth across the state."
+        title="Full List of Conditions Treated A–Z | Heartland Mental Health Arizona"
+        description="The complete A–Z list of 90+ mental health conditions and services treated by our Arizona telepsychiatry team. Featured conditions link to detailed care pages."
         path="/services"
       />
       {/* Hero */}
