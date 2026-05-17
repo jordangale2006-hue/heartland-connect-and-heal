@@ -55,6 +55,19 @@ const Conditions = () => {
               </Link>
             ))}
           </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-muted-foreground mb-3">
+              Don't see your concern listed above?
+            </p>
+            <Link
+              to="/services"
+              className="inline-flex items-center gap-1 text-primary font-medium hover:underline"
+            >
+              View our full list of 90+ conditions we treat
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </section>
     </main>
