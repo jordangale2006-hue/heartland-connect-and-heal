@@ -144,11 +144,30 @@ const Services = () => {
         </div>
       </section>
 
+      {/* Featured conditions callout */}
+      <section className="section-padding pb-0">
+        <div className="container-narrow mx-auto">
+          <div className="bg-primary/5 border border-primary/20 rounded-xl p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h2 className="font-heading text-lg font-semibold text-foreground mb-1">
+                Looking for in-depth information?
+              </h2>
+              <p className="text-sm text-muted-foreground">
+                Our most-treated conditions have dedicated care pages with symptoms, treatment approach, and FAQs.
+              </p>
+            </div>
+            <Button variant="warmCta" asChild className="shrink-0">
+              <Link to="/conditions">Browse Featured Conditions</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* Categories */}
       <section className="section-padding">
         <div className="container-narrow mx-auto">
           <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
-            Click on any category below to see the specific conditions and services we offer. Our providers are experienced in treating all of the following.
+            Click on any category below to see the specific conditions and services we offer. Items marked with an arrow link to a detailed care page.
           </p>
           <Accordion type="multiple" className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-start">
             {serviceCategories.map((cat, i) => (
@@ -165,12 +184,25 @@ const Services = () => {
                 </AccordionTrigger>
                 <AccordionContent className="px-5 pb-5 border-t border-border/30">
                   <ul className="grid grid-cols-1 gap-1.5 pt-4">
-                    {cat.items.map((item) => (
-                      <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
-                        <Check className="h-4 w-4 text-accent shrink-0 mt-0.5" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
+                    {cat.items.map((item) => {
+                      const slug = CONDITION_SLUG_MAP[item];
+                      return (
+                        <li key={item} className="flex items-start gap-2 text-sm">
+                          <Check className="h-4 w-4 text-accent shrink-0 mt-0.5" />
+                          {slug ? (
+                            <Link
+                              to={`/conditions/${slug}`}
+                              className="text-foreground hover:text-primary transition-colors inline-flex items-center gap-1 group"
+                            >
+                              <span className="underline-offset-2 group-hover:underline">{item}</span>
+                              <ArrowUpRight className="h-3.5 w-3.5 text-primary shrink-0" />
+                            </Link>
+                          ) : (
+                            <span className="text-muted-foreground">{item}</span>
+                          )}
+                        </li>
+                      );
+                    })}
                   </ul>
                 </AccordionContent>
               </AccordionItem>
