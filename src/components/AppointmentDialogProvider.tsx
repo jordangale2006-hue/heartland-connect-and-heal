@@ -1,19 +1,10 @@
-import { createContext, useCallback, useContext, useEffect, useState, ReactNode } from "react";
+import { useCallback, useEffect, useState, ReactNode } from "react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import QuickAppointmentForm from "./QuickAppointmentForm";
+import { AppointmentDialogContext } from "./appointment-dialog-context";
 
-interface Ctx {
-  open: (source?: string) => void;
-  close: () => void;
-}
+export { useAppointmentDialog } from "./appointment-dialog-context";
 
-const AppointmentDialogContext = createContext<Ctx | null>(null);
-
-export const useAppointmentDialog = () => {
-  const ctx = useContext(AppointmentDialogContext);
-  if (!ctx) throw new Error("useAppointmentDialog must be used within AppointmentDialogProvider");
-  return ctx;
-};
 
 export const AppointmentDialogProvider = ({ children }: { children: ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
