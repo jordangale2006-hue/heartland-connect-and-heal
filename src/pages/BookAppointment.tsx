@@ -7,7 +7,7 @@ import InsuranceLogoGrid from "@/components/InsuranceLogoGrid";
 
 const SCHEDULING_URL = "https://www.optimantra.com/optimus/patient/patientaccess/servicesall?pid=QlFYZ050NjhIYUdXVlFiMTdyMEJGQT09&lid=ek9EZkY4WjFZOVhZTWtNa25OcHFTQT09";
 
-const ACCEPTED_INSURANCES = FEATURED_INSURANCES;
+
 
 const BookAppointment = () => {
   return (
