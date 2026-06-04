@@ -46,7 +46,7 @@ const Crisis = () => {
   return (
     <main>
       <SEO
-        title="Mental Health Crisis Resources"
+        title="Crisis Resources | Heartland Mental Health Services"
         description="If you or someone you love is in a mental health crisis, here are immediate resources. Call or text 988 for 24/7 confidential support."
         path="/crisis"
       />
