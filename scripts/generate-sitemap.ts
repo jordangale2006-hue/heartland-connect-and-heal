@@ -1,7 +1,7 @@
 // Runs before `vite dev` and `vite build` (predev/prebuild hooks); writes public/sitemap.xml.
 import { writeFileSync } from "fs";
 import { resolve } from "path";
-import { conditions } from "../src/data/conditions";
+import { CONDITIONS } from "../src/data/conditions";
 
 const BASE_URL = "https://heartlandmhservices.com";
 const SUPABASE_URL = "https://rstknhbsfpnkzqpysjuw.supabase.co";
@@ -28,7 +28,7 @@ const staticEntries: SitemapEntry[] = [
   { path: "/unsubscribe", changefreq: "yearly", priority: "0.1" },
 ];
 
-const conditionEntries: SitemapEntry[] = conditions.map((c) => ({
+const conditionEntries: SitemapEntry[] = CONDITIONS.map((c) => ({
   path: `/conditions/${c.slug}`,
   changefreq: "monthly",
   priority: "0.8",
