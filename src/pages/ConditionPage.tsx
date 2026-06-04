@@ -163,7 +163,7 @@ const ConditionPage = () => {
                   {c.shortName ?? c.name}
                 </h3>
                 <span className="inline-flex items-center gap-1 text-sm text-primary">
-                  Read more <ArrowRight className="h-3.5 w-3.5" />
+                  Read more about {c.shortName ?? c.name} <ArrowRight className="h-3.5 w-3.5" />
                 </span>
               </Link>
             ))}
