@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://www.heartlandmhservices.com/sitemap.xml
+Sitemap: https://heartlandmhservices.com/sitemap.xml
