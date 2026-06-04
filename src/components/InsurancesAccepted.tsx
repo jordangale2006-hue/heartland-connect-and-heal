@@ -1,5 +1,5 @@
 import { ShieldCheck, AlertCircle } from "lucide-react";
-import { FEATURED_INSURANCES } from "@/data/insurances";
+import InsuranceLogoGrid from "./InsuranceLogoGrid";
 
 interface Props {
   variant?: "section" | "card";
@@ -20,16 +20,10 @@ const InsurancesAccepted = ({ variant = "section" }: Props) => {
       </p>
 
       {/* Featured insurances */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto mb-6">
-        {FEATURED_INSURANCES.map((name) => (
-          <div
-            key={name}
-            className="bg-background rounded-xl border border-border/50 px-4 py-4 text-center text-sm font-medium text-foreground shadow-sm"
-          >
-            {name}
-          </div>
-        ))}
+      <div className="max-w-3xl mx-auto mb-6">
+        <InsuranceLogoGrid size="md" />
       </div>
+
 
       {/* Disclaimer */}
       <div className="max-w-3xl mx-auto mt-6 flex items-start gap-2 p-4 rounded-xl bg-accent/10 border border-accent/20">
