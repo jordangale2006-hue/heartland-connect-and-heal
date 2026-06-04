@@ -6,9 +6,9 @@ import instagramIcon from "@/assets/instagram-icon.svg";
 import linkedinIcon from "@/assets/linkedin-icon.png";
 
 const socials = [
-  { label: "Facebook", url: "https://www.facebook.com/HeartlandMentalHealthServices", icon: facebookIcon },
-  { label: "Instagram", url: "https://www.instagram.com/Heartlandmhservices", icon: instagramIcon },
-  { label: "LinkedIn", url: "https://www.linkedin.com/company/heart-land-mental-health-services/", icon: linkedinIcon },
+  { label: "Facebook", alt: "Follow Heartland Mental Health on Facebook", url: "https://www.facebook.com/HeartlandMentalHealthServices", icon: facebookIcon },
+  { label: "Instagram", alt: "Follow Heartland Mental Health on Instagram", url: "https://www.instagram.com/Heartlandmhservices", icon: instagramIcon },
+  { label: "LinkedIn", alt: "Follow Heartland Mental Health on LinkedIn", url: "https://www.linkedin.com/company/heart-land-mental-health-services/", icon: linkedinIcon },
 ];
 
 const Footer = () => {
