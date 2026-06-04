@@ -106,7 +106,7 @@ const Footer = () => {
                 >
                   <img
                     src={social.icon}
-                    alt={social.label}
+                    alt={social.alt}
                     className="w-9 h-9 rounded-lg object-fill"
                     loading="lazy"
                   />
