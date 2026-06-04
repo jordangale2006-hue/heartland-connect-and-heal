@@ -1,3 +1,5 @@
+import aetnaLogo from "@/assets/aetna.jpg.asset.json";
+
 export const FEATURED_INSURANCES = [
   "Aetna",
   "BlueCross BlueShield",
@@ -24,7 +26,7 @@ export interface InsuranceBrand {
 }
 
 export const INSURANCE_BRANDS: Record<string, InsuranceBrand> = {
-  "Aetna": { name: "Aetna", short: "aetna", bg: "#7D3F98", fg: "#FFFFFF" },
+  "Aetna": { name: "Aetna", short: "aetna", bg: "#FFFFFF", fg: "#7D3F98", logo: aetnaLogo.url },
   "BlueCross BlueShield": { name: "BlueCross BlueShield", short: "BCBS", bg: "#0066B2", fg: "#FFFFFF" },
   "Cigna": { name: "Cigna", short: "Cigna.", bg: "#F58220", fg: "#FFFFFF" },
   "Humana": { name: "Humana", short: "Humana.", bg: "#78BE20", fg: "#FFFFFF" },
