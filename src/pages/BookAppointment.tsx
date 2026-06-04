@@ -1,13 +1,13 @@
 
 import { Phone, Mail, ExternalLink, ShieldCheck, AlertCircle, CalendarClock } from "lucide-react";
 import comfortImage from "@/assets/comfort-hands.jpg";
-import { FEATURED_INSURANCES } from "@/data/insurances";
 import SEO from "@/components/SEO";
 import QuickAppointmentForm from "@/components/QuickAppointmentForm";
+import InsuranceLogoGrid from "@/components/InsuranceLogoGrid";
 
 const SCHEDULING_URL = "https://www.optimantra.com/optimus/patient/patientaccess/servicesall?pid=QlFYZ050NjhIYUdXVlFiMTdyMEJGQT09&lid=ek9EZkY4WjFZOVhZTWtNa25OcHFTQT09";
 
-const ACCEPTED_INSURANCES = FEATURED_INSURANCES;
+
 
 const BookAppointment = () => {
   return (
@@ -112,14 +112,9 @@ const BookAppointment = () => {
                   <ShieldCheck className="h-5 w-5 text-primary" />
                   <h3 className="font-heading font-semibold text-foreground">Insurances Accepted</h3>
                 </div>
-                <ul className="space-y-2 mb-4">
-                  {ACCEPTED_INSURANCES.map((name) => (
-                    <li key={name} className="text-sm text-muted-foreground flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                      {name}
-                    </li>
-                  ))}
-                </ul>
+                <div className="mb-4">
+                  <InsuranceLogoGrid size="sm" />
+                </div>
                 <div className="flex items-start gap-2 p-3 rounded-lg bg-accent/10 border border-accent/20">
                   <AlertCircle className="h-4 w-4 text-accent shrink-0 mt-0.5" />
                   <p className="text-xs text-muted-foreground leading-relaxed">

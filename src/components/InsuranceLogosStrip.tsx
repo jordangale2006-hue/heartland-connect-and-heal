@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { FEATURED_INSURANCES } from "@/data/insurances";
 import { ShieldCheck } from "lucide-react";
+import InsuranceLogoGrid from "./InsuranceLogoGrid";
 
 const InsuranceLogosStrip = () => {
   return (
@@ -11,16 +11,7 @@ const InsuranceLogosStrip = () => {
             <ShieldCheck className="h-4 w-4 text-primary" />
             In-Network Insurance
           </div>
-          <ul className="flex flex-wrap justify-center items-center gap-2 sm:gap-3">
-            {FEATURED_INSURANCES.filter((n) => n !== "Cashpay").map((name) => (
-              <li
-                key={name}
-                className="px-3 py-1.5 rounded-md bg-background border border-border/60 text-xs sm:text-sm font-medium text-foreground"
-              >
-                {name}
-              </li>
-            ))}
-          </ul>
+          <InsuranceLogoGrid size="sm" exclude={["Cashpay"]} className="max-w-3xl" />
           <Link
             to="/book"
             className="text-sm text-primary font-medium hover:underline"
