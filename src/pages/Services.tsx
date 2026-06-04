@@ -126,7 +126,7 @@ const Services = () => {
   return (
     <main>
       <SEO
-        title="Full List of Conditions Treated A–Z | Heartland Mental Health Arizona"
+        title="Conditions A–Z | Heartland Mental Health Services"
         description="The complete A–Z list of 90+ mental health conditions and services treated by our Arizona telepsychiatry team. Featured conditions link to detailed care pages."
         path="/services"
       />

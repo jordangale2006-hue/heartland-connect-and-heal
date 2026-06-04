@@ -161,7 +161,7 @@ const Index = () => {
   return (
     <main>
       <SEO
-        title="Online Psychiatrist in Arizona"
+        title="Heartland Mental Health Services | Online Psychiatry Arizona"
         description="Virtual psychiatry & medication management across Arizona. Aetna, BCBS, Cigna, Medicare, Tricare & UnitedHealthcare accepted. Book a telehealth visit today."
         path="/"
         jsonLd={[medicalBusinessSchema(), faqPageSchema(faqs)]}
