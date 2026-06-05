@@ -3,7 +3,7 @@ import { Phone, Mail, ExternalLink, ShieldCheck, AlertCircle, CalendarClock } fr
 import comfortImage from "@/assets/comfort-hands.jpg";
 import SEO from "@/components/SEO";
 import QuickAppointmentForm from "@/components/QuickAppointmentForm";
-import InsuranceLogoGrid from "@/components/InsuranceLogoGrid";
+import { FEATURED_INSURANCES } from "@/data/insurances";
 
 const SCHEDULING_URL = "https://www.optimantra.com/optimus/patient/patientaccess/servicesall?pid=QlFYZ050NjhIYUdXVlFiMTdyMEJGQT09&lid=ek9EZkY4WjFZOVhZTWtNa25OcHFTQT09";
 
@@ -112,9 +112,14 @@ const BookAppointment = () => {
                   <ShieldCheck className="h-5 w-5 text-primary" />
                   <h3 className="font-heading font-semibold text-foreground">Insurances Accepted</h3>
                 </div>
-                <div className="mb-4">
-                  <InsuranceLogoGrid size="sm" />
-                </div>
+                <ul className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-muted-foreground mb-4">
+                  {FEATURED_INSURANCES.map((name) => (
+                    <li key={name} className="flex items-start gap-2">
+                      <span className="text-primary mt-1">•</span>
+                      <span>{name}</span>
+                    </li>
+                  ))}
+                </ul>
                 <div className="flex items-start gap-2 p-3 rounded-lg bg-accent/10 border border-accent/20">
                   <AlertCircle className="h-4 w-4 text-accent shrink-0 mt-0.5" />
                   <p className="text-xs text-muted-foreground leading-relaxed">
