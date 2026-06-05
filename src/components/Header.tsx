@@ -41,7 +41,7 @@ const Header = () => {
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-2">
+        <div className="hidden md:flex items-center gap-2 justify-self-end">
           <Button variant="ghost" size="sm" asChild>
             <a href="tel:+15205955709" aria-label="Call (520) 595-5709">
               <Phone className="h-4 w-4 mr-1.5" />
@@ -65,7 +65,7 @@ const Header = () => {
         </div>
 
         <button
-          className="md:hidden p-2 text-foreground"
+          className="md:hidden p-2 text-foreground justify-self-end"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
