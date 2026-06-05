@@ -1,7 +1,6 @@
 import aetnaLogo from "@/assets/aetna.jpg.asset.json";
 import humanaLogo from "@/assets/humana.png.asset.json";
 import cignaLogo from "@/assets/cigna.webp.asset.json";
-import bcbsLogo from "@/assets/bcbs.webp.asset.json";
 
 export const FEATURED_INSURANCES = [
   "Aetna",
@@ -30,7 +29,7 @@ export interface InsuranceBrand {
 
 export const INSURANCE_BRANDS: Record<string, InsuranceBrand> = {
   "Aetna": { name: "Aetna", short: "aetna", bg: "#FFFFFF", fg: "#7D3F98", logo: aetnaLogo.url },
-  "BlueCross BlueShield": { name: "BlueCross BlueShield", short: "BCBS", bg: "#FFFFFF", fg: "#0066B2", logo: bcbsLogo.url },
+  "BlueCross BlueShield": { name: "BlueCross BlueShield", short: "BCBS", bg: "#0066B2", fg: "#FFFFFF" },
   "Cigna": { name: "Cigna", short: "Cigna.", bg: "#FFFFFF", fg: "#00A9E0", logo: cignaLogo.url },
   "Humana": { name: "Humana", short: "Humana.", bg: "#FFFFFF", fg: "#78BE20", logo: humanaLogo.url },
   "Medicare": { name: "Medicare", short: "MEDICARE", bg: "#003D7A", fg: "#FFFFFF" },
