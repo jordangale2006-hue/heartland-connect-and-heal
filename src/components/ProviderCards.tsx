@@ -114,7 +114,7 @@ const ProviderCards = ({ heading, subheading }: Props) => {
                   Book with {p.name.split(" ")[0]}
                 </Button>
                 <Button variant="outlineWarm" className="flex-1" asChild>
-                  <Link to="/about">Read Bio</Link>
+                  <Link to={`/about#${p.id}`}>Read Bio</Link>
                 </Button>
               </div>
             </article>
