@@ -31,6 +31,7 @@ export interface InsuranceBrand {
   bg: string;
   fg: string;
   logo?: string;
+  logoClass?: string;
 }
 
 export const INSURANCE_BRANDS: Record<string, InsuranceBrand> = {
@@ -41,6 +42,6 @@ export const INSURANCE_BRANDS: Record<string, InsuranceBrand> = {
   "Medicare": { name: "Medicare", short: "MEDICARE", bg: "#FFFFFF", fg: "#003D7A", logo: medicareLogo.url },
   "UnitedHealthcare": { name: "UnitedHealthcare", short: "UHC", bg: "#FFFFFF", fg: "#002677", logo: uhcLogo.url },
   "Tricare": { name: "Tricare", short: "TRICARE", bg: "#FFFFFF", fg: "#023F88", logo: tricareLogo.url },
-  "MultiPlan PHCS": { name: "MultiPlan PHCS", short: "MultiPlan", bg: "#FFFFFF", fg: "#00427A", logo: multiplanLogo.url },
+  "MultiPlan PHCS": { name: "MultiPlan PHCS", short: "MultiPlan", bg: "#FFFFFF", fg: "#00427A", logo: multiplanLogo.url, logoClass: "max-h-[4.5rem]" },
   "Cashpay": { name: "Cashpay", short: "Cash Pay", bg: "#FFFFFF", fg: "#1F2937", logo: cashpayLogo.url },
 };
