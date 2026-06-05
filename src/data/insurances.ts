@@ -3,6 +3,7 @@ import humanaLogo from "@/assets/humana.png.asset.json";
 import cignaLogo from "@/assets/cigna.webp.asset.json";
 import bcbsLogo from "@/assets/bcbs.webp.asset.json";
 import uhcLogo from "@/assets/uhc.png.asset.json";
+import tricareLogo from "@/assets/tricare.svg.asset.json";
 
 export const FEATURED_INSURANCES = [
   "Aetna",
@@ -36,7 +37,7 @@ export const INSURANCE_BRANDS: Record<string, InsuranceBrand> = {
   "Humana": { name: "Humana", short: "Humana.", bg: "#FFFFFF", fg: "#78BE20", logo: humanaLogo.url },
   "Medicare": { name: "Medicare", short: "MEDICARE", bg: "#003D7A", fg: "#FFFFFF" },
   "UnitedHealthcare": { name: "UnitedHealthcare", short: "UHC", bg: "#FFFFFF", fg: "#002677", logo: uhcLogo.url },
-  "Tricare": { name: "Tricare", short: "TRICARE", bg: "#005EB8", fg: "#FFFFFF" },
+  "Tricare": { name: "Tricare", short: "TRICARE", bg: "#FFFFFF", fg: "#023F88", logo: tricareLogo.url },
   "MultiPlan PHCS": { name: "MultiPlan PHCS", short: "MultiPlan", bg: "#00427A", fg: "#FFFFFF" },
   "Cashpay": { name: "Cashpay", short: "Cash Pay", bg: "#1F2937", fg: "#FFFFFF" },
 };
