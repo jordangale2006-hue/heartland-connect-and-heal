@@ -21,7 +21,7 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
       <div className="container-narrow mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-20 sm:h-28 overflow-visible">
-        <Link to="/" className="flex items-center gap-2 sm:-ml-20 lg:-ml-28">
+        <Link to="/" className="flex items-center gap-2">
           <img src={logo} alt="Heartland Mental Health Services" width={1024} height={683} fetchPriority="high" decoding="async" className="h-36 sm:h-[30rem] w-auto object-contain -my-28" />
         </Link>
 
