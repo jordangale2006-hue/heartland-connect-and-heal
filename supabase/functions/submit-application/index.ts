@@ -25,6 +25,27 @@ const ALLOWED_RESUME_TYPES = new Set([
 ])
 const MAX_RESUME_BYTES = 10 * 1024 * 1024 // 10MB
 
+// Detect file type from magic bytes; returns the canonical MIME type or null.
+function detectResumeMime(bytes: Uint8Array): string | null {
+  // PDF: %PDF
+  if (bytes.length >= 4 && bytes[0] === 0x25 && bytes[1] === 0x50 && bytes[2] === 0x44 && bytes[3] === 0x46) {
+    return 'application/pdf'
+  }
+  // DOC (OLE2 compound): D0 CF 11 E0 A1 B1 1A E1
+  if (
+    bytes.length >= 8 &&
+    bytes[0] === 0xd0 && bytes[1] === 0xcf && bytes[2] === 0x11 && bytes[3] === 0xe0 &&
+    bytes[4] === 0xa1 && bytes[5] === 0xb1 && bytes[6] === 0x1a && bytes[7] === 0xe1
+  ) {
+    return 'application/msword'
+  }
+  // DOCX (ZIP/OOXML): PK\x03\x04
+  if (bytes.length >= 4 && bytes[0] === 0x50 && bytes[1] === 0x4b && bytes[2] === 0x03 && bytes[3] === 0x04) {
+    return 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+  }
+  return null
+}
+
 function safeFilename(name: string): string {
   return name.replace(/[^a-zA-Z0-9._-]/g, '_').slice(-120)
 }
@@ -92,7 +113,12 @@ Deno.serve(async (req) => {
     if (bytes.byteLength > MAX_RESUME_BYTES) {
       return jsonResponse(400, { error: 'Resume exceeds 10MB' })
     }
-    resumeUpload = { filename: safeFilename(filename), contentType, bytes }
+    // Verify actual file content via magic bytes; ignore client-supplied contentType.
+    const detected = detectResumeMime(bytes)
+    if (!detected || !ALLOWED_RESUME_TYPES.has(detected)) {
+      return jsonResponse(400, { error: 'Resume must be a valid PDF, DOC, or DOCX file' })
+    }
+    resumeUpload = { filename: safeFilename(filename), contentType: detected, bytes }
   }
 
   const supabase = createClient(
