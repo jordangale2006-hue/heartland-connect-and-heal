@@ -21,8 +21,8 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
       <div className="container-narrow mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-20 sm:h-28 overflow-visible">
-        <Link to="/" className="flex items-center gap-2 sm:-ml-4">
-          <img src={logo} alt="Heartland Mental Health Services" width={1024} height={683} fetchPriority="high" decoding="async" className="h-28 sm:h-96 w-auto object-contain -my-20" />
+        <Link to="/" className="flex items-center gap-2 shrink-0 sm:-ml-16 lg:-ml-24 xl:-ml-32">
+          <img src={logo} alt="Heartland Mental Health Services" width={1024} height={683} fetchPriority="high" decoding="async" className="h-28 sm:h-[28rem] w-auto max-w-none object-contain -my-28 shrink-0" />
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">
