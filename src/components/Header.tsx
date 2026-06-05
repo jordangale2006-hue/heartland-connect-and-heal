@@ -21,7 +21,7 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
       <div className="container-narrow mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-20 sm:h-28 overflow-visible">
-        <Link to="/" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2 sm:-ml-12 lg:-ml-20">
           <img src={logo} alt="Heartland Mental Health Services" width={1024} height={683} fetchPriority="high" decoding="async" className="h-36 sm:h-[30rem] w-auto object-contain -my-28" />
         </Link>
 
@@ -41,7 +41,7 @@ const Header = () => {
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-2">
+        <div className="hidden md:flex items-center gap-2 sm:-mr-4 lg:-mr-8">
           <Button variant="ghost" size="sm" asChild>
             <a href="tel:+15205955709" aria-label="Call (520) 595-5709">
               <Phone className="h-4 w-4 mr-1.5" />
