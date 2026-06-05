@@ -20,12 +20,12 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
-      <div className="container-narrow mx-auto grid grid-cols-[1fr_auto_1fr] items-center px-4 sm:px-6 lg:px-8 h-20 sm:h-28 overflow-visible">
-        <Link to="/" className="flex items-center gap-2 sm:-ml-20 lg:-ml-28 justify-self-start">
+      <div className="container-narrow mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-20 sm:h-28 overflow-visible">
+        <Link to="/" className="flex items-center gap-2 sm:-ml-20 lg:-ml-28">
           <img src={logo} alt="Heartland Mental Health Services" width={1024} height={683} fetchPriority="high" decoding="async" className="h-36 sm:h-[30rem] w-auto object-contain -my-28" />
         </Link>
 
-        <nav className="hidden md:flex items-center gap-1 justify-self-center">
+        <nav className="hidden md:flex items-center gap-1">
           {navItems.map((item) => (
             <Link
               key={item.path}
@@ -41,7 +41,7 @@ const Header = () => {
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-2 justify-self-end">
+        <div className="hidden md:flex items-center gap-2">
           <Button variant="ghost" size="sm" asChild>
             <a href="tel:+15205955709" aria-label="Call (520) 595-5709">
               <Phone className="h-4 w-4 mr-1.5" />
@@ -65,7 +65,7 @@ const Header = () => {
         </div>
 
         <button
-          className="md:hidden p-2 text-foreground justify-self-end"
+          className="md:hidden p-2 text-foreground"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
