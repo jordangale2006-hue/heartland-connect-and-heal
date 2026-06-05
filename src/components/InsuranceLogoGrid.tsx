@@ -7,9 +7,9 @@ interface Props {
 }
 
 const sizeMap = {
-  sm: { card: "h-12 px-3 text-[11px] sm:text-xs", img: "max-h-7" },
-  md: { card: "h-16 px-4 text-sm", img: "max-h-9" },
-  lg: { card: "h-20 px-5 text-base", img: "max-h-11" },
+  sm: { card: "h-14 px-3 text-[11px] sm:text-xs", img: "max-h-10" },
+  md: { card: "h-20 px-4 text-sm", img: "max-h-14" },
+  lg: { card: "h-24 px-5 text-base", img: "max-h-16" },
 };
 
 const InsuranceLogoGrid = ({ size = "md", exclude = [], className = "" }: Props) => {
