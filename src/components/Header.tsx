@@ -20,12 +20,12 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
-      <div className="container-narrow mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-20 sm:h-28 overflow-visible">
-        <Link to="/" className="flex items-center gap-2 sm:-ml-20 lg:-ml-28">
+      <div className="container-narrow mx-auto grid grid-cols-[1fr_auto_1fr] items-center px-4 sm:px-6 lg:px-8 h-20 sm:h-28 overflow-visible">
+        <Link to="/" className="flex items-center gap-2 sm:-ml-20 lg:-ml-28 justify-self-start">
           <img src={logo} alt="Heartland Mental Health Services" width={1024} height={683} fetchPriority="high" decoding="async" className="h-36 sm:h-[30rem] w-auto object-contain -my-28" />
         </Link>
 
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden md:flex items-center gap-1 justify-self-center">
           {navItems.map((item) => (
             <Link
               key={item.path}
