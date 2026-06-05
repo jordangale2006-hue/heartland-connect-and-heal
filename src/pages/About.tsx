@@ -32,7 +32,7 @@ const About = () => {
   return (
     <main>
       <SEO
-        title="About Heartland Mental Health Services | Telehealth Psychiatry"
+        title="About Us | Heartland Mental Health Services"
         description="Meet our board-certified psychiatric providers offering virtual mental health care to patients across Phoenix, Tucson, Mesa, Scottsdale and all of Arizona."
         path="/about"
       />
