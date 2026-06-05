@@ -4,6 +4,7 @@ import cignaLogo from "@/assets/cigna.webp.asset.json";
 import bcbsLogo from "@/assets/bcbs.webp.asset.json";
 import uhcLogo from "@/assets/uhc.png.asset.json";
 import tricareLogo from "@/assets/tricare.svg.asset.json";
+import medicareLogo from "@/assets/medicare.png.asset.json";
 
 export const FEATURED_INSURANCES = [
   "Aetna",
@@ -35,7 +36,7 @@ export const INSURANCE_BRANDS: Record<string, InsuranceBrand> = {
   "BlueCross BlueShield": { name: "BlueCross BlueShield", short: "BCBS", bg: "#FFFFFF", fg: "#0066B2", logo: bcbsLogo.url },
   "Cigna": { name: "Cigna", short: "Cigna.", bg: "#FFFFFF", fg: "#00A9E0", logo: cignaLogo.url },
   "Humana": { name: "Humana", short: "Humana.", bg: "#FFFFFF", fg: "#78BE20", logo: humanaLogo.url },
-  "Medicare": { name: "Medicare", short: "MEDICARE", bg: "#003D7A", fg: "#FFFFFF" },
+  "Medicare": { name: "Medicare", short: "MEDICARE", bg: "#FFFFFF", fg: "#003D7A", logo: medicareLogo.url },
   "UnitedHealthcare": { name: "UnitedHealthcare", short: "UHC", bg: "#FFFFFF", fg: "#002677", logo: uhcLogo.url },
   "Tricare": { name: "Tricare", short: "TRICARE", bg: "#FFFFFF", fg: "#023F88", logo: tricareLogo.url },
   "MultiPlan PHCS": { name: "MultiPlan PHCS", short: "MultiPlan", bg: "#00427A", fg: "#FFFFFF" },
