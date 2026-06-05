@@ -65,7 +65,7 @@ const Header = () => {
         </div>
 
         <button
-          className="md:hidden p-2 text-foreground ml-auto"
+          className="md:hidden p-2 text-foreground"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
