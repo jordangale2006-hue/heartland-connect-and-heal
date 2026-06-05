@@ -49,7 +49,7 @@ const About = () => {
       </section>
 
       {/* Provider Bio */}
-      <section className="section-padding">
+      <section id="rebecca" className="section-padding scroll-mt-24">
         <div className="container-narrow mx-auto">
           <div className="grid md:grid-cols-5 gap-12 items-start">
             <div className="md:col-span-2">
