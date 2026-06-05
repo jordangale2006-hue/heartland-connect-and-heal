@@ -90,7 +90,7 @@ const About = () => {
       </section>
 
       {/* Provider Bio – Gwen */}
-      <section className="section-padding bg-card">
+      <section id="gwen" className="section-padding bg-card scroll-mt-24">
         <div className="container-narrow mx-auto">
           <div className="grid md:grid-cols-5 gap-12 items-start">
             <div className="md:col-span-2">
