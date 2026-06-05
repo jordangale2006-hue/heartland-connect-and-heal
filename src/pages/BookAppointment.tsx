@@ -113,7 +113,7 @@ const BookAppointment = () => {
                   <h3 className="font-heading font-semibold text-foreground">Insurances Accepted</h3>
                 </div>
                 <div className="mb-4">
-                  <InsuranceLogoGrid size="lg" />
+                  <InsuranceLogoGrid size="sm" />
                 </div>
                 <div className="flex items-start gap-2 p-3 rounded-lg bg-accent/10 border border-accent/20">
                   <AlertCircle className="h-4 w-4 text-accent shrink-0 mt-0.5" />
