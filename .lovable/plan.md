@@ -1,35 +1,21 @@
-## Add Humana + Insurance Logos
+## Goal
+Balance the left/right whitespace in the header without shrinking the logo or any nav text.
 
-### 1. Add Humana to the insurance list
-Update `src/data/insurances.ts` — add `"Humana"` to `FEATURED_INSURANCES`. Because every component (`InsuranceChecker`, `InsuranceLogosStrip`, `InsurancesAccepted`, `QuickAppointmentForm`, `BookAppointment` sidebar) reads from this single source, Humana will automatically appear everywhere insurance is listed. No other code changes needed for the name itself.
+## What's happening now
+- Logo: `h-36 sm:h-[30rem]` with `-my-28` (vertical overflow). Size is unchanged from before.
+- Previously, `sm:-ml-20 lg:-ml-28` pulled the logo into the left whitespace, which made it feel larger.
+- Removing that negative margin pushed the logo flush against the container's left padding, while the nav + CTA buttons stayed on the right — so the logo now feels cramped/"smaller" even though it's the same pixels.
 
-### 2. Add insurance logos
-Create a new shared component `src/components/InsuranceLogoGrid.tsx` that renders each insurance as a logo (with name as accessible fallback). Wire it into the 3 spots that currently show insurance names as text chips/bullets:
+## Plan
+In `src/components/Header.tsx`:
 
-- `InsuranceLogosStrip.tsx` (homepage strip) — replace text pills with logo row
-- `InsurancesAccepted.tsx` (full section) — replace 4-col text grid with logo grid
-- `BookAppointment.tsx` sidebar list — replace bulleted text list with compact logo grid
+1. Restore the logo's leftward offset so it visually occupies the same space as before:
+   - `<Link>` gets back `sm:-ml-12 lg:-ml-20` (slightly less than the previous `-ml-28` so the right side isn't starved).
+2. Add a matching rightward offset on the right-side cluster (phone + Patient Portal + Schedule Appointment) so both sides of whitespace are even:
+   - The right `<div>` gets `sm:-mr-4 lg:-mr-8` (small negative right margin to mirror).
+3. Keep the nav centered between them — no changes to the nav links or text sizes.
 
-The dropdowns in `InsuranceChecker` and `QuickAppointmentForm` stay as text (logos in a `<select>` don't render).
+Net effect: logo stays the same size, nav text stays the same size, and the white gutters on the far left and far right of the header look symmetric.
 
-### 3. Logo sourcing — I need your input
-I can't auto-download brand logos (trademark/licensing). Two options:
-
-**Option A — You upload the logos** (recommended, cleanest):
-You drag-and-drop the 9 logos into chat (PNG or SVG, transparent background ideal). I'll upload them to the CDN and wire them in. Logos needed:
-Aetna, BlueCross BlueShield, Cigna, Humana, Medicare, UnitedHealthcare, Tricare, MultiPlan PHCS. (Cashpay stays as a text badge — no logo.)
-
-**Option B — I generate stylized text "logo cards"**:
-Branded-looking name plates (each insurance name styled in its brand color on a white card) instead of real logos. Legally safe, visually consistent, but not the real logos patients recognize.
-
-**Option C — Hybrid**:
-Use placeholder logo cards now so the layout ships, then swap in real logos when you upload them.
-
-### Which logo option do you want?
-
-After you pick, I'll switch to build mode and ship it in one pass.
-
-### Technical notes
-- New component uses semantic tokens (bg-card, border-border) for theming
-- Logos use `loading="lazy"` and proper `alt` text for a11y/SEO
-- `FEATURED_INSURANCES` becomes the single source of truth — add future insurances in one place
+## Files
+- `src/components/Header.tsx` — adjust margins only on the logo `<Link>` and the right-side button group `<div>`.
