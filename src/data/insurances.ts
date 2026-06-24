@@ -13,6 +13,7 @@ export const FEATURED_INSURANCES = [
   "Aetna",
   "BlueCross BlueShield",
   "Cigna",
+  "Curative",
   "Humana",
   "Medicare",
   "UnitedHealthcare",
