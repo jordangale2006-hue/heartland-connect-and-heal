@@ -33,7 +33,12 @@ const InsuranceLogoGrid = ({ size = "md", exclude = [], className = "" }: Props)
             aria-label={b.name}
           >
             {b.logo ? (
-              <img src={b.logo} alt={`${b.name} logo`} loading="lazy" className={`${b.logoClass || s.img} w-auto object-contain`} />
+              <img
+                src={b.logo}
+                alt={`${b.name} logo`}
+                loading="lazy"
+                className={`${(typeof b.logoClass === "object" ? b.logoClass?.[size] : b.logoClass) || s.img} w-auto object-contain`}
+              />
             ) : (
               <span className="leading-none">{b.short}</span>
             )}
