@@ -33,7 +33,7 @@ export interface InsuranceBrand {
   bg: string;
   fg: string;
   logo?: string;
-  logoClass?: string;
+  logoClass?: string | Partial<Record<"sm" | "md" | "lg", string>>;
 }
 
 export const INSURANCE_BRANDS: Record<string, InsuranceBrand> = {
