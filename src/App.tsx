@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
 import ExitIntentDialog from "@/components/ExitIntentDialog";
+import AddToHomeScreen from "@/components/AddToHomeScreen";
 import { AppointmentDialogProvider } from "@/components/AppointmentDialogProvider";
 import Index from "./pages/Index";
 import About from "./pages/About";
@@ -54,6 +55,7 @@ const App = () => (
           <Footer />
           <StickyMobileCTA />
           <ExitIntentDialog />
+          <AddToHomeScreen />
         </AppointmentDialogProvider>
       </BrowserRouter>
     </TooltipProvider>
