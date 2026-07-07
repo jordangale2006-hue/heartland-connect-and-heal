@@ -55,6 +55,7 @@ const App = () => (
           <Footer />
           <StickyMobileCTA />
           <ExitIntentDialog />
+          <AddToHomeScreen />
         </AppointmentDialogProvider>
       </BrowserRouter>
     </TooltipProvider>
