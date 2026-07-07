@@ -47,25 +47,28 @@ const BookAppointment = () => {
               <div className="relative">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="flex-1 h-px bg-border" />
-                  <span className="text-xs uppercase tracking-wider text-muted-foreground">or self-schedule below</span>
+                  <span className="text-xs uppercase tracking-wider text-muted-foreground">or self-schedule</span>
                   <div className="flex-1 h-px bg-border" />
                 </div>
-                <div className="bg-card rounded-2xl border border-border/50 shadow-sm overflow-hidden">
-                  <iframe
-                    src={SCHEDULING_URL}
-                    title="Schedule an Appointment"
-                    className="w-full border-0"
-                    style={{ minHeight: "700px" }}
-                    loading="lazy"
-                  />
-                </div>
-                <p className="text-xs text-muted-foreground mt-3 text-center">
-                  Having trouble with the scheduler?{" "}
-                  <a href={SCHEDULING_URL} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-accent underline inline-flex items-center gap-1">
-                    Open in a new window <ExternalLink className="h-3 w-3" />
+                <div className="bg-card rounded-2xl border border-border/50 shadow-sm p-6 sm:p-8 text-center">
+                  <CalendarClock className="h-10 w-10 text-primary mx-auto mb-3" />
+                  <h3 className="font-heading text-xl font-semibold text-foreground mb-2">
+                    Book instantly online
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-5 max-w-md mx-auto">
+                    Pick a time that works for you through our secure patient portal.
+                  </p>
+                  <a
+                    href={SCHEDULING_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground font-medium px-6 py-3 rounded-full hover:bg-primary/90 transition-colors"
+                  >
+                    Open Scheduler <ExternalLink className="h-4 w-4" />
                   </a>
-                </p>
+                </div>
               </div>
+
             </div>
 
             {/* Sidebar */}
