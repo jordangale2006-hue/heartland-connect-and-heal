@@ -5,7 +5,7 @@ import SEO from "@/components/SEO";
 import QuickAppointmentForm from "@/components/QuickAppointmentForm";
 import { FEATURED_INSURANCES } from "@/data/insurances";
 
-const SCHEDULING_URL = "https://www.optimantra.com/optimus/patient/patientaccess/servicesall?pid=QlFYZ050NjhIYUdXVlFiMTdyMEJGQT09&lid=ek9EZkY4WjFZOVhZTWtNa25OcHFTQT09";
+const SCHEDULING_URL = "https://www.optimantra.com/optimus/om/patientaccess/servicesallV2?pid=QlFYZ050NjhIYUdXVlFiMTdyMEJGQT09&lid=ek9EZkY4WjFZOVhZTWtNa25OcHFTQT09";
 
 
 
