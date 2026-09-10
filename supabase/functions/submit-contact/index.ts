@@ -1,4 +1,5 @@
 import { createClient } from 'npm:@supabase/supabase-js@2'
+import { sendEmail } from '../_shared/send-email.ts'
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -69,22 +70,18 @@ Deno.serve(async (req) => {
     })
   }
 
-  // Fire-and-forget emails — failures here should not block the user response
-  await Promise.allSettled([
-    supabase.functions.invoke('send-transactional-email', {
-      body: {
-        templateName: 'contact-confirmation',
-        recipientEmail: email,
-        idempotencyKey: `contact-confirm-${id}`,
-        templateData: { name },
-      },
+  // Emails: failures are logged, not swallowed, but never block the user response
+  await Promise.all([
+    sendEmail(supabase, {
+      templateName: 'contact-confirmation',
+      recipientEmail: email,
+      idempotencyKey: `contact-confirm-${id}`,
+      templateData: { name },
     }),
-    supabase.functions.invoke('send-transactional-email', {
-      body: {
-        templateName: 'contact-notification',
-        idempotencyKey: `contact-notify-${id}`,
-        templateData: { name, email, message },
-      },
+    sendEmail(supabase, {
+      templateName: 'contact-notification',
+      idempotencyKey: `contact-notify-${id}`,
+      templateData: { name, email, message },
     }),
   ])
 

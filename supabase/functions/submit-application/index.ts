@@ -1,4 +1,5 @@
 import { createClient } from 'npm:@supabase/supabase-js@2'
+import { sendEmail } from '../_shared/send-email.ts'
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -168,30 +169,26 @@ Deno.serve(async (req) => {
     return jsonResponse(500, { error: 'Failed to save application' })
   }
 
-  await Promise.allSettled([
-    supabase.functions.invoke('send-transactional-email', {
-      body: {
-        templateName: 'application-confirmation',
-        recipientEmail: email,
-        idempotencyKey: `application-confirm-${id}`,
-        templateData: { firstName },
-      },
+  await Promise.all([
+    sendEmail(supabase, {
+      templateName: 'application-confirmation',
+      recipientEmail: email,
+      idempotencyKey: `application-confirm-${id}`,
+      templateData: { firstName },
     }),
-    supabase.functions.invoke('send-transactional-email', {
-      body: {
-        templateName: 'application-notification',
-        idempotencyKey: `application-notify-${id}`,
-        templateData: {
-          firstName,
-          lastName,
-          email,
-          phone,
-          convicted,
-          convictionDetails: convicted === 'yes' ? convictionDetails : '',
-          fingerprintCard,
-          resumeUrl,
-          resumeFilename: resumeUpload?.filename,
-        },
+    sendEmail(supabase, {
+      templateName: 'application-notification',
+      idempotencyKey: `application-notify-${id}`,
+      templateData: {
+        firstName,
+        lastName,
+        email,
+        phone,
+        convicted,
+        convictionDetails: convicted === 'yes' ? convictionDetails : '',
+        fingerprintCard,
+        resumeUrl,
+        resumeFilename: resumeUpload?.filename,
       },
     }),
   ])

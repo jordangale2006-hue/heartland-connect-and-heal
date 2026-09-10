@@ -1,4 +1,5 @@
 import { createClient } from 'npm:@supabase/supabase-js@2'
+import { sendEmail } from '../_shared/send-email.ts'
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -70,21 +71,17 @@ Deno.serve(async (req) => {
     })
   }
 
-  await Promise.allSettled([
-    supabase.functions.invoke('send-transactional-email', {
-      body: {
-        templateName: 'appointment-request-confirmation',
-        recipientEmail: email,
-        idempotencyKey: `appt-confirm-${id}`,
-        templateData: { name },
-      },
+  await Promise.all([
+    sendEmail(supabase, {
+      templateName: 'appointment-request-confirmation',
+      recipientEmail: email,
+      idempotencyKey: `appt-confirm-${id}`,
+      templateData: { name },
     }),
-    supabase.functions.invoke('send-transactional-email', {
-      body: {
-        templateName: 'appointment-request-notification',
-        idempotencyKey: `appt-notify-${id}`,
-        templateData: { name, email, phone, insurance, reason, preferredTime },
-      },
+    sendEmail(supabase, {
+      templateName: 'appointment-request-notification',
+      idempotencyKey: `appt-notify-${id}`,
+      templateData: { name, email, phone, insurance, reason, preferredTime },
     }),
   ])
 

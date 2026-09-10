@@ -58,8 +58,16 @@ Deno.serve(async (req) => {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     })
   }
-  const claims = parseJwtClaims(authHeader.slice('Bearer '.length))
-  if (claims?.role !== 'service_role') {
+  const bearer = authHeader.slice('Bearer '.length).trim()
+  // Accept either a legacy service_role JWT or an exact match against the
+  // project's secret/service-role key (new `sb_secret_...` keys are not JWTs,
+  // so claim parsing alone would reject trusted server-side callers).
+  const serviceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') || ''
+  const claims = parseJwtClaims(bearer)
+  const isServiceRole =
+    claims?.role === 'service_role' || (serviceKey.length > 0 && bearer === serviceKey)
+  if (!isServiceRole) {
+    console.error('Rejected non-service-role caller')
     return new Response(JSON.stringify({ error: 'Forbidden' }), {
       status: 403,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
