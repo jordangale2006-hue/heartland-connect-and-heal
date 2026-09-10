@@ -57,7 +57,7 @@ Deno.serve(async (req) => {
 
   const result = await sendEmail(supabase, {
     templateName: 'missed-leads-digest',
-    idempotencyKey: `missed-leads-digest-${appointments.length}-${messages.length}`,
+    idempotencyKey: `missed-leads-digest-${appointments.length}-${messages.length}-${Date.now()}`,
     templateData: { appointments, messages },
   })
 
