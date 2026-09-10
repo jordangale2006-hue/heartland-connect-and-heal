@@ -1,15 +1,12 @@
-import { useState } from "react";
 import { ShieldCheck, AlertCircle } from "lucide-react";
 import InsuranceLogoGrid from "./InsuranceLogoGrid";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { INSURANCES_BY_STATE, INSURANCE_NOTICES, type ServiceState } from "@/data/insurances";
+import { INSURANCES_BY_STATE, INSURANCE_NOTICES } from "@/data/insurances";
 
 interface Props {
   variant?: "section" | "card";
 }
 
 const InsurancesAccepted = ({ variant = "section" }: Props) => {
-  const [state, setState] = useState<ServiceState>("Arizona");
   const Inner = (
     <>
       <div className="flex items-center justify-center gap-2 mb-3">
@@ -20,30 +17,25 @@ const InsurancesAccepted = ({ variant = "section" }: Props) => {
         Insurances we accept
       </h2>
       <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-8">
-        Quality mental health care should be accessible. Choose your state to view current payment options.
+        Quality mental health care should be accessible. View current payment options for each state.
       </p>
 
-      <div className="max-w-xs mx-auto mb-6">
-        <Select value={state} onValueChange={(value: ServiceState) => setState(value)}>
-          <SelectTrigger aria-label="Select state for insurance options"><SelectValue /></SelectTrigger>
-          <SelectContent>
-            <SelectItem value="Arizona">Arizona</SelectItem>
-            <SelectItem value="Iowa">Iowa</SelectItem>
-          </SelectContent>
-        </Select>
+      <div className={`grid ${variant === "section" ? "md:grid-cols-2" : "grid-cols-1"} gap-8 lg:gap-12 mb-6`}>
+        <div>
+          <h3 className="font-heading font-semibold text-foreground mb-4 text-center md:text-left">Arizona</h3>
+          <InsuranceLogoGrid size="md" plans={INSURANCES_BY_STATE.Arizona} />
+        </div>
+        <div>
+          <h3 className="font-heading font-semibold text-foreground mb-4 text-center md:text-left">Iowa</h3>
+          <InsuranceLogoGrid size="md" plans={INSURANCES_BY_STATE.Iowa} />
+        </div>
       </div>
-
-      {/* Featured insurances */}
-      <div className="max-w-3xl mx-auto mb-6">
-        <InsuranceLogoGrid size="md" plans={INSURANCES_BY_STATE[state]} />
-      </div>
-
 
       {/* Disclaimer */}
       <div className="max-w-3xl mx-auto mt-6 flex items-start gap-2 p-4 rounded-xl bg-accent/10 border border-accent/20">
         <AlertCircle className="h-5 w-5 text-accent shrink-0 mt-0.5" />
         <p className="text-sm text-muted-foreground leading-relaxed">
-          {INSURANCE_NOTICES[state]} Plan availability may vary by product. Please verify that your provider is in-network before booking.
+          {INSURANCE_NOTICES.Arizona} {INSURANCE_NOTICES.Iowa} Plan availability may vary by product. Please verify that your provider is in-network before booking.
         </p>
       </div>
     </>
