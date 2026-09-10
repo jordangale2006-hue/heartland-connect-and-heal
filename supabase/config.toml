@@ -14,4 +14,4 @@ project_id = "rstknhbsfpnkzqpysjuw"
   [functions.submit-contact]
     verify_jwt = false
   [functions.send-missed-leads]
-    verify_jwt = true
+    verify_jwt = false
