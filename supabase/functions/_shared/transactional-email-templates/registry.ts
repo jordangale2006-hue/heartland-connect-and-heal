@@ -24,5 +24,5 @@ export const TEMPLATES: Record<string, TemplateEntry> = {
   'application-notification': applicationNotification,
   'appointment-request-confirmation': appointmentRequestConfirmation,
   'appointment-request-notification': appointmentRequestNotification,
-  'missed-leads-digest': missedLeadsDigest,
+  
 }
