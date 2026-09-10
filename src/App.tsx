@@ -23,6 +23,8 @@ import Conditions from "./pages/Conditions";
 import ConditionPage from "./pages/ConditionPage";
 import Crisis from "./pages/Crisis";
 import NotFound from "./pages/NotFound";
+import Login from "./pages/Login";
+import Admin from "./pages/Admin";
 
 const queryClient = new QueryClient();
 
@@ -49,6 +51,8 @@ const App = () => (
               <Route path="/conditions/:slug" element={<ConditionPage />} />
               <Route path="/crisis" element={<Crisis />} />
               <Route path="/unsubscribe" element={<Unsubscribe />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/admin" element={<Admin />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
