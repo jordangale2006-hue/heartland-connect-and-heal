@@ -3,7 +3,7 @@
 ## Site-wide announcement
 - Add an orange announcement bar above the header on every page.
 - Center the supplied Iowa announcement, include a “Book now” link to `/book`, and add an accessible close icon.
-- Keep dismissal temporary for the current page view only, so the bar returns after refresh.
+- Persist dismissal in localStorage so the bar stays hidden on future visits in that browser.
 - Keep the header navigation and mobile menu spacing intact when the bar is visible or dismissed.
 
 ## Homepage hero
