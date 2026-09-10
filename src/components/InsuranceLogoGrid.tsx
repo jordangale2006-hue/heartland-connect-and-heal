@@ -34,12 +34,16 @@ const InsuranceLogoGrid = ({ size = "md", exclude = [], className = "", plans = 
             aria-label={b.name}
           >
             {b.logo ? (
-              <img
-                src={b.logo}
-                alt={`${b.name} logo`}
-                loading="lazy"
-                className={`${(typeof b.logoClass === "object" ? b.logoClass?.[size] : b.logoClass) || s.img} w-auto object-contain`}
-              />
+              <span className="flex min-w-0 flex-col items-center justify-center gap-1">
+                <img
+                  src={b.logo}
+                  alt=""
+                  loading="lazy"
+                  className={`${(typeof b.logoClass === "object" ? b.logoClass?.[size] : b.logoClass) || s.img} w-auto object-contain`}
+                  onError={(event) => { event.currentTarget.style.display = "none"; }}
+                />
+                <span className="max-w-full whitespace-normal text-center text-xs leading-tight">{b.short}</span>
+              </span>
             ) : (
               <span className="leading-none">{b.short}</span>
             )}
