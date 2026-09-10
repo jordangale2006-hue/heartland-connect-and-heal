@@ -13,10 +13,11 @@ const InsuranceLogosStrip = () => {
             In-Network Insurance
           </div>
           <InsuranceLogoGrid
-            size="sm"
-            plans={[...new Set(Object.values(INSURANCES_BY_STATE).flat())]}
+            size="lg"
+            plans={INSURANCES_BY_STATE.Arizona}
             exclude={["Cashpay"]}
-            className="max-w-3xl"
+            columns="showcase"
+            className="w-full max-w-6xl"
           />
           <Link
             to="/book"

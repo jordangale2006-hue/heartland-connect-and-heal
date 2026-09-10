@@ -28,6 +28,9 @@ const InsurancesAccepted = ({ variant = "section" }: Props) => {
         <div>
           <h3 className="font-heading font-semibold text-foreground mb-4 text-center md:text-left">Iowa</h3>
           <InsuranceLogoGrid size="md" plans={INSURANCES_BY_STATE.Iowa} />
+          <p className="mt-4 text-sm text-muted-foreground leading-relaxed text-center md:text-left">
+            Additional Iowa insurance plans coming soon — contact us to check your specific plan.
+          </p>
         </div>
       </div>
 
