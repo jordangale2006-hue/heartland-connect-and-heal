@@ -36,8 +36,8 @@ const Blog = () => {
   return (
     <main className="container-narrow mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
       <SEO
-        title="Mental Health Blog | Heartland Mental Health Arizona"
-        description="Articles on ADHD, anxiety, depression, medication management and what to expect from telehealth psychiatry — from the Heartland team in Arizona."
+        title="Mental Health Blog | Heartland Mental Health"
+        description="Articles on ADHD, anxiety, depression, medication management and telehealth psychiatry from the Heartland team serving Arizona and Iowa."
         path="/blog"
       />
       <header className="mb-12">

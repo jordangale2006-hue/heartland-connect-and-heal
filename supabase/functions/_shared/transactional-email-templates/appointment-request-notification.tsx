@@ -9,6 +9,7 @@ interface Props {
   name?: string
   email?: string
   phone?: string
+  state?: string
   insurance?: string
   reason?: string
   preferredTime?: string
@@ -27,6 +28,7 @@ const AppointmentRequestNotification = ({
   name = 'Unknown',
   email = '',
   phone = '',
+  state = '',
   insurance = '',
   reason = '',
   preferredTime = '',
@@ -41,6 +43,7 @@ const AppointmentRequestNotification = ({
           <Row label="Name" value={name} />
           <Row label="Phone" value={phone} />
           <Row label="Email" value={email} />
+          <Row label="State" value={state} />
           <Row label="Insurance" value={insurance} />
           <Row label="Preferred contact time" value={preferredTime} />
           <Row label="Reason for visit" value={reason} />
@@ -64,6 +67,7 @@ export const template = {
     name: 'Jane Doe',
     email: 'jane@example.com',
     phone: '(520) 555-1234',
+    state: 'Iowa',
     insurance: 'Aetna',
     reason: 'Anxiety and trouble sleeping',
     preferredTime: 'Weekday mornings',

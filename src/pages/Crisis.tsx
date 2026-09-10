@@ -40,6 +40,15 @@ const resources = [
       { label: "Call 1-844-534-4673", href: "tel:18445344673", icon: Phone },
     ],
   },
+  {
+    title: "Your Life Iowa",
+    desc: "Free, confidential support and information for mental health, substance use, gambling, and suicidal thoughts in Iowa.",
+    actions: [
+      { label: "Call 1-855-581-8111", href: "tel:18555818111", icon: Phone },
+      { label: "Text 1-855-895-8398", href: "sms:18558958398", icon: MessageCircle },
+      { label: "Visit Your Life Iowa", href: "https://yourlifeiowa.org/get-help/crisis-services", icon: Globe },
+    ],
+  },
 ];
 
 const Crisis = () => {

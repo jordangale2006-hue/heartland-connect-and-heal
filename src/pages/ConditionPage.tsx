@@ -116,7 +116,7 @@ const ConditionPage = () => {
       {/* Providers */}
       <ProviderCards
         heading={`Providers who treat ${condition.shortName ?? condition.name}`}
-        subheading="Both of our PMHNPs are accepting new patients across Arizona."
+        subheading="Both of our PMHNPs are accepting new patients across Arizona and Iowa."
       />
 
       {/* FAQ */}

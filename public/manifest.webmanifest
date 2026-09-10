@@ -1,7 +1,7 @@
 {
   "name": "Heartland Mental Health Services",
   "short_name": "Heartland MH",
-  "description": "Virtual psychiatry & medication management across Arizona.",
+  "description": "Virtual psychiatry and medication management across Arizona and Iowa.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

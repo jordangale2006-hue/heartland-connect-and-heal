@@ -7,9 +7,9 @@ import type { TemplateEntry } from './registry.ts'
 
 const SITE_NAME = 'Heartland Mental Health Services'
 
-interface Props { name?: string }
+interface Props { name?: string; state?: string }
 
-const AppointmentRequestConfirmation = ({ name }: Props) => (
+const AppointmentRequestConfirmation = ({ name, state }: Props) => (
   <Html lang="en" dir="ltr">
     <Head />
     <Preview>We received your appointment request</Preview>
@@ -23,6 +23,7 @@ const AppointmentRequestConfirmation = ({ name }: Props) => (
           contact you shortly — typically within one business day — to confirm
           insurance coverage and finalize a time that works for you.
         </Text>
+        {state && <Text style={text}>Your request is for care in {state}. Appointment times are shown in your local time zone.</Text>}
         <Section style={card}>
           <Text style={cardText}>
             If your matter is urgent or you are experiencing a mental health
@@ -43,7 +44,7 @@ export const template = {
   component: AppointmentRequestConfirmation,
   subject: 'We received your appointment request — Heartland Mental Health Services',
   displayName: 'Appointment request confirmation (to client)',
-  previewData: { name: 'Jane' },
+  previewData: { name: 'Jane', state: 'Iowa' },
 } satisfies TemplateEntry
 
 const main = { backgroundColor: '#ffffff', fontFamily: "'Source Sans 3', -apple-system, Helvetica, Arial, sans-serif" }

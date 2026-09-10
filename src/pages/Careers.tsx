@@ -131,8 +131,8 @@ const Careers = () => {
   return (
     <main>
       <SEO
-        title="Careers | Arizona Telehealth Psychiatry Jobs"
-        description="Join Heartland Mental Health Services — a virtual psychiatric practice serving Arizona. View open clinical and support roles and apply online."
+        title="Careers | Heartland Telehealth Psychiatry"
+        description="Join Heartland Mental Health Services, a virtual psychiatric practice serving Arizona and Iowa. View open clinical and support roles."
         path="/careers"
       />
       <section className="relative py-20 bg-primary/5 overflow-hidden">
