@@ -33,7 +33,7 @@ const About = () => {
     <main>
       <SEO
         title="About Us | Heartland Mental Health Services"
-        description="Meet our board-certified psychiatric providers offering virtual mental health care to patients across Phoenix, Tucson, Mesa, Scottsdale and all of Arizona."
+        description="Meet our board-certified psychiatric providers offering virtual mental health care to patients statewide across Arizona and Iowa."
         path="/about"
       />
       {/* Hero with sunrise image */}

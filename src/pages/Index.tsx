@@ -161,8 +161,8 @@ const Index = () => {
   return (
     <main>
       <SEO
-        title="Heartland Mental Health Services | Online Psychiatry Arizona"
-        description="Virtual psychiatry & medication management across Arizona. Aetna, BCBS, Cigna, Medicare, Tricare & UnitedHealthcare accepted. Book a telehealth visit today."
+        title="Online Psychiatry in Arizona & Iowa | Heartland"
+        description="Virtual psychiatry and medication management across Arizona and Iowa. State-specific insurance and cash-pay options available. Book telehealth care."
         path="/"
         jsonLd={[medicalBusinessSchema(), faqPageSchema(faqs)]}
       />
@@ -178,11 +178,11 @@ const Index = () => {
         <div className="relative container-narrow mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="max-w-2xl">
             <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-6 animate-fade-in-up">
-              Online Psychiatry in Arizona — often booked within the week.
+              Online Psychiatry in Arizona & Iowa — often booked within the week.
             </h1>
             <p className="text-lg sm:text-xl text-primary-foreground/85 mb-6 leading-relaxed font-light" style={{ animationDelay: "0.15s" }}>
-              Compassionate, virtual mental health care from Arizona-licensed providers.
-              Most major insurance accepted. Same-week openings often available.
+              Compassionate virtual mental health care from Arizona- and Iowa-licensed providers.
+              Insurance options vary by state. Same-week openings often available.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-6" style={{ animationDelay: "0.3s" }}>
               <Button variant="warmCta" size="lg" className="text-base px-8 py-6" asChild>

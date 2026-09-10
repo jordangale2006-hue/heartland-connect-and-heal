@@ -1,9 +1,9 @@
 
-import { Phone, Mail, ExternalLink, ShieldCheck, AlertCircle, CalendarClock } from "lucide-react";
+import { Phone, Mail, ExternalLink, CalendarClock } from "lucide-react";
 import comfortImage from "@/assets/comfort-hands.jpg";
 import SEO from "@/components/SEO";
 import QuickAppointmentForm from "@/components/QuickAppointmentForm";
-import { FEATURED_INSURANCES } from "@/data/insurances";
+import InsurancesAccepted from "@/components/InsurancesAccepted";
 
 const SCHEDULING_URL = "https://www.optimantra.com/optimus/om/patientaccess/servicesallV2?pid=QlFYZ050NjhIYUdXVlFiMTdyMEJGQT09&lid=ek9EZkY4WjFZOVhZTWtNa25OcHFTQT09";
 
@@ -13,8 +13,8 @@ const BookAppointment = () => {
   return (
     <main>
       <SEO
-        title="Book a Virtual Appointment | Heartland Mental Health AZ"
-        description="Schedule a secure telehealth psychiatry visit in Arizona. Most insurance accepted including Aetna, BCBS, Cigna, Medicare, Tricare and UnitedHealthcare."
+        title="Book Online Psychiatry | Arizona & Iowa"
+        description="Schedule secure telehealth psychiatry in Arizona or Iowa. Insurance options vary by state, including Wellmark BCBS Iowa HMO and cash pay in Iowa."
         path="/book"
       />
       <section className="relative py-24 overflow-hidden">
@@ -56,7 +56,7 @@ const BookAppointment = () => {
                     Book instantly online
                   </h3>
                   <p className="text-sm text-muted-foreground mb-5 max-w-md mx-auto">
-                    Pick a time that works for you through our secure patient portal.
+                    Pick a time through our secure patient portal. Available appointments display in your local time zone.
                   </p>
                   <a
                     href={SCHEDULING_URL}
@@ -110,29 +110,7 @@ const BookAppointment = () => {
                 </ul>
               </div>
 
-              <div className="bg-card rounded-2xl border border-border/50 p-6">
-                <div className="flex items-center gap-2 mb-3">
-                  <ShieldCheck className="h-5 w-5 text-primary" />
-                  <h3 className="font-heading font-semibold text-foreground">Insurances Accepted</h3>
-                </div>
-                <ul className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-muted-foreground mb-4">
-                  {FEATURED_INSURANCES.map((name) => (
-                    <li key={name} className="flex items-start gap-2">
-                      <span className="text-primary mt-1">•</span>
-                      <span>{name}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="flex items-start gap-2 p-3 rounded-lg bg-accent/10 border border-accent/20">
-                  <AlertCircle className="h-4 w-4 text-accent shrink-0 mt-0.5" />
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    We do <strong>not</strong> accept Arizona AHCCCS/Medicaid plans. Please verify with your insurance provider that you are in-network before booking.
-                  </p>
-                </div>
-                <p className="text-xs text-muted-foreground mt-3">
-                  Don't see your plan? We may still be able to help — <a href="/contact" className="text-primary hover:text-accent underline">contact us</a> to ask about out-of-network options.
-                </p>
-              </div>
+              <InsurancesAccepted variant="card" />
             </div>
           </div>
         </div>

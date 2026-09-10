@@ -1,5 +1,6 @@
 // JSON-LD builders for Heartland Mental Health Services
-// All schemas are designed for a 100% virtual psychiatric practice serving Arizona.
+// All schemas are designed for a 100% virtual psychiatric practice serving Arizona and Iowa.
+import { INSURANCES_BY_STATE } from "@/data/insurances";
 
 export const SITE_URL = "https://www.heartlandmhservices.com";
 export const SITE_NAME = "Heartland Mental Health Services";
@@ -22,16 +23,12 @@ export const ARIZONA_CITIES = [
   "Flagstaff",
 ];
 
-export const ACCEPTED_INSURANCE = [
-  "Aetna",
-  "BlueCross BlueShield",
-  "Cigna",
-  "Medicare",
-  "UnitedHealthcare",
-  "Tricare",
-  "MultiPlan PHCS",
-  "Cashpay",
+export const IOWA_CITIES = [
+  "Des Moines", "Cedar Rapids", "Davenport", "Sioux City", "Iowa City",
+  "Waterloo", "Ames", "Council Bluffs", "Dubuque", "West Des Moines",
 ];
+
+export const ACCEPTED_INSURANCE = [...new Set(Object.values(INSURANCES_BY_STATE).flat())];
 
 export const medicalBusinessSchema = () => ({
   "@context": "https://schema.org",
@@ -46,10 +43,12 @@ export const medicalBusinessSchema = () => ({
   priceRange: "$$",
   medicalSpecialty: "Psychiatric",
   description:
-    "Virtual psychiatry, medication management and psychotherapy for patients across Arizona. Most major insurance accepted.",
+    "Virtual psychiatry, medication management and psychotherapy for patients across Arizona and Iowa. Insurance options vary by state.",
   areaServed: [
     { "@type": "State", name: "Arizona" },
     ...ARIZONA_CITIES.map((c) => ({ "@type": "City", name: `${c}, Arizona` })),
+    { "@type": "State", name: "Iowa" },
+    ...IOWA_CITIES.map((c) => ({ "@type": "City", name: `${c}, Iowa` })),
   ],
   availableService: [
     "Psychiatric Evaluation",
@@ -67,7 +66,7 @@ export const medicalBusinessSchema = () => ({
     {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      opens: "09:00",
+      opens: "08:00",
       closes: "17:00",
     },
   ],

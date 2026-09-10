@@ -4,6 +4,7 @@ interface Props {
   size?: "sm" | "md" | "lg";
   exclude?: string[];
   className?: string;
+  plans?: string[];
 }
 
 const sizeMap = {
@@ -12,8 +13,8 @@ const sizeMap = {
   lg: { card: "h-24 px-5 text-base", img: "max-h-16" },
 };
 
-const InsuranceLogoGrid = ({ size = "md", exclude = [], className = "" }: Props) => {
-  const items = FEATURED_INSURANCES.filter((n) => !exclude.includes(n));
+const InsuranceLogoGrid = ({ size = "md", exclude = [], className = "", plans = FEATURED_INSURANCES }: Props) => {
+  const items = plans.filter((n) => !exclude.includes(n));
   const s = sizeMap[size];
 
   return (
@@ -33,12 +34,16 @@ const InsuranceLogoGrid = ({ size = "md", exclude = [], className = "" }: Props)
             aria-label={b.name}
           >
             {b.logo ? (
-              <img
-                src={b.logo}
-                alt={`${b.name} logo`}
-                loading="lazy"
-                className={`${(typeof b.logoClass === "object" ? b.logoClass?.[size] : b.logoClass) || s.img} w-auto object-contain`}
-              />
+              <span className="flex min-w-0 flex-col items-center justify-center gap-1">
+                <img
+                  src={b.logo}
+                  alt=""
+                  loading="lazy"
+                  className={`${(typeof b.logoClass === "object" ? b.logoClass?.[size] : b.logoClass) || s.img} w-auto object-contain`}
+                  onError={(event) => { event.currentTarget.style.display = "none"; }}
+                />
+                <span className="max-w-full whitespace-normal text-center text-xs leading-tight">{b.short}</span>
+              </span>
             ) : (
               <span className="leading-none">{b.short}</span>
             )}

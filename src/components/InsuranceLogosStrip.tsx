@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ShieldCheck } from "lucide-react";
 import InsuranceLogoGrid from "./InsuranceLogoGrid";
+import { INSURANCES_BY_STATE } from "@/data/insurances";
 
 const InsuranceLogosStrip = () => {
   return (
@@ -11,7 +12,12 @@ const InsuranceLogosStrip = () => {
             <ShieldCheck className="h-4 w-4 text-primary" />
             In-Network Insurance
           </div>
-          <InsuranceLogoGrid size="sm" exclude={["Cashpay"]} className="max-w-3xl" />
+          <InsuranceLogoGrid
+            size="sm"
+            plans={[...new Set(Object.values(INSURANCES_BY_STATE).flat())]}
+            exclude={["Cashpay"]}
+            className="max-w-3xl"
+          />
           <Link
             to="/book"
             className="text-sm text-primary font-medium hover:underline"

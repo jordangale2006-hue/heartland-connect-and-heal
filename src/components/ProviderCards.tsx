@@ -55,7 +55,7 @@ const ProviderCards = ({ heading, subheading }: Props) => {
             {heading ?? "Meet our board-certified providers"}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            {subheading ?? "Arizona-licensed PMHNPs delivering compassionate virtual psychiatric care."}
+            {subheading ?? "Arizona- and Iowa-licensed PMHNPs delivering compassionate virtual psychiatric care."}
           </p>
         </div>
 
@@ -123,7 +123,7 @@ const ProviderCards = ({ heading, subheading }: Props) => {
 
         <p className="mt-6 text-center text-xs text-muted-foreground inline-flex items-center justify-center gap-1.5 w-full">
           <ShieldCheck className="h-3.5 w-3.5 text-primary" />
-          HIPAA-secure telehealth · Licensed in Arizona
+          HIPAA-secure telehealth · Licensed in Arizona and Iowa
         </p>
       </div>
     </section>

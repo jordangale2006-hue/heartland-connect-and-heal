@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import arizonaImage from "@/assets/arizona-landscape.jpg";
 import SEO from "@/components/SEO";
+import OfficeHours from "@/components/OfficeHours";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Please enter your name").max(100),
@@ -53,14 +54,14 @@ const Contact = () => {
   return (
     <main>
       <SEO
-        title="Contact Heartland Mental Health | Arizona Telehealth"
-        description="Reach our Arizona telehealth psychiatry team. Verify insurance, ask questions, or request a callback. Serving Phoenix, Tucson, Mesa, Scottsdale and beyond."
+        title="Contact Heartland Mental Health | Telehealth Care"
+        description="Contact our telehealth psychiatry team to verify insurance, ask questions, or request a callback. Serving clients statewide in Arizona and Iowa."
         path="/contact"
       />
       {/* Hero with background image */}
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0">
-          <img src={arizonaImage} alt="Peaceful Arizona landscape" width={1920} height={800} className="w-full h-full object-cover" />
+          <img src={arizonaImage} alt="Peaceful desert landscape" width={1920} height={800} className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-foreground/60" />
         </div>
         <div className="relative container-narrow mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -160,9 +161,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="font-medium text-foreground text-sm">Office Hours</p>
-                    <p className="text-sm text-muted-foreground">Monday – Friday: 8am – 5pm</p>
-                    <p className="text-sm text-muted-foreground">Saturday: 9am – 2pm</p>
-                    <p className="text-sm text-muted-foreground">Sunday: Closed</p>
+                    <OfficeHours />
                   </div>
                 </div>
               </div>

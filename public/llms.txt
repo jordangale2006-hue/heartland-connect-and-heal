@@ -1,20 +1,20 @@
 # Heartland Mental Health Services
 
-> A virtual psychiatric practice serving all of Arizona with telehealth psychiatry, medication management, and therapy. Board-certified providers accepting most major insurance plans.
+> A virtual psychiatric practice serving all of Arizona and Iowa with telehealth psychiatry, medication management, and therapy.
 
-Heartland Mental Health Services is a 100% virtual psychiatric practice based in Arizona. We provide comprehensive mental health care via secure telehealth, including evaluation, diagnosis, medication management, and psychotherapy. Our board-certified psychiatric mental health nurse practitioners serve patients across the entire state of Arizona — from Phoenix and Tucson to Mesa, Scottsdale, Gilbert, Chandler, and rural communities.
+Heartland Mental Health Services is a 100% virtual psychiatric practice serving patients statewide in Arizona and Iowa. We provide comprehensive mental health care via secure telehealth, including evaluation, diagnosis, medication management, and psychotherapy.
 
-We accept most major insurance plans including Aetna, Blue Cross Blue Shield, Cigna, Humana, Medicare, Tricare, and UnitedHealthcare, as well as cash pay patients.
+Insurance varies by state. Arizona options include Aetna, Blue Cross Blue Shield, Cigna, Curative, Humana, Medicare, Tricare, UnitedHealthcare, MultiPlan PHCS, and cash pay. Iowa options are Wellmark Blue Cross Blue Shield of Iowa (HMO) and cash pay.
 
 ## Pages
 
-- [/](/): Virtual psychiatry and medication management across Arizona. Book a telehealth visit with board-certified providers.
+- [/](/): Virtual psychiatry and medication management across Arizona and Iowa. Book a telehealth visit with board-certified providers.
 - [/about](/about): Meet our board-certified psychiatric nurse practitioners — clinical backgrounds, credentials, and approach to patient-centered care.
 - [/services](/services): Complete A–Z directory of 90+ mental health conditions treated, including anxiety, depression, ADHD, bipolar disorder, PTSD, OCD, and more.
-- [/conditions/adhd](/conditions/adhd): Virtual ADHD evaluation and medication management for adults and adolescents in Arizona.
+- [/conditions/adhd](/conditions/adhd): Virtual ADHD evaluation and medication management for adults and adolescents in Arizona and Iowa.
 - [/conditions/anxiety](/conditions/anxiety): Online anxiety treatment — comprehensive care for generalized anxiety, social anxiety, panic disorder, and related conditions.
 - [/conditions/depression](/conditions/depression): Telehealth depression treatment including evaluation, medication management, and ongoing support.
-- [/conditions/ptsd](/conditions/ptsd): PTSD and trauma-informed psychiatric care delivered virtually across Arizona.
+- [/conditions/ptsd](/conditions/ptsd): PTSD and trauma-informed psychiatric care delivered virtually across Arizona and Iowa.
 - [/book](/book): Schedule a telehealth psychiatric appointment online through our patient portal.
 - [/contact](/contact): Phone, email, and messaging contact options for prospective and current patients.
 - [/crisis](/crisis): Immediate mental health crisis resources including 988 Lifeline, Veterans Crisis Line, and SAMHSA Helpline.

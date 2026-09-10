@@ -127,13 +127,13 @@ const Services = () => {
     <main>
       <SEO
         title="Conditions A–Z | Heartland Mental Health Services"
-        description="The complete A–Z list of 90+ mental health conditions and services treated by our Arizona telepsychiatry team. Featured conditions link to detailed care pages."
+        description="Explore 90+ mental health conditions and services treated by our Arizona and Iowa telepsychiatry team, with detailed care guides."
         path="/services"
       />
       {/* Hero */}
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0">
-          <img src={arizonaImage} alt="Arizona desert landscape at golden hour" width={1920} height={800} className="w-full h-full object-cover" />
+          <img src={arizonaImage} alt="Peaceful desert landscape at golden hour" width={1920} height={800} className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-foreground/60" />
         </div>
         <div className="relative container-narrow mx-auto px-4 sm:px-6 lg:px-8 text-center">

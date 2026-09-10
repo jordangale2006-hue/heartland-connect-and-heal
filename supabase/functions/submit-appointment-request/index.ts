@@ -9,6 +9,7 @@ const corsHeaders = {
 interface Body {
   name?: unknown
   email?: unknown
+  state?: unknown
   phone?: unknown
   insurance?: unknown
   reason?: unknown
@@ -37,6 +38,7 @@ Deno.serve(async (req) => {
   const name = trimStr(body.name, 100)
   const email = trimStr(body.email, 255)
   const phone = trimStr(body.phone, 40)
+  const state = trimStr(body.state, 20)
   const insurance = trimStr(body.insurance, 80)
   const reason = trimStr(body.reason, 500)
   const preferredTime = trimStr(body.preferredTime, 120)
@@ -47,7 +49,8 @@ Deno.serve(async (req) => {
   if (
     name.length < 1 ||
     !emailRe.test(email) ||
-    !phoneRe.test(phone)
+    !phoneRe.test(phone) ||
+    !['Arizona', 'Iowa'].includes(state)
   ) {
     return new Response(JSON.stringify({ error: 'Invalid input' }), {
       status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
@@ -62,7 +65,7 @@ Deno.serve(async (req) => {
   const id = crypto.randomUUID()
   const { error: insertError } = await supabase
     .from('appointment_requests')
-    .insert({ id, name, email, phone, insurance, reason, preferred_time: preferredTime })
+    .insert({ id, name, email, phone, state, insurance, reason, preferred_time: preferredTime })
 
   if (insertError) {
     console.error('Insert failed', insertError)
@@ -76,12 +79,12 @@ Deno.serve(async (req) => {
       templateName: 'appointment-request-confirmation',
       recipientEmail: email,
       idempotencyKey: `appt-confirm-${id}`,
-      templateData: { name },
+      templateData: { name, state },
     }),
     sendEmail(supabase, {
       templateName: 'appointment-request-notification',
       idempotencyKey: `appt-notify-${id}`,
-      templateData: { name, email, phone, insurance, reason, preferredTime },
+      templateData: { name, email, phone, state, insurance, reason, preferredTime },
     }),
   ])
 

@@ -4,7 +4,7 @@ const items = [
   { icon: Award, text: "Board-Certified PMHNPs" },
   { icon: Clock, text: "16+ years experience" },
   { icon: ShieldCheck, text: "HIPAA-secure telehealth" },
-  { icon: MapPin, text: "Licensed in Arizona" },
+  { icon: MapPin, text: "Serving Arizona & Iowa" },
 ];
 
 const TrustStrip = () => {

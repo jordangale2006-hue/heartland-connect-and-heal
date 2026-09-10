@@ -2,17 +2,19 @@ import { useState } from "react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, AlertCircle, ShieldCheck } from "lucide-react";
-import { FEATURED_INSURANCES } from "@/data/insurances";
+import { INSURANCES_BY_STATE, type ServiceState } from "@/data/insurances";
 import { useAppointmentDialog } from "./AppointmentDialogProvider";
 
 const NOT_ACCEPTED = ["Arizona AHCCCS", "Arizona Medicaid"];
 
 const InsuranceChecker = () => {
   const [selected, setSelected] = useState<string>("");
+  const [state, setState] = useState<ServiceState>("Arizona");
   const { open } = useAppointmentDialog();
 
-  const isAccepted = FEATURED_INSURANCES.includes(selected);
-  const isMedicaid = NOT_ACCEPTED.includes(selected);
+  const plans = INSURANCES_BY_STATE[state];
+  const isAccepted = plans.includes(selected);
+  const isMedicaid = state === "Arizona" && NOT_ACCEPTED.includes(selected);
   const isOther = selected && !isAccepted && !isMedicaid;
 
   return (
@@ -27,19 +29,28 @@ const InsuranceChecker = () => {
             Do we take your insurance?
           </h2>
           <p className="text-muted-foreground text-center mb-6">
-            Pick your plan to see if we're in-network for telehealth psychiatry in Arizona.
+            Choose your state and plan to see the insurance options available for virtual care.
           </p>
 
           <div className="max-w-md mx-auto">
+            <Select value={state} onValueChange={(value: ServiceState) => { setState(value); setSelected(""); }}>
+              <SelectTrigger className="h-12 text-base mb-3" aria-label="Select the state where you will receive care">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="Arizona">Arizona</SelectItem>
+                <SelectItem value="Iowa">Iowa</SelectItem>
+              </SelectContent>
+            </Select>
             <Select value={selected} onValueChange={setSelected}>
               <SelectTrigger className="h-12 text-base" aria-label="Select your insurance">
                 <SelectValue placeholder="Select your insurance" />
               </SelectTrigger>
               <SelectContent>
-                {FEATURED_INSURANCES.map((n) => (
+                {plans.map((n) => (
                   <SelectItem key={n} value={n}>{n}</SelectItem>
                 ))}
-                {NOT_ACCEPTED.map((n) => (
+                {state === "Arizona" && NOT_ACCEPTED.map((n) => (
                   <SelectItem key={n} value={n}>{n}</SelectItem>
                 ))}
                 <SelectItem value="Other">Other / Not listed</SelectItem>
@@ -51,7 +62,7 @@ const InsuranceChecker = () => {
                 <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                 <div className="flex-1">
                   <p className="text-sm text-foreground font-medium mb-1">
-                    Yes — we accept {selected} for telehealth psychiatry in Arizona.
+                    Yes — we accept {selected} for telehealth psychiatry in {state}.
                   </p>
                   <p className="text-xs text-muted-foreground mb-3">
                     Coverage details vary by plan. We'll verify your specific benefits before your visit.
