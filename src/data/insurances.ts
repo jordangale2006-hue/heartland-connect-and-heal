@@ -51,7 +51,7 @@ export interface InsuranceBrand {
 
 export const INSURANCE_BRANDS: Record<string, InsuranceBrand> = {
   "Aetna": { name: "Aetna", short: "aetna", bg: "#FFFFFF", fg: "#7D3F98", logo: aetnaLogo.url },
-  "BlueCross BlueShield": { name: "BlueCross BlueShield", short: "BCBS", bg: "#FFFFFF", fg: "#0066B2", logo: bcbsLogo.url, logoClass: "max-h-[4.5rem]" },
+  "BlueCross BlueShield": { name: "BlueCross BlueShield", short: "BCBS", bg: "#FFFFFF", fg: "#0066B2", logo: bcbsLogo.url, logoClass: { sm: "max-h-10", md: "max-h-14", lg: "max-h-24" } },
   "Wellmark Blue Cross Blue Shield of Iowa (HMO)": { name: "Wellmark Blue Cross Blue Shield of Iowa (HMO)", short: "Wellmark BCBS Iowa HMO", bg: "#FFFFFF", fg: "#0066B2", logo: wellmarkLogo.url, logoClass: { sm: "max-h-16", md: "max-h-20", lg: "max-h-24" } },
   "Cigna": { name: "Cigna", short: "Cigna.", bg: "#FFFFFF", fg: "#00A9E0", logo: cignaLogo.url },
   "Curative": { name: "Curative", short: "curative", bg: "#FFFFFF", fg: "#FF6B5B", logo: curativeLogo.url, logoClass: { sm: "max-h-[3.5rem]", md: "max-h-[5rem]", lg: "max-h-24" } },
@@ -59,6 +59,6 @@ export const INSURANCE_BRANDS: Record<string, InsuranceBrand> = {
   "Medicare": { name: "Medicare", short: "MEDICARE", bg: "#FFFFFF", fg: "#003D7A", logo: medicareLogo.url },
   "UnitedHealthcare": { name: "UnitedHealthcare", short: "UHC", bg: "#FFFFFF", fg: "#002677", logo: uhcLogo.url },
   "Tricare": { name: "Tricare", short: "TRICARE", bg: "#FFFFFF", fg: "#023F88", logo: tricareLogo.url },
-  "MultiPlan PHCS": { name: "MultiPlan PHCS", short: "MultiPlan", bg: "#FFFFFF", fg: "#00427A", logo: multiplanLogo.url, logoClass: "max-h-[4.5rem]" },
+  "MultiPlan PHCS": { name: "MultiPlan PHCS", short: "MultiPlan", bg: "#FFFFFF", fg: "#00427A", logo: multiplanLogo.url, logoClass: { sm: "max-h-10", md: "max-h-14", lg: "max-h-24" } },
   "Cashpay": { name: "Cashpay", short: "Cash Pay", bg: "#FFFFFF", fg: "#1F2937", logo: cashpayLogo.url },
 };
