@@ -9,6 +9,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
 import ExitIntentDialog from "@/components/ExitIntentDialog";
 import AddToHomeScreen from "@/components/AddToHomeScreen";
+import AnnouncementBar from "@/components/AnnouncementBar";
 import { AppointmentDialogProvider } from "@/components/AppointmentDialogProvider";
 import Index from "./pages/Index";
 import About from "./pages/About";
@@ -34,6 +35,7 @@ const App = () => (
       <BrowserRouter>
         <ScrollToTop />
         <AppointmentDialogProvider>
+          <AnnouncementBar />
           <Header />
           <div className="pb-20 md:pb-0">
             <Routes>

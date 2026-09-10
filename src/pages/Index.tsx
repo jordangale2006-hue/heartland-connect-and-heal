@@ -14,6 +14,7 @@ import PsychiatryQuiz from "@/components/PsychiatryQuiz";
 import ProviderCards from "@/components/ProviderCards";
 import CostEstimate from "@/components/CostEstimate";
 import TrustStrip from "@/components/TrustStrip";
+import IowaLaunchSection from "@/components/IowaLaunchSection";
 import SEO from "@/components/SEO";
 import { Helmet } from "react-helmet-async";
 import { medicalBusinessSchema, faqPageSchema } from "@/lib/structured-data";
@@ -177,12 +178,14 @@ const Index = () => {
         </div>
         <div className="relative container-narrow mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="max-w-2xl">
+            <span className="inline-block bg-primary-foreground/85 text-foreground text-xs font-semibold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full mb-4 animate-fade-in-up">
+              New — Now Serving Iowa
+            </span>
             <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-6 animate-fade-in-up">
               Online Psychiatry in Arizona & Iowa — often booked within the week.
             </h1>
             <p className="text-lg sm:text-xl text-primary-foreground/85 mb-6 leading-relaxed font-light" style={{ animationDelay: "0.15s" }}>
-              Compassionate virtual mental health care from Arizona- and Iowa-licensed providers.
-              Insurance options vary by state. Same-week openings often available.
+              Compassionate virtual mental health care from Arizona- and Iowa-licensed providers. Iowa: Wellmark BCBS HMO and self-pay accepted. Same-week openings often available.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-6" style={{ animationDelay: "0.3s" }}>
               <Button variant="warmCta" size="lg" className="text-base px-8 py-6" asChild>
@@ -195,11 +198,13 @@ const Index = () => {
             <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-primary-foreground/85">
               <span className="inline-flex items-center gap-1.5"><Shield className="h-4 w-4" /> HIPAA-secure telehealth</span>
               <span className="inline-flex items-center gap-1.5"><Star className="h-4 w-4 fill-accent text-accent" /> 5-star ZocDoc reviews</span>
-              <span className="inline-flex items-center gap-1.5"><Clock className="h-4 w-4" /> Mon–Sat appointments</span>
+              <span className="inline-flex items-center gap-1.5"><Clock className="h-4 w-4" /> Mon–Sat: 8am–5pm AZ / 10am–7pm CT</span>
             </div>
           </div>
         </div>
       </section>
+
+      <IowaLaunchSection />
 
       {/* Trust strip */}
       <TrustStrip />
