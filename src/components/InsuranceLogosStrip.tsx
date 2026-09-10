@@ -4,6 +4,11 @@ import InsuranceLogoGrid from "./InsuranceLogoGrid";
 import { INSURANCES_BY_STATE } from "@/data/insurances";
 
 const InsuranceLogosStrip = () => {
+  const featuredPlans = [
+    ...INSURANCES_BY_STATE.Arizona.filter((plan) => plan !== "Cashpay"),
+    "Wellmark Blue Cross Blue Shield of Iowa (HMO)",
+  ];
+
   return (
     <section className="bg-card border-y border-border/50">
       <div className="container-narrow mx-auto px-4 sm:px-6 lg:px-8 py-6">
@@ -14,8 +19,7 @@ const InsuranceLogosStrip = () => {
           </div>
           <InsuranceLogoGrid
             size="lg"
-            plans={INSURANCES_BY_STATE.Arizona}
-            exclude={["Cashpay"]}
+            plans={featuredPlans}
             columns="showcase"
             className="w-full max-w-6xl"
           />
