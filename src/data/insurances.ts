@@ -8,7 +8,7 @@ import medicareLogo from "@/assets/medicare.png.asset.json";
 import cashpayLogo from "@/assets/cashpay.webp.asset.json";
 import multiplanLogo from "@/assets/multiplan.webp.asset.json";
 import curativeLogo from "@/assets/curative.webp.asset.json";
-import wellmarkLogo from "@/assets/wellmark.svg.asset.json";
+import wellmarkLogo from "@/assets/wellmark.png.asset.json";
 
 export const FEATURED_INSURANCES = [
   "Aetna",
