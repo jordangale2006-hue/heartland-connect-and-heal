@@ -17,9 +17,12 @@ const sizeMap = {
 const InsuranceLogoGrid = ({ size = "md", exclude = [], className = "", plans = FEATURED_INSURANCES, columns = "standard" }: Props) => {
   const items = plans.filter((n) => !exclude.includes(n));
   const s = sizeMap[size];
-  const gridColumns = columns === "showcase"
-    ? "grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+  const showcase = columns === "showcase";
+  const gridColumns = showcase
+    ? "grid-cols-2"
     : "grid-cols-2 sm:grid-cols-3 md:grid-cols-4";
+  const cardClass = showcase ? "h-28 sm:h-32 md:h-36 px-6" : s.card;
+  const imgFallback = showcase ? "max-h-24 sm:max-h-28" : s.img;
 
   return (
     <ul
@@ -32,7 +35,7 @@ const InsuranceLogoGrid = ({ size = "md", exclude = [], className = "", plans = 
         return (
           <li
             key={name}
-            className={`flex items-center justify-center rounded-xl shadow-sm border border-border/40 font-semibold tracking-tight whitespace-nowrap ${s.card}`}
+            className={`flex items-center justify-center rounded-xl shadow-sm border border-border/40 font-semibold tracking-tight whitespace-nowrap ${cardClass}`}
             style={{ backgroundColor: b.bg, color: b.fg }}
             title={b.name}
             aria-label={b.name}
