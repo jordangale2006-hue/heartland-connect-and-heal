@@ -1,6 +1,8 @@
-// Shared helper: invoke send-transactional-email and never fail silently.
+// Shared helper: call send-transactional-email and never fail silently.
+// Uses an explicit fetch with both apikey and Authorization headers, because
+// functions.invoke does not reliably forward the service key as a bearer token.
 // Records a `failed` row in email_send_log when the handoff itself breaks so
-// email problems are visible instead of swallowed by Promise.allSettled.
+// email problems are visible instead of swallowed.
 export async function sendEmail(
   supabase: any,
   args: {
@@ -10,28 +12,29 @@ export async function sendEmail(
     templateData?: Record<string, unknown>
   }
 ) {
+  const url = Deno.env.get('SUPABASE_URL') ?? ''
+  const key = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
+
   try {
-    const { data, error } = await supabase.functions.invoke('send-transactional-email', {
-      body: {
+    const res = await fetch(`${url}/functions/v1/send-transactional-email`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        apikey: key,
+        Authorization: `Bearer ${key}`,
+      },
+      body: JSON.stringify({
         templateName: args.templateName,
         recipientEmail: args.recipientEmail,
         idempotencyKey: args.idempotencyKey,
         templateData: args.templateData ?? {},
-      },
+      }),
     })
 
-    if (error) {
-      let detail = error.message ?? String(error)
-      try {
-        const ctx = (error as any).context
-        if (ctx && typeof ctx.text === 'function') detail += ` | ${await ctx.text()}`
-      } catch { /* ignore */ }
-      throw new Error(detail)
-    }
+    const text = await res.text()
+    if (!res.ok) throw new Error(`${res.status} ${text}`.slice(0, 400))
 
-    if (data && data.success === false) {
-      console.warn('Email not sent', { templateName: args.templateName, data })
-    }
+    console.log('Email handed off', { templateName: args.templateName, text })
     return { ok: true as const }
   } catch (e) {
     const message = e instanceof Error ? e.message : String(e)
