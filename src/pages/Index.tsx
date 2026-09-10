@@ -352,7 +352,7 @@ const Index = () => {
                   <Mail className="h-5 w-5 text-primary" />
                 </div>
                 <h3 className="font-heading font-semibold text-foreground">Email Us</h3>
-                <p className="text-sm text-muted-foreground">heartlandmentalhealthservices@gmail.com</p>
+                <p className="text-sm text-muted-foreground">infor@heartlandmhservices.com</p>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
