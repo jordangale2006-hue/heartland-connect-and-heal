@@ -20,12 +20,12 @@ export const CONDITIONS: Condition[] = [
     slug: "adhd",
     name: "ADHD (Attention-Deficit/Hyperactivity Disorder)",
     shortName: "ADHD",
-    metaTitle: "ADHD Treatment in Arizona | Online Psychiatrist",
+    metaTitle: "ADHD Treatment in Arizona & Iowa | Online Care",
     metaDescription:
-      "Virtual ADHD evaluation, diagnosis, and medication management for adolescents and adults across Arizona. Most major insurance accepted.",
+      "Virtual ADHD evaluation, diagnosis, and medication management for adolescents and adults across Arizona and Iowa.",
     hero: {
       eyebrow: "Adult & Adolescent ADHD",
-      headline: "ADHD treatment in Arizona — from a board-certified psychiatric provider",
+      headline: "ADHD treatment in Arizona and Iowa — from a board-certified psychiatric provider",
       intro:
         "If focus, organization, restlessness, or follow-through have always felt harder for you than for others, you may be living with undiagnosed or undertreated ADHD. We provide thorough virtual evaluations and ongoing medication management designed around your real life.",
     },
@@ -47,8 +47,8 @@ export const CONDITIONS: Condition[] = [
     treatedBy: ["rebecca", "gwen"],
     faqs: [
       {
-        q: "Can you prescribe ADHD medication via telehealth in Arizona?",
-        a: "Yes. We follow current DEA telehealth flexibilities and Arizona regulations. Controlled medications are prescribed only when clinically appropriate after a thorough evaluation.",
+        q: "Can you prescribe ADHD medication via telehealth in Arizona and Iowa?",
+        a: "Yes. We follow current DEA telehealth flexibilities and applicable state regulations. Controlled medications are prescribed only when clinically appropriate after a thorough evaluation.",
       },
       {
         q: "Do I need prior records to be evaluated?",
@@ -63,9 +63,9 @@ export const CONDITIONS: Condition[] = [
   {
     slug: "anxiety",
     name: "Anxiety Disorders",
-    metaTitle: "Anxiety Treatment in Arizona | Telehealth Psychiatry",
+    metaTitle: "Anxiety Treatment in Arizona & Iowa | Telehealth",
     metaDescription:
-      "Get help for generalized anxiety, social anxiety, and panic in Arizona. Virtual psychiatric evaluation and medication management. Most insurance accepted.",
+      "Get virtual help for generalized anxiety, social anxiety, and panic across Arizona and Iowa, including psychiatric evaluation and medication management.",
     hero: {
       eyebrow: "Anxiety Care",
       headline: "Anxiety treatment that meets you where you are",
@@ -101,9 +101,9 @@ export const CONDITIONS: Condition[] = [
   {
     slug: "depression",
     name: "Depression",
-    metaTitle: "Depression Treatment in Arizona | Online Psychiatrist",
+    metaTitle: "Depression Treatment in Arizona & Iowa | Online Care",
     metaDescription:
-      "Compassionate virtual depression treatment in Arizona — psychiatric evaluation and medication management from board-certified PMHNPs.",
+      "Compassionate virtual depression treatment in Arizona and Iowa, with psychiatric evaluation and medication management from board-certified PMHNPs.",
     hero: {
       eyebrow: "Depression Care",
       headline: "Depression treatment, without leaving home",
@@ -139,9 +139,9 @@ export const CONDITIONS: Condition[] = [
   {
     slug: "bipolar-disorder",
     name: "Bipolar Disorder",
-    metaTitle: "Bipolar Disorder Treatment in Arizona | Telepsychiatry",
+    metaTitle: "Bipolar Treatment in Arizona & Iowa | Telepsychiatry",
     metaDescription:
-      "Virtual bipolar disorder evaluation and medication management across Arizona. Stable, ongoing care from board-certified PMHNPs.",
+      "Virtual bipolar disorder evaluation and medication management across Arizona and Iowa, with stable ongoing care from board-certified PMHNPs.",
     hero: {
       eyebrow: "Mood Stabilization",
       headline: "Stable, long-term care for bipolar disorder",
@@ -172,9 +172,9 @@ export const CONDITIONS: Condition[] = [
   {
     slug: "ptsd",
     name: "PTSD (Post-Traumatic Stress Disorder)",
-    metaTitle: "PTSD Treatment in Arizona | Trauma-Informed Telepsychiatry",
+    metaTitle: "PTSD Treatment in Arizona & Iowa | Telepsychiatry",
     metaDescription:
-      "Trauma-informed PTSD treatment for Arizona patients. Virtual psychiatric evaluation, medication management, and therapy coordination.",
+      "Trauma-informed PTSD treatment for Arizona and Iowa patients, including virtual psychiatric evaluation, medication management, and therapy coordination.",
     hero: {
       eyebrow: "Trauma-Informed Care",
       headline: "PTSD treatment in a safe, virtual space",
@@ -205,12 +205,12 @@ export const CONDITIONS: Condition[] = [
   {
     slug: "ocd",
     name: "OCD (Obsessive-Compulsive Disorder)",
-    metaTitle: "OCD Treatment in Arizona | Online Psychiatrist",
+    metaTitle: "OCD Treatment in Arizona & Iowa | Online Psychiatrist",
     metaDescription:
-      "Virtual OCD evaluation and medication management in Arizona. Evidence-based care from board-certified psychiatric providers.",
+      "Virtual OCD evaluation and medication management in Arizona and Iowa from board-certified psychiatric providers.",
     hero: {
       eyebrow: "OCD Care",
-      headline: "OCD treatment from Arizona-licensed psychiatric providers",
+      headline: "OCD treatment from Arizona- and Iowa-licensed psychiatric providers",
       intro:
         "Intrusive thoughts and compulsive behaviors can take hours from your day. We provide evidence-based medication treatment and refer to ERP-trained therapists for combined care.",
     },
@@ -236,9 +236,9 @@ export const CONDITIONS: Condition[] = [
   {
     slug: "insomnia",
     name: "Insomnia & Sleep Issues",
-    metaTitle: "Insomnia Treatment in Arizona | Telepsychiatry",
+    metaTitle: "Insomnia Treatment in Arizona & Iowa | Telepsychiatry",
     metaDescription:
-      "Virtual evaluation and treatment for insomnia and sleep problems in Arizona. Identify underlying causes and build a healthy sleep plan.",
+      "Virtual evaluation and treatment for insomnia and sleep problems in Arizona and Iowa. Identify underlying causes and build a healthy sleep plan.",
     hero: {
       eyebrow: "Sleep & Mental Health",
       headline: "When sleep won't come — get to the root of it",
@@ -268,9 +268,9 @@ export const CONDITIONS: Condition[] = [
   {
     slug: "substance-use",
     name: "Substance Use Disorders",
-    metaTitle: "Substance Use Treatment in Arizona | Telepsychiatry",
+    metaTitle: "Substance Use Care in Arizona & Iowa | Telepsychiatry",
     metaDescription:
-      "Compassionate, non-judgmental virtual treatment for substance use and co-occurring mental health conditions in Arizona.",
+      "Compassionate virtual treatment for substance use and co-occurring mental health conditions across Arizona and Iowa.",
     hero: {
       eyebrow: "Recovery Support",
       headline: "Substance use treatment without judgment",
@@ -301,9 +301,9 @@ export const CONDITIONS: Condition[] = [
   {
     slug: "postpartum-depression",
     name: "Postpartum Depression & Anxiety",
-    metaTitle: "Postpartum Depression Treatment in Arizona | Telepsychiatry",
+    metaTitle: "Postpartum Depression Care in Arizona & Iowa",
     metaDescription:
-      "Virtual postpartum depression and anxiety care in Arizona. Compassionate evaluation and medication management for new parents.",
+      "Virtual postpartum depression and anxiety care in Arizona and Iowa, with compassionate evaluation and medication management for new parents.",
     hero: {
       eyebrow: "Perinatal Mental Health",
       headline: "Postpartum care from your living room",
@@ -333,9 +333,9 @@ export const CONDITIONS: Condition[] = [
   {
     slug: "panic-disorder",
     name: "Panic Disorder",
-    metaTitle: "Panic Disorder Treatment in Arizona | Online Psychiatrist",
+    metaTitle: "Panic Disorder Treatment in Arizona & Iowa",
     metaDescription:
-      "Virtual treatment for panic attacks and panic disorder in Arizona. Evidence-based medication and skills training.",
+      "Virtual treatment for panic attacks and panic disorder in Arizona and Iowa, with evidence-based medication and skills training.",
     hero: {
       eyebrow: "Panic Care",
       headline: "Stop the panic cycle",
@@ -364,9 +364,9 @@ export const CONDITIONS: Condition[] = [
   {
     slug: "psychosis",
     name: "Schizophrenia & Psychotic Disorders",
-    metaTitle: "Psychosis & Schizophrenia Care in Arizona | Telepsychiatry",
+    metaTitle: "Psychosis Care in Arizona & Iowa | Telepsychiatry",
     metaDescription:
-      "Stable, virtual psychiatric care for schizophrenia and psychotic disorders in Arizona. Medication management and family support.",
+      "Stable virtual psychiatric care for schizophrenia and psychotic disorders in Arizona and Iowa, including medication management and family support.",
     hero: {
       eyebrow: "Psychotic Disorder Care",
       headline: "Stable, ongoing care for schizophrenia and related conditions",
@@ -397,14 +397,14 @@ export const CONDITIONS: Condition[] = [
   {
     slug: "adolescent-mental-health",
     name: "Adolescent Mental Health",
-    metaTitle: "Teen Psychiatrist in Arizona | Online Adolescent Care",
+    metaTitle: "Teen Psychiatrist in Arizona & Iowa | Online Care",
     metaDescription:
-      "Virtual psychiatric evaluation and medication management for adolescents in Arizona. ADHD, anxiety, depression, and more.",
+      "Virtual psychiatric evaluation and medication management for adolescents in Arizona and Iowa, including ADHD, anxiety, depression, and more.",
     hero: {
       eyebrow: "Adolescent Care",
       headline: "Mental health care that meets teens where they are",
       intro:
-        "Adolescence is hard, and teens often feel more comfortable opening up from their own room than in an office. We provide virtual psychiatric care to adolescents across Arizona.",
+        "Adolescence is hard, and teens often feel more comfortable opening up from their own room than in an office. We provide virtual psychiatric care to adolescents across Arizona and Iowa.",
     },
     symptoms: [
       "Anxiety, panic, or social withdrawal",
