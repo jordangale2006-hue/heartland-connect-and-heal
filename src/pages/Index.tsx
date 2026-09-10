@@ -198,7 +198,7 @@ const Index = () => {
             <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-primary-foreground/85">
               <span className="inline-flex items-center gap-1.5"><Shield className="h-4 w-4" /> HIPAA-secure telehealth</span>
               <span className="inline-flex items-center gap-1.5"><Star className="h-4 w-4 fill-accent text-accent" /> 5-star ZocDoc reviews</span>
-              <span className="inline-flex items-center gap-1.5"><Clock className="h-4 w-4" /> Mon–Sat: 8am–5pm AZ / 10am–7pm CT</span>
+              <span className="inline-flex items-center gap-1.5"><Clock className="h-4 w-4" /> Mon–Sat appointments</span>
             </div>
           </div>
         </div>

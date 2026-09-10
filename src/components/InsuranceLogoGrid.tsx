@@ -5,6 +5,7 @@ interface Props {
   exclude?: string[];
   className?: string;
   plans?: string[];
+  columns?: "standard" | "showcase";
 }
 
 const sizeMap = {
@@ -13,13 +14,16 @@ const sizeMap = {
   lg: { card: "h-24 px-5 text-base", img: "max-h-16" },
 };
 
-const InsuranceLogoGrid = ({ size = "md", exclude = [], className = "", plans = FEATURED_INSURANCES }: Props) => {
+const InsuranceLogoGrid = ({ size = "md", exclude = [], className = "", plans = FEATURED_INSURANCES, columns = "standard" }: Props) => {
   const items = plans.filter((n) => !exclude.includes(n));
   const s = sizeMap[size];
+  const gridColumns = columns === "showcase"
+    ? "grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+    : "grid-cols-2 sm:grid-cols-3 md:grid-cols-4";
 
   return (
     <ul
-      className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-3 ${className}`}
+      className={`grid ${gridColumns} gap-3 sm:gap-4 ${className}`}
       aria-label="Insurance plans accepted"
     >
       {items.map((name) => {
@@ -34,15 +38,14 @@ const InsuranceLogoGrid = ({ size = "md", exclude = [], className = "", plans = 
             aria-label={b.name}
           >
             {b.logo ? (
-              <span className="flex min-w-0 flex-col items-center justify-center gap-1">
+              <span className="flex min-w-0 items-center justify-center">
                 <img
                   src={b.logo}
-                  alt=""
+                  alt={b.name}
                   loading="lazy"
                   className={`${(typeof b.logoClass === "object" ? b.logoClass?.[size] : b.logoClass) || s.img} w-auto object-contain`}
                   onError={(event) => { event.currentTarget.style.display = "none"; }}
                 />
-                <span className="max-w-full whitespace-normal text-center text-xs leading-tight">{b.short}</span>
               </span>
             ) : (
               <span className="leading-none">{b.short}</span>
