@@ -14,6 +14,7 @@ import PsychiatryQuiz from "@/components/PsychiatryQuiz";
 import ProviderCards from "@/components/ProviderCards";
 import CostEstimate from "@/components/CostEstimate";
 import TrustStrip from "@/components/TrustStrip";
+import IowaLaunchSection from "@/components/IowaLaunchSection";
 import SEO from "@/components/SEO";
 import { Helmet } from "react-helmet-async";
 import { medicalBusinessSchema, faqPageSchema } from "@/lib/structured-data";
