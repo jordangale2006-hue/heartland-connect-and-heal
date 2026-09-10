@@ -203,6 +203,8 @@ const Index = () => {
         </div>
       </section>
 
+      <IowaLaunchSection />
+
       {/* Trust strip */}
       <TrustStrip />
 
