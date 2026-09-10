@@ -4,6 +4,7 @@ interface Props {
   size?: "sm" | "md" | "lg";
   exclude?: string[];
   className?: string;
+  plans?: string[];
 }
 
 const sizeMap = {
@@ -12,8 +13,8 @@ const sizeMap = {
   lg: { card: "h-24 px-5 text-base", img: "max-h-16" },
 };
 
-const InsuranceLogoGrid = ({ size = "md", exclude = [], className = "" }: Props) => {
-  const items = FEATURED_INSURANCES.filter((n) => !exclude.includes(n));
+const InsuranceLogoGrid = ({ size = "md", exclude = [], className = "", plans = FEATURED_INSURANCES }: Props) => {
+  const items = plans.filter((n) => !exclude.includes(n));
   const s = sizeMap[size];
 
   return (

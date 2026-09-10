@@ -4,6 +4,7 @@ import logo from "@/assets/logo.webp";
 import facebookIcon from "@/assets/facebook-icon.png";
 import instagramIcon from "@/assets/instagram-icon.svg";
 import linkedinIcon from "@/assets/linkedin-icon.png";
+import OfficeHours from "@/components/OfficeHours";
 
 const socials = [
   { label: "Facebook", alt: "Follow Heartland Mental Health on Facebook", url: "https://www.facebook.com/HeartlandMentalHealthServices", icon: facebookIcon },
@@ -88,11 +89,7 @@ const Footer = () => {
           {/* Social & Hours */}
           <div>
             <h4 className="font-heading font-semibold mb-4">Office Hours</h4>
-            <div className="text-sm text-primary-foreground/70 space-y-1">
-              <p>Monday – Friday: 8am – 5pm</p>
-              <p>Saturday: 9am – 2pm</p>
-              <p>Sunday: Closed</p>
-            </div>
+            <OfficeHours inverse />
             <h4 className="font-heading font-semibold mt-5 mb-3">Follow Us</h4>
             <div className="flex gap-4">
               {socials.map((social) => (

@@ -8,13 +8,14 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { ShieldCheck, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { FEATURED_INSURANCES } from "@/data/insurances";
+import { INSURANCES_BY_STATE, type ServiceState } from "@/data/insurances";
 
 const schema = z.object({
   name: z.string().trim().min(1, "Please enter your name").max(100),
   phone: z.string().trim().min(7, "Please enter a valid phone").max(40)
     .regex(/^[+\d().\-\s]+$/, "Please enter a valid phone"),
   email: z.string().trim().email("Please enter a valid email").max(255),
+  state: z.enum(["Arizona", "Iowa"], { required_error: "Please choose your state" }),
   insurance: z.string().trim().min(1, "Please choose an option").max(80),
   reason: z.string().trim().max(500).optional(),
   preferredTime: z.string().trim().max(120).optional(),
@@ -32,7 +33,7 @@ const QuickAppointmentForm = ({ onSuccess, compact = false }: Props) => {
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
   const [values, setValues] = useState<FormState>({
-    name: "", phone: "", email: "", insurance: "", reason: "", preferredTime: "",
+    name: "", phone: "", email: "", state: "Arizona", insurance: "", reason: "", preferredTime: "",
   });
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
 
@@ -119,6 +120,18 @@ const QuickAppointmentForm = ({ onSuccess, compact = false }: Props) => {
         {errors.email && <p className="text-xs text-destructive">{errors.email}</p>}
       </div>
 
+      <div className="space-y-1.5">
+        <Label htmlFor="qa-state">State where you will be during your appointment</Label>
+        <Select value={values.state} onValueChange={(v: ServiceState) => { update("state", v); update("insurance", ""); }}>
+          <SelectTrigger id="qa-state" className="h-12"><SelectValue /></SelectTrigger>
+          <SelectContent>
+            <SelectItem value="Arizona">Arizona</SelectItem>
+            <SelectItem value="Iowa">Iowa</SelectItem>
+          </SelectContent>
+        </Select>
+        {errors.state && <p className="text-xs text-destructive">{errors.state}</p>}
+      </div>
+
       <div className="grid sm:grid-cols-2 gap-4">
         <div className="space-y-1.5">
           <Label htmlFor="qa-insurance">Insurance</Label>
@@ -127,7 +140,7 @@ const QuickAppointmentForm = ({ onSuccess, compact = false }: Props) => {
               <SelectValue placeholder="Select your insurance" />
             </SelectTrigger>
             <SelectContent>
-              {FEATURED_INSURANCES.map((n) => (
+              {INSURANCES_BY_STATE[values.state].map((n) => (
                 <SelectItem key={n} value={n}>{n}</SelectItem>
               ))}
               <SelectItem value="Other / Not listed">Other / Not listed</SelectItem>
@@ -139,6 +152,7 @@ const QuickAppointmentForm = ({ onSuccess, compact = false }: Props) => {
           <Label htmlFor="qa-time">Best time to reach you <span className="text-muted-foreground font-normal">(optional)</span></Label>
           <Input id="qa-time" placeholder="e.g. Weekday mornings"
             value={values.preferredTime} onChange={(e) => update("preferredTime", e.target.value)} className="h-12" />
+          <p className="text-xs text-muted-foreground">We’ll interpret this in your local time.</p>
         </div>
       </div>
 

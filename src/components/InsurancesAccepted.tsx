@@ -1,11 +1,15 @@
+import { useState } from "react";
 import { ShieldCheck, AlertCircle } from "lucide-react";
 import InsuranceLogoGrid from "./InsuranceLogoGrid";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { INSURANCES_BY_STATE, INSURANCE_NOTICES, type ServiceState } from "@/data/insurances";
 
 interface Props {
   variant?: "section" | "card";
 }
 
 const InsurancesAccepted = ({ variant = "section" }: Props) => {
+  const [state, setState] = useState<ServiceState>("Arizona");
   const Inner = (
     <>
       <div className="flex items-center justify-center gap-2 mb-3">
@@ -16,12 +20,22 @@ const InsurancesAccepted = ({ variant = "section" }: Props) => {
         Insurances we accept
       </h2>
       <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-8">
-        Quality mental health care should be accessible. Below are the insurance plans currently in-network with Heartland.
+        Quality mental health care should be accessible. Choose your state to view current payment options.
       </p>
+
+      <div className="max-w-xs mx-auto mb-6">
+        <Select value={state} onValueChange={(value: ServiceState) => setState(value)}>
+          <SelectTrigger aria-label="Select state for insurance options"><SelectValue /></SelectTrigger>
+          <SelectContent>
+            <SelectItem value="Arizona">Arizona</SelectItem>
+            <SelectItem value="Iowa">Iowa</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
 
       {/* Featured insurances */}
       <div className="max-w-3xl mx-auto mb-6">
-        <InsuranceLogoGrid size="md" />
+        <InsuranceLogoGrid size="md" plans={INSURANCES_BY_STATE[state]} />
       </div>
 
 
@@ -29,7 +43,7 @@ const InsurancesAccepted = ({ variant = "section" }: Props) => {
       <div className="max-w-3xl mx-auto mt-6 flex items-start gap-2 p-4 rounded-xl bg-accent/10 border border-accent/20">
         <AlertCircle className="h-5 w-5 text-accent shrink-0 mt-0.5" />
         <p className="text-sm text-muted-foreground leading-relaxed">
-          We do <strong>not</strong> accept Arizona AHCCCS/Medicaid plans. Plan availability may vary by state and product. Please verify with your insurance provider that you are in-network with this provider before booking.
+          {INSURANCE_NOTICES[state]} Plan availability may vary by product. Please verify that your provider is in-network before booking.
         </p>
       </div>
     </>
