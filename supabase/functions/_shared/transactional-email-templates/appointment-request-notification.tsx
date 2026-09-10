@@ -59,7 +59,7 @@ export const template = {
   subject: (data: Record<string, any>) =>
     `New appointment request${data?.name ? ` from ${data.name}` : ''}`,
   displayName: 'Appointment request notification (to staff)',
-  to: 'heartlandmentalhealthservices@gmail.com',
+  to: 'infor@heartlandmhservices.com',
   previewData: {
     name: 'Jane Doe',
     email: 'jane@example.com',

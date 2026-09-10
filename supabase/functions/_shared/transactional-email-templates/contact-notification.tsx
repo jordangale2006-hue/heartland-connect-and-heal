@@ -45,7 +45,7 @@ export const template = {
   subject: (data: Record<string, any>) =>
     `New contact form submission${data?.name ? ` from ${data.name}` : ''}`,
   displayName: 'Contact form notification (to staff)',
-  to: 'heartlandmentalhealthservices@gmail.com',
+  to: 'infor@heartlandmhservices.com',
   previewData: {
     name: 'Jane Doe',
     email: 'jane@example.com',

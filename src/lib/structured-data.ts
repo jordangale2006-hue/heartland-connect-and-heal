@@ -4,7 +4,7 @@
 export const SITE_URL = "https://www.heartlandmhservices.com";
 export const SITE_NAME = "Heartland Mental Health Services";
 export const PHONE = "+1-520-595-5709";
-export const EMAIL = "heartlandmentalhealthservices@gmail.com";
+export const EMAIL = "infor@heartlandmhservices.com";
 export const LOGO = `${SITE_URL}/favicon.ico`;
 export const DEFAULT_OG_IMAGE =
   "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2ec260e3-f7e5-47e2-b727-e3f711dbccce/id-preview-da594496--3f7a7a80-65eb-466e-a849-db5f444ced04.lovable.app-1778023739556.png";

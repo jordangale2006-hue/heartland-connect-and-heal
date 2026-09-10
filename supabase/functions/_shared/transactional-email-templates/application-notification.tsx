@@ -89,7 +89,7 @@ export const template = {
     return `New job application${name ? ` from ${name}` : ''}`
   },
   displayName: 'Job application notification (to staff)',
-  to: 'heartlandmentalhealthservices@gmail.com',
+  to: 'infor@heartlandmhservices.com',
   previewData: {
     firstName: 'Jane',
     lastName: 'Doe',

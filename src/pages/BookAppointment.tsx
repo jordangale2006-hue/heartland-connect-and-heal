@@ -82,8 +82,8 @@ const BookAppointment = () => {
                   <a href="tel:+15205955709" className="flex items-center gap-2 text-sm text-primary hover:text-accent transition-colors">
                     <Phone className="h-4 w-4" /> +1 (520) 595-5709
                   </a>
-                  <a href="mailto:heartlandmentalhealthservices@gmail.com" className="flex items-center gap-2 text-sm text-primary hover:text-accent transition-colors">
-                    <Mail className="h-4 w-4" /> heartlandmentalhealthservices@gmail.com
+                  <a href="mailto:infor@heartlandmhservices.com" className="flex items-center gap-2 text-sm text-primary hover:text-accent transition-colors">
+                    <Mail className="h-4 w-4" /> infor@heartlandmhservices.com
                   </a>
                 </div>
               </div>
