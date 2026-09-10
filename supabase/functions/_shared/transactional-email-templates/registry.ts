@@ -15,7 +15,7 @@ import { template as applicationConfirmation } from './application-confirmation.
 import { template as applicationNotification } from './application-notification.tsx'
 import { template as appointmentRequestConfirmation } from './appointment-request-confirmation.tsx'
 import { template as appointmentRequestNotification } from './appointment-request-notification.tsx'
-import { template as missedLeadsDigest } from './missed-leads-digest.tsx'
+
 
 export const TEMPLATES: Record<string, TemplateEntry> = {
   'contact-confirmation': contactConfirmation,
@@ -24,5 +24,5 @@ export const TEMPLATES: Record<string, TemplateEntry> = {
   'application-notification': applicationNotification,
   'appointment-request-confirmation': appointmentRequestConfirmation,
   'appointment-request-notification': appointmentRequestNotification,
-  'missed-leads-digest': missedLeadsDigest,
+  
 }
