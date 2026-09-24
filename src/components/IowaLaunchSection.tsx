@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { MapPin, ShieldCheck, Clock } from "lucide-react";
+import OfficeHours from "@/components/OfficeHours";
 
 const IowaLaunchSection = () => {
   return (
@@ -38,13 +39,7 @@ const IowaLaunchSection = () => {
                   <Clock className="h-5 w-5 text-primary" />
                   <h3 className="font-heading font-semibold text-foreground">Hours</h3>
                 </div>
-                <ul className="text-sm text-muted-foreground space-y-1">
-                  <li>Monday – Friday: 8am – 5pm Arizona</li>
-                  <li className="pl-0 md:pl-4">Iowa: 10am – 7pm Central (current equivalent)</li>
-                  <li>Saturday: 9am – 2pm Arizona</li>
-                  <li className="pl-0 md:pl-4">Iowa: 11am – 4pm Central (current equivalent)</li>
-                  <li>Sunday: Closed</li>
-                </ul>
+                <OfficeHours />
               </div>
 
               <div className="bg-accent/10 border border-accent/20 rounded-2xl p-6">
