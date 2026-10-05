@@ -14,9 +14,23 @@ const StateColumn = ({ state }: { state: ServiceState }) => (
     <InsuranceLogoGrid size="md" plans={INSURANCES_BY_STATE[state]} />
     <div className="mt-4 flex items-start gap-2 p-4 rounded-xl bg-accent/10 border border-accent/20">
       <AlertCircle className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-      <p className="text-sm text-muted-foreground leading-relaxed">
-        {INSURANCE_NOTICES[state]} Plan availability may vary by product. Please verify that your provider is in-network before booking.
-      </p>
+      {state === "Iowa" ? (
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          Plan availability may vary by product. Not sure about yours?{" "}
+          <a
+            href="tel:+15205955709"
+            className="text-accent underline underline-offset-2 hover:opacity-80"
+          >
+            Call us
+          </a>{" "}
+          and we'll check before your first appointment.
+        </p>
+      ) : (
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          {INSURANCE_NOTICES[state]} Plan availability may vary by product. Please verify
+          that your provider is in-network before booking.
+        </p>
+      )}
     </div>
   </div>
 );
