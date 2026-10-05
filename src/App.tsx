@@ -23,6 +23,8 @@ import Unsubscribe from "./pages/Unsubscribe";
 import Conditions from "./pages/Conditions";
 import ConditionPage from "./pages/ConditionPage";
 import Crisis from "./pages/Crisis";
+import Privacy from "./pages/Privacy";
+import HipaaNotice from "./pages/HipaaNotice";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -50,6 +52,8 @@ const App = () => (
               <Route path="/conditions" element={<Conditions />} />
               <Route path="/conditions/:slug" element={<ConditionPage />} />
               <Route path="/crisis" element={<Crisis />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/hipaa-notice" element={<HipaaNotice />} />
               <Route path="/unsubscribe" element={<Unsubscribe />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

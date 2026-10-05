@@ -122,9 +122,10 @@ const Footer = () => {
         <div className="mt-8 pt-8 border-t border-primary-foreground/10">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-primary-foreground/50">
             <p>© {new Date().getFullYear()} Heartland Mental Health Services. All rights reserved.</p>
-            <div className="flex gap-4">
-              <a href="#" className="hover:text-accent transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-accent transition-colors">HIPAA Notice</a>
+            <div className="flex items-center gap-3">
+              <Link to="/privacy" className="hover:text-accent transition-colors">Privacy Policy</Link>
+              <span aria-hidden="true">|</span>
+              <Link to="/hipaa-notice" className="hover:text-accent transition-colors">HIPAA Notice</Link>
             </div>
           </div>
           <p className="text-xs text-primary-foreground/40 mt-4 leading-relaxed">

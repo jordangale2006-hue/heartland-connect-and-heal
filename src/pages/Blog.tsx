@@ -19,14 +19,16 @@ interface BlogPost {
 const Blog = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const load = async () => {
-      const { data } = await supabase
+      const { data, error: err } = await supabase
         .from("blog_posts")
         .select("id, slug, title, excerpt, cover_image_url, author, published_at")
         .eq("published", true)
         .order("published_at", { ascending: false });
+      if (err) { console.error("Failed to load blog posts", err); setError(true); }
       setPosts(data ?? []);
       setLoading(false);
     };
@@ -62,6 +64,10 @@ const Blog = () => {
             <Skeleton key={i} className="h-64 w-full" />
           ))}
         </div>
+      ) : error ? (
+        <p className="text-center text-muted-foreground py-16">
+          We couldn't load our articles right now. Please refresh the page or try again shortly.
+        </p>
       ) : posts.length === 0 ? (
         <p className="text-center text-muted-foreground py-16">
           No posts yet. Please check back soon.
