@@ -1,10 +1,25 @@
 import { ShieldCheck, AlertCircle } from "lucide-react";
 import InsuranceLogoGrid from "./InsuranceLogoGrid";
-import { INSURANCES_BY_STATE, INSURANCE_NOTICES } from "@/data/insurances";
+import { INSURANCES_BY_STATE, INSURANCE_NOTICES, type ServiceState } from "@/data/insurances";
 
 interface Props {
   variant?: "section" | "card";
 }
+
+const STATE_ORDER: ServiceState[] = ["Arizona", "Iowa"];
+
+const StateColumn = ({ state }: { state: ServiceState }) => (
+  <div>
+    <h3 className="font-heading font-semibold text-foreground mb-4 text-center md:text-left">{state}</h3>
+    <InsuranceLogoGrid size="md" plans={INSURANCES_BY_STATE[state]} />
+    <div className="mt-4 flex items-start gap-2 p-4 rounded-xl bg-accent/10 border border-accent/20">
+      <AlertCircle className="h-5 w-5 text-accent shrink-0 mt-0.5" />
+      <p className="text-sm text-muted-foreground leading-relaxed">
+        {INSURANCE_NOTICES[state]} Plan availability may vary by product. Please verify that your provider is in-network before booking.
+      </p>
+    </div>
+  </div>
+);
 
 const InsurancesAccepted = ({ variant = "section" }: Props) => {
   const Inner = (
@@ -21,22 +36,9 @@ const InsurancesAccepted = ({ variant = "section" }: Props) => {
       </p>
 
       <div className={`grid ${variant === "section" ? "md:grid-cols-2" : "grid-cols-1"} gap-8 lg:gap-12 mb-6`}>
-        <div>
-          <h3 className="font-heading font-semibold text-foreground mb-4 text-center md:text-left">Arizona</h3>
-          <InsuranceLogoGrid size="md" plans={INSURANCES_BY_STATE.Arizona} />
-        </div>
-        <div>
-          <h3 className="font-heading font-semibold text-foreground mb-4 text-center md:text-left">Iowa</h3>
-          <InsuranceLogoGrid size="md" plans={INSURANCES_BY_STATE.Iowa} />
-        </div>
-      </div>
-
-      {/* Disclaimer */}
-      <div className="max-w-3xl mx-auto mt-6 flex items-start gap-2 p-4 rounded-xl bg-accent/10 border border-accent/20">
-        <AlertCircle className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          {INSURANCE_NOTICES.Arizona} {INSURANCE_NOTICES.Iowa} Plan availability may vary by product. Please verify that your provider is in-network before booking.
-        </p>
+        {STATE_ORDER.map((state) => (
+          <StateColumn key={state} state={state} />
+        ))}
       </div>
     </>
   );
