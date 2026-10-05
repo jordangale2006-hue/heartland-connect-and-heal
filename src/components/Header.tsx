@@ -26,7 +26,8 @@ const Header = () => {
       <div className="mx-auto w-full max-w-[1600px] flex items-center justify-between gap-4 px-4 sm:px-6 h-20 sm:h-28">
         <div className="flex items-center min-[1400px]:flex-1 min-[1400px]:justify-center">
         <Link to="/" className="flex items-center shrink-0">
-          <img src={logo} alt="Heartland Mental Health Services" width={634} height={237} fetchPriority="high" decoding="async" className="h-[63px] min-[1400px]:h-16 w-auto max-w-none object-contain" />
+          <img src={logoMark} alt="Heartland Mental Health Services" width={211} height={230} fetchPriority="high" decoding="async" className="h-[61px] min-[1400px]:h-[62px] w-auto max-w-none object-contain" />
+          <img src={logoWordmark} alt="" aria-hidden="true" width={426} height={77} fetchPriority="high" decoding="async" className="h-[20px] min-[1400px]:h-[21px] w-auto max-w-none object-contain -ml-[3px] translate-y-[4px]" />
         </Link>
         </div>
 
