@@ -131,7 +131,7 @@ const Careers = () => {
   return (
     <main>
       <SEO
-        title="Careers | Heartland Telehealth Psychiatry"
+        title="Telehealth Psychiatry Careers | Heartland"
         description="Join Heartland Mental Health Services, a virtual psychiatric practice serving Arizona and Iowa. View open clinical and support roles."
         path="/careers"
       />
@@ -145,7 +145,7 @@ const Careers = () => {
         />
         <div className="container-narrow mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
           <Briefcase className="h-12 w-12 text-primary mx-auto mb-4" />
-          <h1 className="font-heading text-4xl sm:text-5xl font-bold text-foreground mb-4">Careers</h1>
+          <h1 className="font-heading text-4xl sm:text-5xl font-bold text-foreground mb-4">Telehealth Psychiatry Careers</h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Join our team at Heartland Mental Health Services. We're looking for compassionate professionals dedicated to making a difference.
           </p>

@@ -126,7 +126,7 @@ const Services = () => {
   return (
     <main>
       <SEO
-        title="Conditions A–Z | Heartland Mental Health Services"
+        title="Online Psychiatry Services in Arizona & Iowa"
         description="Explore 90+ mental health conditions and services treated by our Arizona and Iowa telepsychiatry team, with detailed care guides."
         path="/services"
       />
@@ -137,7 +137,7 @@ const Services = () => {
           <div className="absolute inset-0 bg-foreground/60" />
         </div>
         <div className="relative container-narrow mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="font-heading text-4xl sm:text-5xl font-bold text-primary-foreground mb-4">Issues We Treat</h1>
+          <h1 className="font-heading text-4xl sm:text-5xl font-bold text-primary-foreground mb-4">Online Psychiatry Services & Issues We Treat</h1>
           <p className="text-primary-foreground/85 text-lg max-w-2xl mx-auto">
             Comprehensive mental health support across a wide range of conditions — all through secure, compassionate telehealth care.
           </p>

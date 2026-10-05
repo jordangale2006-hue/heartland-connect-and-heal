@@ -54,18 +54,18 @@ const Contact = () => {
   return (
     <main>
       <SEO
-        title="Contact Heartland Mental Health | Telehealth Care"
-        description="Contact our telehealth psychiatry team to verify insurance, ask questions, or request a callback. Serving clients statewide in Arizona and Iowa."
+        title="Contact Our Telehealth Psychiatry Team | Heartland"
+        description="Contact Heartland's telehealth psychiatry team to ask questions, verify insurance, or request a callback from anywhere in Arizona or Iowa."
         path="/contact"
       />
       {/* Hero with background image */}
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0">
-          <img src={arizonaImage} alt="Peaceful desert landscape" width={1920} height={800} className="w-full h-full object-cover" />
+           <img src={arizonaImage} alt="Peaceful desert landscape representing virtual care across Arizona" width={1920} height={800} className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-foreground/60" />
         </div>
         <div className="relative container-narrow mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="font-heading text-4xl sm:text-5xl font-bold text-primary-foreground mb-4">Contact Us</h1>
+          <h1 className="font-heading text-4xl sm:text-5xl font-bold text-primary-foreground mb-4">Contact Our Telehealth Psychiatry Team</h1>
           <p className="text-primary-foreground/85 text-lg max-w-2xl mx-auto">
             We'd love to hear from you. Reach out with questions or to schedule your first visit.
           </p>

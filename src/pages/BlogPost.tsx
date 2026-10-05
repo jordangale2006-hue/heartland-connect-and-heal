@@ -14,6 +14,12 @@ const BLOG_SEO_TITLES: Record<string, string> = {
   "anxiety-vs-depression-how-to-tell-the-difference": "Anxiety vs. Depression: Know the Difference",
 };
 
+const BLOG_SEO_DESCRIPTIONS: Record<string, string> = {
+  "is-telehealth-psychiatry-right-for-you": "Learn how telehealth psychiatry works, who it may help, and what to expect from secure online mental health care in Arizona and Iowa.",
+  "online-adhd-treatment-care": "Learn what to expect from online ADHD evaluation, medication management, and ongoing care for patients in Arizona and Iowa.",
+  "anxiety-vs-depression-how-to-tell-the-difference": "Anxiety and depression can overlap. Learn common signs, key differences, and when to seek professional support in Arizona or Iowa.",
+};
+
 interface BlogPostData {
   id: string;
   slug: string;
@@ -77,10 +83,9 @@ const BlogPost = () => {
     <main className="container-narrow mx-auto px-4 sm:px-6 lg:px-8 py-12 max-w-3xl">
       <SEO
         title={BLOG_SEO_TITLES[post.slug] ?? post.title.slice(0, 59)}
-        description={post.excerpt || `${post.title} — Heartland Mental Health Services blog.`}
+        description={BLOG_SEO_DESCRIPTIONS[post.slug] ?? post.excerpt ?? `${post.title} — Heartland Mental Health Services blog.`}
         path={`/blog/${post.slug}`}
         type="article"
-        image={post.cover_image_url || undefined}
         jsonLd={[
           articleSchema({
             title: post.title,
@@ -119,7 +124,7 @@ const BlogPost = () => {
         {post.cover_image_url && (
           <img
             src={post.cover_image_url}
-            alt={post.title}
+            alt={`Featured image for ${post.title}`}
             width={1536}
             height={864}
             className="w-full rounded-lg mb-8 object-cover max-h-96"

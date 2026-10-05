@@ -38,7 +38,7 @@ const Blog = () => {
   return (
     <main className="container-narrow mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
       <SEO
-        title="Mental Health Blog | Heartland Mental Health"
+        title="Mental Health & Telehealth Psychiatry Blog"
         description="Articles on ADHD, anxiety, depression, medication management and telehealth psychiatry from the Heartland team serving Arizona and Iowa."
         path="/blog"
       />
@@ -51,7 +51,7 @@ const Blog = () => {
           className="w-full h-56 sm:h-72 object-cover rounded-2xl mb-8 shadow-sm"
         />
         <div className="text-center">
-          <h1 className="font-serif text-4xl sm:text-5xl text-foreground mb-3">Blog</h1>
+          <h1 className="font-serif text-4xl sm:text-5xl text-foreground mb-3">Mental Health & Telehealth Psychiatry Blog</h1>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Compassionate insights and resources to support your mental wellness journey.
           </p>
