@@ -25,11 +25,11 @@ const Header = () => {
       <div className="mx-auto w-full max-w-[1600px] flex items-center justify-between gap-4 px-4 sm:px-6 h-20 sm:h-28">
         <div className="flex items-center min-[1400px]:flex-1 min-[1400px]:justify-center">
         <Link to="/" className="flex items-center shrink-0">
-          <img src={logo} alt="Heartland Mental Health Services" width={634} height={237} fetchPriority="high" decoding="async" className="h-[63px] min-[1400px]:h-20 w-auto max-w-none object-contain" />
+          <img src={logo} alt="Heartland Mental Health Services" width={634} height={237} fetchPriority="high" decoding="async" className="h-[63px] min-[1400px]:h-16 w-auto max-w-none object-contain" />
         </Link>
         </div>
 
-        <nav className="hidden min-[1400px]:flex items-center gap-1 shrink-0">
+        <nav className="hidden min-[1400px]:flex items-center gap-1 shrink-0 whitespace-nowrap">
           {navItems.map((item) => (
             <Link
               key={item.path}
@@ -80,7 +80,7 @@ const Header = () => {
                 key={item.path}
                 to={item.path}
                 onClick={() => setMobileOpen(false)}
-                className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
+                className={`whitespace-nowrap px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
                   location.pathname === item.path
                     ? "bg-secondary text-foreground"
                     : "text-muted-foreground hover:bg-secondary/50"
