@@ -80,7 +80,7 @@ const Header = () => {
                 key={item.path}
                 to={item.path}
                 onClick={() => setMobileOpen(false)}
-                className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
+                className={`whitespace-nowrap px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
                   location.pathname === item.path
                     ? "bg-secondary text-foreground"
                     : "text-muted-foreground hover:bg-secondary/50"
