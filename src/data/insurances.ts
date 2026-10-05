@@ -27,12 +27,12 @@ export type ServiceState = "Arizona" | "Iowa";
 
 export const INSURANCES_BY_STATE: Record<ServiceState, string[]> = {
   Arizona: FEATURED_INSURANCES,
-  Iowa: ["Wellmark Blue Cross Blue Shield of Iowa (HMO)", "Cashpay"],
+  Iowa: ["Wellmark Blue Cross Blue Shield of Iowa", "Medicare", "Aetna", "Cigna", "Cashpay"],
 };
 
 export const INSURANCE_NOTICES: Record<ServiceState, string> = {
   Arizona: "We do not accept Arizona AHCCCS/Medicaid plans.",
-  Iowa: "In Iowa, we currently accept Wellmark Blue Cross Blue Shield of Iowa HMO and cash pay only.",
+  Iowa: "In Iowa, we currently accept Wellmark Blue Cross Blue Shield of Iowa, Medicare, Aetna, Cigna, and cash pay.",
 };
 
 // We accept only the plans listed above.
@@ -52,7 +52,7 @@ export interface InsuranceBrand {
 export const INSURANCE_BRANDS: Record<string, InsuranceBrand> = {
   "Aetna": { name: "Aetna", short: "aetna", bg: "#FFFFFF", fg: "#7D3F98", logo: aetnaLogo.url },
   "BlueCross BlueShield": { name: "BlueCross BlueShield", short: "BCBS", bg: "#FFFFFF", fg: "#0066B2", logo: bcbsLogo.url, logoClass: "max-h-[4.5rem]" },
-  "Wellmark Blue Cross Blue Shield of Iowa (HMO)": { name: "Wellmark Blue Cross Blue Shield of Iowa (HMO)", short: "Wellmark BCBS Iowa HMO", bg: "#FFFFFF", fg: "#0066B2", logo: wellmarkLogo.url, logoClass: { sm: "max-h-16", md: "max-h-20", lg: "max-h-24" } },
+  "Wellmark Blue Cross Blue Shield of Iowa": { name: "Wellmark Blue Cross Blue Shield of Iowa", short: "Wellmark BCBS Iowa HMO", bg: "#FFFFFF", fg: "#0066B2", logo: wellmarkLogo.url, logoClass: { sm: "max-h-16", md: "max-h-20", lg: "max-h-24" } },
   "Cigna": { name: "Cigna", short: "Cigna.", bg: "#FFFFFF", fg: "#00A9E0", logo: cignaLogo.url },
   "Curative": { name: "Curative", short: "curative", bg: "#FFFFFF", fg: "#FF6B5B", logo: curativeLogo.url, logoClass: { sm: "max-h-[3.5rem]", md: "max-h-[5rem]", lg: "max-h-24" } },
   "Humana": { name: "Humana", short: "Humana.", bg: "#FFFFFF", fg: "#78BE20", logo: humanaLogo.url },

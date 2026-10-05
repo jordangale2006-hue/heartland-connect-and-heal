@@ -6,7 +6,7 @@ import { INSURANCES_BY_STATE } from "@/data/insurances";
 const InsuranceLogosStrip = () => {
   const featuredPlans = [
     ...INSURANCES_BY_STATE.Arizona.filter((plan) => plan !== "Cashpay"),
-    "Wellmark Blue Cross Blue Shield of Iowa (HMO)",
+    "Wellmark Blue Cross Blue Shield of Iowa",
   ];
 
   return (

@@ -34,7 +34,7 @@ const AnnouncementBar = () => {
       <div className="container-narrow mx-auto flex items-center justify-center gap-3">
         <p className="leading-snug">
           <span className="font-semibold">New:</span>{" "}
-          Now accepting Iowa patients — Wellmark BCBS HMO & self-pay.{" "}
+          Now accepting Iowa patients — Wellmark BCBS, Medicare, Aetna, Cigna & self-pay.{" "}
           <Link
             to="/book"
             className="font-semibold underline underline-offset-2 hover:text-white/90"
