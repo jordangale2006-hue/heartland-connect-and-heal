@@ -29,7 +29,7 @@ const Header = () => {
         </Link>
         </div>
 
-        <nav className="hidden min-[1400px]:flex items-center gap-1 shrink-0">
+        <nav className="hidden min-[1400px]:flex items-center gap-1 shrink-0 whitespace-nowrap">
           {navItems.map((item) => (
             <Link
               key={item.path}
