@@ -1,7 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Lock, Phone } from "lucide-react";
-import logo from "@/assets/logo-header.webp";
+import logoMark from "@/assets/logo-mark.webp";
+import logoWordmark from "@/assets/logo-wordmark.webp";
 import { useState } from "react";
 
 const navItems = [
