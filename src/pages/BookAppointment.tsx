@@ -13,17 +13,17 @@ const BookAppointment = () => {
   return (
     <main>
       <SEO
-        title="Book Online Psychiatry | Arizona & Iowa"
-        description="Schedule secure telehealth psychiatry in Arizona or Iowa. Insurance options vary by state, including Wellmark BCBS, Medicare, Aetna, Cigna and cash pay in Iowa."
+        title="Book Online Psychiatry in Arizona & Iowa"
+        description="Request a secure online psychiatry visit in Arizona or Iowa. Review state-specific insurance options and choose callback or self-scheduling."
         path="/book"
       />
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0">
-          <img src={comfortImage} alt="Warm comforting scene" width={800} height={800} className="w-full h-full object-cover" />
+          <img src={comfortImage} alt="Hands holding a warm cup during a quiet moment at home" width={800} height={800} className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-foreground/65" />
         </div>
         <div className="relative container-narrow mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="font-heading text-4xl sm:text-5xl font-bold text-primary-foreground mb-4">Book Your Appointment</h1>
+          <h1 className="font-heading text-4xl sm:text-5xl font-bold text-primary-foreground mb-4">Book Online Psychiatry in Arizona or Iowa</h1>
           <p className="text-primary-foreground/85 text-lg max-w-2xl mx-auto">
             Two easy ways to get started — request a callback, or self-schedule below.
           </p>

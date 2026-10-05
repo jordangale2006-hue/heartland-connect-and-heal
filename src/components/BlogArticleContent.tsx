@@ -6,7 +6,7 @@ interface BlogArticleContentProps {
   content: string;
 }
 
-const INTERNAL_LINK_PATTERN = /\[([^\]]+)\]\((\/(?:conditions\/(?:anxiety|depression)|book))\)/g;
+const INTERNAL_LINK_PATTERN = /\[([^\]]+)\]\((\/(?:conditions\/[a-z0-9-]+|book))\)/g;
 
 const renderInlineLinks = (text: string): ReactNode[] => {
   const nodes: ReactNode[] = [];

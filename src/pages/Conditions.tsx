@@ -8,7 +8,7 @@ const Conditions = () => {
   return (
     <main>
       <SEO
-        title="Conditions We Treat | Online Psychiatry AZ & IA"
+        title="Mental Health Conditions We Treat | AZ & Iowa"
         description="Explore ADHD, anxiety, depression, PTSD, bipolar disorder and other conditions treated through telepsychiatry across Arizona and Iowa."
         path="/conditions"
         jsonLd={breadcrumbSchema([
@@ -22,7 +22,7 @@ const Conditions = () => {
           <div className="max-w-2xl">
             <p className="text-accent font-semibold text-sm uppercase tracking-wider mb-2">Conditions We Treat</p>
             <h1 className="font-heading text-4xl sm:text-5xl font-bold text-foreground mb-4">
-              Expert care for the conditions that affect daily life
+              Mental health conditions we treat through virtual care
             </h1>
             <p className="text-muted-foreground text-lg leading-relaxed">
               Our board-certified psychiatric providers offer virtual evaluation, medication management, and ongoing care for adolescents and adults across Arizona and Iowa.

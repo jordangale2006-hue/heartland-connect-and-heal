@@ -55,7 +55,7 @@ const Crisis = () => {
   return (
     <main>
       <SEO
-        title="Crisis Resources | Heartland Mental Health Services"
+        title="Mental Health Crisis Resources | Arizona & Iowa"
         description="If you or someone you love is in a mental health crisis, here are immediate resources. Call or text 988 for 24/7 confidential support."
         path="/crisis"
       />
@@ -69,7 +69,7 @@ const Crisis = () => {
               Need help right now?
             </div>
             <h1 className="font-heading text-3xl sm:text-5xl font-bold text-foreground mb-4">
-              You are not alone. Help is one call away.
+              Mental health crisis resources are one call away
             </h1>
             <p className="text-muted-foreground text-lg leading-relaxed">
               If you or someone you love is in immediate danger, call <strong>911</strong> or go to the nearest emergency room. For a mental health crisis, the resources below are free, confidential, and available 24/7.

@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/structured-data";
+import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL, medicalBusinessSchema } from "@/lib/structured-data";
 
 interface SEOProps {
   title: string;
@@ -25,8 +25,9 @@ const SEO = ({
   const resolvedPath =
     path ?? (typeof window !== "undefined" ? window.location.pathname : "/");
   const canonical = `${SITE_URL}${resolvedPath}`;
-  const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
-  const ldArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+  const fullTitle = title;
+  const suppliedLd = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+  const ldArray = [medicalBusinessSchema(), ...suppliedLd];
 
   return (
     <Helmet>

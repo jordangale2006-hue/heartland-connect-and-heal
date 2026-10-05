@@ -6,7 +6,32 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import SEO from "@/components/SEO";
 import BlogArticleContent from "@/components/BlogArticleContent";
-import { articleSchema, SITE_URL } from "@/lib/structured-data";
+import { articleSchema, breadcrumbSchema, SITE_URL } from "@/lib/structured-data";
+
+const BLOG_SEO_TITLES: Record<string, string> = {
+  "is-telehealth-psychiatry-right-for-you": "Telehealth Psychiatry: Is Online Care Right for You?",
+  "online-adhd-treatment-care": "Online ADHD Treatment in Arizona & Iowa",
+  "anxiety-vs-depression-how-to-tell-the-difference": "Anxiety vs. Depression: Know the Difference",
+};
+
+const BLOG_SEO_DESCRIPTIONS: Record<string, string> = {
+  "is-telehealth-psychiatry-right-for-you": "Learn how telehealth psychiatry works, who it may help, and what to expect from secure online mental health care in Arizona and Iowa.",
+  "online-adhd-treatment-care": "Learn what to expect from online ADHD evaluation, medication management, and ongoing care for patients in Arizona and Iowa.",
+  "anxiety-vs-depression-how-to-tell-the-difference": "Anxiety and depression can overlap. Learn common signs, key differences, and when to seek professional support in Arizona or Iowa.",
+};
+
+const BLOG_RELATED_LINKS: Record<string, { label: string; path: string }[]> = {
+  "is-telehealth-psychiatry-right-for-you": [
+    { label: "Explore online anxiety treatment", path: "/conditions/anxiety" },
+    { label: "Explore online depression treatment", path: "/conditions/depression" },
+    { label: "Request a first visit", path: "/book" },
+  ],
+  "online-adhd-treatment-care": [
+    { label: "Learn about online ADHD treatment", path: "/conditions/adhd" },
+    { label: "Explore anxiety treatment", path: "/conditions/anxiety" },
+    { label: "Book an ADHD evaluation", path: "/book" },
+  ],
+};
 
 interface BlogPostData {
   id: string;
@@ -70,19 +95,25 @@ const BlogPost = () => {
   return (
     <main className="container-narrow mx-auto px-4 sm:px-6 lg:px-8 py-12 max-w-3xl">
       <SEO
-        title={post.title}
-        description={post.excerpt || `${post.title} — Heartland Mental Health Services blog.`}
+        title={BLOG_SEO_TITLES[post.slug] ?? post.title.slice(0, 59)}
+        description={BLOG_SEO_DESCRIPTIONS[post.slug] ?? post.excerpt ?? `${post.title} — Heartland Mental Health Services blog.`}
         path={`/blog/${post.slug}`}
         type="article"
-        image={post.cover_image_url || undefined}
-        jsonLd={articleSchema({
-          title: post.title,
-          description: post.excerpt || undefined,
-          image: post.cover_image_url || undefined,
-          author: post.author || undefined,
-          datePublished: post.published_at || undefined,
-          url: `${SITE_URL}/blog/${post.slug}`,
-        })}
+        jsonLd={[
+          articleSchema({
+            title: post.title,
+            description: post.excerpt || undefined,
+            image: post.cover_image_url || undefined,
+            author: post.author || undefined,
+            datePublished: post.published_at || undefined,
+            url: `${SITE_URL}/blog/${post.slug}`,
+          }),
+          breadcrumbSchema([
+            { name: "Home", url: `${SITE_URL}/` },
+            { name: "Blog", url: `${SITE_URL}/blog` },
+            { name: post.title, url: `${SITE_URL}/blog/${post.slug}` },
+          ]),
+        ]}
       />
       <Link to="/blog" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-6">
         <ArrowLeft className="h-4 w-4 mr-1" /> Back to Blog
@@ -106,7 +137,7 @@ const BlogPost = () => {
         {post.cover_image_url && (
           <img
             src={post.cover_image_url}
-            alt={post.title}
+            alt={`Featured image for ${post.title}`}
             width={1536}
             height={864}
             className="w-full rounded-lg mb-8 object-cover max-h-96"
@@ -114,6 +145,20 @@ const BlogPost = () => {
         )}
 
         <BlogArticleContent content={post.content} />
+        {BLOG_RELATED_LINKS[post.slug] && (
+          <aside className="mt-10 border-t border-border pt-6" aria-label="Related mental health resources">
+            <h2 className="font-serif text-2xl text-foreground mb-3">Continue exploring</h2>
+            <ul className="space-y-2">
+              {BLOG_RELATED_LINKS[post.slug].map((item) => (
+                <li key={item.path}>
+                  <Link to={item.path} className="font-medium text-primary underline underline-offset-4 hover:text-primary/80">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </aside>
+        )}
       </article>
     </main>
   );

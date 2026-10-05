@@ -32,8 +32,8 @@ const About = () => {
   return (
     <main>
       <SEO
-        title="About Us | Heartland Mental Health Services"
-        description="Meet our board-certified psychiatric providers offering virtual mental health care to patients statewide across Arizona and Iowa."
+        title="About Our Online Psychiatry Team | Heartland"
+        description="Meet Heartland's board-certified psychiatric providers offering 100% virtual mental health care to patients across Arizona and Iowa."
         path="/about"
       />
       {/* Hero with sunrise image */}
@@ -43,7 +43,7 @@ const About = () => {
           <div className="absolute inset-0 bg-foreground/50" />
         </div>
         <div className="relative container-narrow mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="font-heading text-4xl sm:text-5xl font-bold text-primary-foreground mb-4">About Us</h1>
+          <h1 className="font-heading text-4xl sm:text-5xl font-bold text-primary-foreground mb-4">About Our Online Psychiatry Team</h1>
           <p className="text-primary-foreground/85 text-lg max-w-2xl mx-auto">Get to know the heart behind Heartland Mental Health Services.</p>
         </div>
       </section>
