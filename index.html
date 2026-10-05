@@ -53,35 +53,6 @@
         --el-shadow: 0 18px 48px -12px rgba(120, 70, 30, 0.28);
         --el-font: 'Source Sans 3', system-ui, -apple-system, sans-serif;
       }
-
-      /* Honest labelling for the AI voice assistant floating in the bottom-right. */
-      #ai-assistant-note {
-        position: fixed;
-        right: 16px;
-        bottom: 196px;
-
-        z-index: 55;
-        max-width: 250px;
-        text-align: right;
-        font-family: 'Source Sans 3', system-ui, -apple-system, sans-serif;
-        font-size: 11px;
-        line-height: 1.35;
-        color: #7a6f63;
-        background: rgba(251, 246, 239, 0.92);
-        border: 1px solid rgba(217, 122, 60, 0.18);
-        border-radius: 10px;
-        padding: 5px 9px;
-        pointer-events: none;
-      }
-      #ai-assistant-note a {
-        color: #b3541e;
-        font-weight: 600;
-        text-decoration: underline;
-        pointer-events: auto;
-      }
-      @media (max-width: 480px) {
-        #ai-assistant-note { max-width: 210px; right: 12px; }
-      }
     </style>
 
     <elevenlabs-convai
@@ -93,10 +64,6 @@
       language="en"
       text-contents='{"main_label":"Questions? Chat with our AI assistant","start_call":"Start AI voice chat","end_call":"End AI voice chat"}'
     ></elevenlabs-convai>
-    <div id="ai-assistant-note">
-      Automated assistant — not a call to our office. If you're in crisis, call or text
-      <a href="tel:988">988</a>.
-    </div>
 
     <script>
       // Lazy-load the ElevenLabs widget to keep it off the critical main-thread path.
