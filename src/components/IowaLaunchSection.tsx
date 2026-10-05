@@ -25,7 +25,7 @@ const IowaLaunchSection = () => {
               </p>
               <p>
                 <strong className="text-foreground">Insurance:</strong> Wellmark Blue
-                Cross Blue Shield of Iowa (HMO).
+                Cross Blue Shield of Iowa, Medicare, Aetna, and Cigna.
               </p>
               <p>
                 <strong className="text-foreground">Also available:</strong> Self-pay,

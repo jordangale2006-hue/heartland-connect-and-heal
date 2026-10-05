@@ -14,7 +14,7 @@ const BookAppointment = () => {
     <main>
       <SEO
         title="Book Online Psychiatry | Arizona & Iowa"
-        description="Schedule secure telehealth psychiatry in Arizona or Iowa. Insurance options vary by state, including Wellmark BCBS Iowa HMO and cash pay in Iowa."
+        description="Schedule secure telehealth psychiatry in Arizona or Iowa. Insurance options vary by state, including Wellmark BCBS, Medicare, Aetna, Cigna and cash pay in Iowa."
         path="/book"
       />
       <section className="relative py-24 overflow-hidden">

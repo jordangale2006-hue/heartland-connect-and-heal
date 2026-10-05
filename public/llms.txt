@@ -4,7 +4,7 @@
 
 Heartland Mental Health Services is a 100% virtual psychiatric practice serving patients statewide in Arizona and Iowa. We provide comprehensive mental health care via secure telehealth, including evaluation, diagnosis, medication management, and psychotherapy.
 
-Insurance varies by state. Arizona options include Aetna, Blue Cross Blue Shield, Cigna, Curative, Humana, Medicare, Tricare, UnitedHealthcare, MultiPlan PHCS, and cash pay. Iowa options are Wellmark Blue Cross Blue Shield of Iowa (HMO) and cash pay.
+Insurance varies by state. Arizona options include Aetna, Blue Cross Blue Shield, Cigna, Curative, Humana, Medicare, Tricare, UnitedHealthcare, MultiPlan PHCS, and cash pay. Iowa options are Wellmark Blue Cross Blue Shield of Iowa, Medicare, Aetna, Cigna, and cash pay.
 
 ## Pages
 
