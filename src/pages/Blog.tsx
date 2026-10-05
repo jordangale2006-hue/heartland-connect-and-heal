@@ -80,7 +80,7 @@ const Blog = () => {
                 {post.cover_image_url && (
                   <img
                     src={post.cover_image_url}
-                    alt={post.title}
+                    alt={`Featured image for ${post.title}`}
                     loading="lazy"
                     className="w-full h-48 object-cover rounded-t-lg"
                   />

@@ -20,6 +20,19 @@ const BLOG_SEO_DESCRIPTIONS: Record<string, string> = {
   "anxiety-vs-depression-how-to-tell-the-difference": "Anxiety and depression can overlap. Learn common signs, key differences, and when to seek professional support in Arizona or Iowa.",
 };
 
+const BLOG_RELATED_LINKS: Record<string, { label: string; path: string }[]> = {
+  "is-telehealth-psychiatry-right-for-you": [
+    { label: "Explore online anxiety treatment", path: "/conditions/anxiety" },
+    { label: "Explore online depression treatment", path: "/conditions/depression" },
+    { label: "Request a first visit", path: "/book" },
+  ],
+  "online-adhd-treatment-care": [
+    { label: "Learn about online ADHD treatment", path: "/conditions/adhd" },
+    { label: "Explore anxiety treatment", path: "/conditions/anxiety" },
+    { label: "Book an ADHD evaluation", path: "/book" },
+  ],
+};
+
 interface BlogPostData {
   id: string;
   slug: string;
@@ -132,6 +145,20 @@ const BlogPost = () => {
         )}
 
         <BlogArticleContent content={post.content} />
+        {BLOG_RELATED_LINKS[post.slug] && (
+          <aside className="mt-10 border-t border-border pt-6" aria-label="Related mental health resources">
+            <h2 className="font-serif text-2xl text-foreground mb-3">Continue exploring</h2>
+            <ul className="space-y-2">
+              {BLOG_RELATED_LINKS[post.slug].map((item) => (
+                <li key={item.path}>
+                  <Link to={item.path} className="font-medium text-primary underline underline-offset-4 hover:text-primary/80">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </aside>
+        )}
       </article>
     </main>
   );
