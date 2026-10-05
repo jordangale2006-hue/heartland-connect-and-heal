@@ -51,7 +51,7 @@ const BlogArticleContent = ({ content }: BlogArticleContentProps) => {
           if (label && path === "/book") {
             return (
               <div key={index} className="not-prose my-10 text-center">
-                <Button asChild variant="warm" size="lg" className="h-auto max-w-full whitespace-normal py-3 text-center">
+                <Button asChild variant="warmCta" size="lg" className="h-auto max-w-full whitespace-normal py-3 text-center">
                   <Link to={path}>{label}</Link>
                 </Button>
               </div>
