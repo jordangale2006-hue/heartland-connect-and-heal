@@ -44,6 +44,8 @@ const faqs = [
   { q: "Is everything I share confidential?", a: "Absolutely. All sessions and communications are protected by strict HIPAA privacy regulations. Your information is safe with us." },
   { q: "How long are sessions?", a: "Standard sessions are typically 45–60 minutes. Initial evaluations may be longer to ensure we understand your needs fully." },
   { q: "Do you offer telehealth appointments?", a: "Yes, we offer secure video sessions for your convenience, allowing you to receive care from the comfort of your home." },
+  { q: "Do you prescribe controlled substances such as ADHD stimulants?", a: "Yes. When clinically indicated as part of your treatment plan, our providers may prescribe stimulant medications for ADHD through telehealth. Medication is only prescribed after appropriate evaluation and in line with applicable federal and state telemedicine prescribing rules. Note: current federal telehealth prescribing flexibilities for controlled substances are extended through December 31, 2026, and state requirements may differ. Your provider will discuss whether medication is appropriate for you during your visit." },
+  { q: "What ages do you treat?", a: "We provide care for patients ages 6 and older — children, adolescents, and adults. For patients under 18, a parent or guardian is typically involved in care." },
 ];
 
 const TestimonialsSlider = () => {

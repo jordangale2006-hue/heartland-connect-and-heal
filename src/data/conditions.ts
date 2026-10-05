@@ -22,9 +22,9 @@ export const CONDITIONS: Condition[] = [
     shortName: "ADHD",
     metaTitle: "ADHD Treatment in Arizona & Iowa | Online Care",
     metaDescription:
-      "Virtual ADHD evaluation, diagnosis, and medication management for adolescents and adults across Arizona and Iowa.",
+      "Virtual ADHD evaluation, diagnosis, and medication management for patients ages 6 and older across Arizona and Iowa.",
     hero: {
-      eyebrow: "Adult & Adolescent ADHD",
+      eyebrow: "ADHD Care for Ages 6+",
       headline: "ADHD treatment in Arizona and Iowa — from a board-certified psychiatric provider",
       intro:
         "If focus, organization, restlessness, or follow-through have always felt harder for you than for others, you may be living with undiagnosed or undertreated ADHD. We provide thorough virtual evaluations and ongoing medication management designed around your real life.",
@@ -49,6 +49,10 @@ export const CONDITIONS: Condition[] = [
       {
         q: "Can you prescribe ADHD medication via telehealth in Arizona and Iowa?",
         a: "Yes. We follow current DEA telehealth flexibilities and applicable state regulations. Controlled medications are prescribed only when clinically appropriate after a thorough evaluation.",
+      },
+      {
+        q: "Do you prescribe controlled substances such as ADHD stimulants?",
+        a: "Yes. When clinically indicated as part of your treatment plan, our providers may prescribe stimulant medications for ADHD through telehealth. Medication is only prescribed after appropriate evaluation and in line with applicable federal and state telemedicine prescribing rules. Note: current federal telehealth prescribing flexibilities for controlled substances are extended through December 31, 2026, and state requirements may differ. Your provider will discuss whether medication is appropriate for you during your visit.",
       },
       {
         q: "Do I need prior records to be evaluated?",
