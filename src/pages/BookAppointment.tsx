@@ -109,13 +109,15 @@ const BookAppointment = () => {
                   </li>
                 </ul>
               </div>
-
-              <InsurancesAccepted variant="card" />
             </div>
+
           </div>
         </div>
       </section>
+
+      <InsurancesAccepted />
     </main>
+
   );
 };
 
