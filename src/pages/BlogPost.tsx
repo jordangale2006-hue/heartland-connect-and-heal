@@ -5,6 +5,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import SEO from "@/components/SEO";
+import BlogArticleContent from "@/components/BlogArticleContent";
 import { articleSchema, SITE_URL } from "@/lib/structured-data";
 
 interface BlogPostData {
@@ -106,13 +107,13 @@ const BlogPost = () => {
           <img
             src={post.cover_image_url}
             alt={post.title}
+            width={1536}
+            height={864}
             className="w-full rounded-lg mb-8 object-cover max-h-96"
           />
         )}
 
-        <div className="prose prose-lg max-w-none text-foreground whitespace-pre-wrap leading-relaxed">
-          {post.content}
-        </div>
+        <BlogArticleContent content={post.content} />
       </article>
     </main>
   );
