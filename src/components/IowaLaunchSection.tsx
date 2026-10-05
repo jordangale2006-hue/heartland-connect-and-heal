@@ -46,8 +46,13 @@ const IowaLaunchSection = () => {
                 <div className="flex items-start gap-3">
                   <ShieldCheck className="h-5 w-5 text-accent shrink-0 mt-0.5" />
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    Wellmark HMO plans may require a referral from your primary care
-                    provider for behavioral health visits. Not sure about yours? Call us
+                    Plan availability may vary by product. Not sure about yours?{" "}
+                    <a
+                      href="tel:+15205955709"
+                      className="text-accent underline underline-offset-2 hover:opacity-80"
+                    >
+                      Call us
+                    </a>{" "}
                     and we'll check before your first appointment.
                   </p>
                 </div>
