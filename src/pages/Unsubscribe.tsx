@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Loader2, CheckCircle2, AlertCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import SEO from "@/components/SEO";
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string;
@@ -62,6 +63,12 @@ const Unsubscribe = () => {
 
   return (
     <main className="min-h-[70vh] flex items-center justify-center section-padding">
+      <SEO
+        title="Manage Email Preferences | Heartland"
+        description="Manage email preferences for Heartland Mental Health Services."
+        path="/unsubscribe"
+        noIndex
+      />
       <div className="max-w-md w-full bg-card border border-border/50 rounded-2xl p-8 text-center">
         {state === "loading" && (
           <>

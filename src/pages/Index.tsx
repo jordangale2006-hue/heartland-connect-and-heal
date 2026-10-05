@@ -17,7 +17,7 @@ import TrustStrip from "@/components/TrustStrip";
 import IowaLaunchSection from "@/components/IowaLaunchSection";
 import SEO from "@/components/SEO";
 import { Helmet } from "react-helmet-async";
-import { medicalBusinessSchema, faqPageSchema } from "@/lib/structured-data";
+import { faqPageSchema } from "@/lib/structured-data";
 
 const benefits = [
   { icon: Heart, title: "Patient-Centered Care", desc: "Your well-being is at the heart of everything we do." },
@@ -164,10 +164,10 @@ const Index = () => {
   return (
     <main>
       <SEO
-        title="Online Psychiatry in Arizona & Iowa | Heartland"
-        description="Virtual psychiatry and medication management across Arizona and Iowa. State-specific insurance and cash-pay options available. Book telehealth care."
+        title="Online Psychiatrist Arizona & Iowa | Heartland"
+        description="100% virtual psychiatry and medication management for patients across Arizona and Iowa. Request an online appointment with Heartland today."
         path="/"
-        jsonLd={[medicalBusinessSchema(), faqPageSchema(faqs)]}
+        jsonLd={faqPageSchema(faqs)}
       />
       <Helmet>
         <link rel="preload" as="image" href={heroImage} fetchPriority="high" />
