@@ -27,6 +27,7 @@ const Header = () => {
         <Link to="/" className="flex items-center shrink-0">
           <img src={logo} alt="Heartland Mental Health Services" width={634} height={237} fetchPriority="high" decoding="async" className="h-[63px] min-[1400px]:h-20 w-auto max-w-none object-contain" />
         </Link>
+        </div>
 
         <nav className="hidden min-[1400px]:flex items-center gap-1 shrink-0">
           {navItems.map((item) => (
