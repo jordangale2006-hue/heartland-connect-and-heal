@@ -9,12 +9,14 @@ import BlogArticleContent from "@/components/BlogArticleContent";
 import { articleSchema, breadcrumbSchema, SITE_URL } from "@/lib/structured-data";
 
 const BLOG_SEO_TITLES: Record<string, string> = {
+  "do-i-need-therapy-medication-or-both": "Therapy, Medication, or Both? | Arizona & Iowa",
   "is-telehealth-psychiatry-right-for-you": "Telehealth Psychiatry: Is Online Care Right for You?",
   "online-adhd-treatment-care": "Online ADHD Treatment in Arizona & Iowa",
   "anxiety-vs-depression-how-to-tell-the-difference": "Anxiety vs. Depression: Know the Difference",
 };
 
 const BLOG_SEO_DESCRIPTIONS: Record<string, string> = {
+  "do-i-need-therapy-medication-or-both": "Explore therapy, psychiatric medication, and combined care with Heartland’s PMHNPs, serving Arizona and Iowa through personalized virtual visits.",
   "is-telehealth-psychiatry-right-for-you": "Learn how telehealth psychiatry works, who it may help, and what to expect from secure online mental health care in Arizona and Iowa.",
   "online-adhd-treatment-care": "Learn what to expect from online ADHD evaluation, medication management, and ongoing care for patients in Arizona and Iowa.",
   "anxiety-vs-depression-how-to-tell-the-difference": "Anxiety and depression can overlap. Learn common signs, key differences, and when to seek professional support in Arizona or Iowa.",
