@@ -1,15 +1,12 @@
 import { createClient } from 'npm:@supabase/supabase-js@2'
 import { sendEmail } from '../_shared/send-email.ts'
-
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-}
+import { corsHeadersFor, isHoneypotFilled, isRateLimited, runInBackground } from '../_shared/security.ts'
 
 interface Body {
   name?: unknown
   email?: unknown
   message?: unknown
+  website?: unknown // honeypot — must stay empty
 }
 
 function isStr(v: unknown): v is string {
@@ -17,22 +14,34 @@ function isStr(v: unknown): v is string {
 }
 
 Deno.serve(async (req) => {
-  if (req.method === 'OPTIONS') return new Response(null, { headers: corsHeaders })
-  if (req.method !== 'POST') {
-    return new Response(JSON.stringify({ error: 'Method not allowed' }), {
-      status: 405,
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+  const corsHeaders = corsHeadersFor(req)
+  const json = (status: number, data: unknown) =>
+    new Response(JSON.stringify(data), {
+      status, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     })
-  }
+
+  if (req.method === 'OPTIONS') return new Response(null, { headers: corsHeaders })
+  if (req.method !== 'POST') return json(405, { error: 'Method not allowed' })
 
   let body: Body
   try {
     body = await req.json()
   } catch {
-    return new Response(JSON.stringify({ error: 'Invalid JSON' }), {
-      status: 400,
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-    })
+    return json(400, { error: 'Invalid JSON' })
+  }
+
+  // Honeypot: pretend success, save nothing, send nothing
+  if (isHoneypotFilled(body.website)) {
+    return json(200, { success: true })
+  }
+
+  const supabase = createClient(
+    Deno.env.get('SUPABASE_URL')!,
+    Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
+  )
+
+  if (await isRateLimited(supabase, req, 'submit-contact')) {
+    return json(429, { error: 'Too many requests. Please call us at (520) 595-5709.' })
   }
 
   // Server-side validation (do not trust client)
@@ -46,16 +55,8 @@ Deno.serve(async (req) => {
     email.length < 3 || email.length > 255 || !emailRe.test(email) ||
     message.length < 5 || message.length > 2000
   ) {
-    return new Response(JSON.stringify({ error: 'Invalid input' }), {
-      status: 400,
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-    })
+    return json(400, { error: 'Invalid input' })
   }
-
-  const supabase = createClient(
-    Deno.env.get('SUPABASE_URL')!,
-    Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
-  )
 
   const id = crypto.randomUUID()
   const { error: insertError } = await supabase
@@ -64,14 +65,12 @@ Deno.serve(async (req) => {
 
   if (insertError) {
     console.error('Insert failed', insertError)
-    return new Response(JSON.stringify({ error: 'Failed to save submission' }), {
-      status: 500,
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-    })
+    return json(500, { error: 'Failed to save submission' })
   }
 
-  // Emails: failures are logged, not swallowed, but never block the user response
-  await Promise.all([
+  // Send emails in the background so the user gets an instant response.
+  // Failures are logged, not swallowed, but never block the user response.
+  await runInBackground(Promise.all([
     sendEmail(supabase, {
       templateName: 'contact-confirmation',
       recipientEmail: email,
@@ -83,10 +82,7 @@ Deno.serve(async (req) => {
       idempotencyKey: `contact-notify-${id}`,
       templateData: { name, email, message },
     }),
-  ])
+  ]))
 
-  return new Response(JSON.stringify({ success: true }), {
-    status: 200,
-    headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-  })
+  return json(200, { success: true })
 })
