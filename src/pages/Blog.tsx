@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -17,23 +17,22 @@ interface BlogPost {
 }
 
 const Blog = () => {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    const load = async () => {
+  const { data: posts = [], isPending: loading, isError: error } = useQuery({
+    queryKey: ["blog-posts"],
+    staleTime: 5 * 60 * 1000,
+    queryFn: async () => {
       const { data, error: err } = await supabase
         .from("blog_posts")
         .select("id, slug, title, excerpt, cover_image_url, author, published_at")
         .eq("published", true)
         .order("published_at", { ascending: false });
-      if (err) { console.error("Failed to load blog posts", err); setError(true); }
-      setPosts(data ?? []);
-      setLoading(false);
-    };
-    load();
-  }, []);
+      if (err) {
+        console.error("Failed to load blog posts", err);
+        throw err;
+      }
+      return (data ?? []) as BlogPost[];
+    },
+  });
 
   return (
     <main className="container-narrow mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
