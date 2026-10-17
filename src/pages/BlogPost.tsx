@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -48,28 +48,24 @@ interface BlogPostData {
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
-  const [post, setPost] = useState<BlogPostData | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [notFound, setNotFound] = useState(false);
-
-  useEffect(() => {
-    if (!slug) return;
-    const load = async () => {
-      const { data } = await supabase
+  const { data: post, isPending: loading, isError, refetch } = useQuery({
+    queryKey: ["blog-post", slug],
+    staleTime: 5 * 60 * 1000,
+    enabled: !!slug,
+    queryFn: async () => {
+      const { data, error } = await supabase
         .from("blog_posts")
         .select("*")
-        .eq("slug", slug)
+        .eq("slug", slug!)
         .eq("published", true)
         .maybeSingle();
-      if (!data) {
-        setNotFound(true);
-      } else {
-        setPost(data as BlogPostData);
+      if (error) {
+        console.error("Failed to load blog post", error);
+        throw error;
       }
-      setLoading(false);
-    };
-    load();
-  }, [slug]);
+      return (data as BlogPostData | null) ?? null;
+    },
+  });
 
   if (loading) {
     return (
@@ -83,7 +79,22 @@ const BlogPost = () => {
     );
   }
 
-  if (notFound || !post) {
+  if (isError) {
+    return (
+      <main className="container-narrow mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
+        <h1 className="font-serif text-3xl mb-4">Couldn't load this post</h1>
+        <p className="text-muted-foreground mb-6">Please check your connection and try again.</p>
+        <div className="flex items-center justify-center gap-3">
+          <Button variant="warmCta" onClick={() => refetch()}>Try again</Button>
+          <Button asChild variant="outlineWarm">
+            <Link to="/blog">Back to Blog</Link>
+          </Button>
+        </div>
+      </main>
+    );
+  }
+
+  if (!post) {
     return (
       <main className="container-narrow mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
         <h1 className="font-serif text-3xl mb-4">Post not found</h1>
