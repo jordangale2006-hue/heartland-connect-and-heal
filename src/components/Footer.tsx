@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
 import logo from "@/assets/logo.webp";
-import facebookIcon from "@/assets/facebook-icon.png";
-import instagramIcon from "@/assets/instagram-icon.svg";
-import linkedinIcon from "@/assets/linkedin-icon.png";
+import facebookIcon from "@/assets/facebook-icon.webp";
+import instagramIcon from "@/assets/instagram-icon.webp";
+import linkedinIcon from "@/assets/linkedin-icon.webp";
 import OfficeHours from "@/components/OfficeHours";
 
 const socials = [
@@ -104,6 +104,8 @@ const Footer = () => {
                   <img
                     src={social.icon}
                     alt={social.alt}
+                    width={36}
+                    height={36}
                     className="w-9 h-9 rounded-lg object-fill"
                     loading="lazy"
                   />

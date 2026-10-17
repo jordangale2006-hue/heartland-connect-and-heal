@@ -45,6 +45,7 @@ const Contact = () => {
       }
       if (error || !data?.success) throw error || new Error("Submission failed");
 
+      try { sessionStorage.setItem("heartland-form-submitted", "1"); } catch { /* ignore */ }
       toast.success("Message sent! We'll get back to you soon.");
       setName("");
       setEmail("");

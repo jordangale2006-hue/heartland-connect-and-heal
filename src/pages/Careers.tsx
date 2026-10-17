@@ -125,6 +125,7 @@ const Careers = () => {
         throw error;
       }
 
+      try { sessionStorage.setItem("heartland-form-submitted", "1"); } catch { /* ignore */ }
       toast.success("Application submitted! Check your inbox for a confirmation.");
       resetForm();
     } catch (err) {

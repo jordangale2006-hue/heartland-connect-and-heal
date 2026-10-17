@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { X } from "lucide-react";
 
 const STORAGE_KEY = "heartland-iowa-announcement-dismissed";
 
 const AnnouncementBar = () => {
   const [dismissed, setDismissed] = useState(true);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     try {
@@ -24,7 +25,8 @@ const AnnouncementBar = () => {
     }
   };
 
-  if (dismissed) return null;
+  // Keep the crisis page focused on crisis resources — no marketing banner
+  if (dismissed || pathname.startsWith("/crisis")) return null;
 
   return (
     <div

@@ -1,10 +1,10 @@
 import aetnaLogo from "@/assets/aetna.jpg.asset.json";
-import humanaLogo from "@/assets/humana.png.asset.json";
+import humanaLogo from "@/assets/humana.webp.asset.json";
 import cignaLogo from "@/assets/cigna.webp.asset.json";
 import bcbsLogo from "@/assets/bcbs.webp.asset.json";
 import uhcLogo from "@/assets/uhc.png.asset.json";
-import tricareLogo from "@/assets/tricare.svg.asset.json";
-import medicareLogo from "@/assets/medicare.png.asset.json";
+import tricareLogo from "@/assets/tricare.webp.asset.json";
+import medicareLogo from "@/assets/medicare.webp.asset.json";
 import cashpayLogo from "@/assets/cashpay.webp.asset.json";
 import multiplanLogo from "@/assets/multiplan.webp.asset.json";
 import curativeLogo from "@/assets/curative.webp.asset.json";
@@ -47,6 +47,8 @@ export interface InsuranceBrand {
   fg: string;
   logo?: string;
   logoClass?: string | Partial<Record<"sm" | "md" | "lg", string>>;
+  logoWidth?: number;
+  logoHeight?: number;
 }
 
 export const INSURANCE_BRANDS: Record<string, InsuranceBrand> = {
@@ -55,10 +57,10 @@ export const INSURANCE_BRANDS: Record<string, InsuranceBrand> = {
   "Wellmark Blue Cross Blue Shield of Iowa": { name: "Wellmark Blue Cross Blue Shield of Iowa", short: "Wellmark BCBS of Iowa", bg: "#FFFFFF", fg: "#0066B2", logo: wellmarkLogo.url, logoClass: { sm: "max-h-16", md: "max-h-20", lg: "max-h-24" } },
   "Cigna": { name: "Cigna", short: "Cigna.", bg: "#FFFFFF", fg: "#00A9E0", logo: cignaLogo.url },
   "Curative": { name: "Curative", short: "curative", bg: "#FFFFFF", fg: "#FF6B5B", logo: curativeLogo.url, logoClass: { sm: "max-h-[3.5rem]", md: "max-h-[5rem]", lg: "max-h-24" } },
-  "Humana": { name: "Humana", short: "Humana.", bg: "#FFFFFF", fg: "#78BE20", logo: humanaLogo.url },
-  "Medicare": { name: "Medicare", short: "MEDICARE", bg: "#FFFFFF", fg: "#003D7A", logo: medicareLogo.url },
+  "Humana": { name: "Humana", short: "Humana.", bg: "#FFFFFF", fg: "#78BE20", logo: humanaLogo.url, logoWidth: 320, logoHeight: 141 },
+  "Medicare": { name: "Medicare", short: "MEDICARE", bg: "#FFFFFF", fg: "#003D7A", logo: medicareLogo.url, logoWidth: 320, logoHeight: 130 },
   "UnitedHealthcare": { name: "UnitedHealthcare", short: "UHC", bg: "#FFFFFF", fg: "#002677", logo: uhcLogo.url },
-  "Tricare": { name: "Tricare", short: "TRICARE", bg: "#FFFFFF", fg: "#023F88", logo: tricareLogo.url },
+  "Tricare": { name: "Tricare", short: "TRICARE", bg: "#FFFFFF", fg: "#023F88", logo: tricareLogo.url, logoWidth: 320, logoHeight: 161 },
   "MultiPlan PHCS": { name: "MultiPlan PHCS", short: "MultiPlan", bg: "#FFFFFF", fg: "#00427A", logo: multiplanLogo.url, logoClass: "max-h-[4.5rem]" },
   "Cashpay": { name: "Cashpay", short: "Cash Pay", bg: "#FFFFFF", fg: "#1F2937", logo: cashpayLogo.url },
 };

@@ -20,7 +20,7 @@ export const AppointmentDialogProvider = ({ children }: { children: ReactNode })
   }, []);
 
   return (
-    <AppointmentDialogContext.Provider value={{ open, close }}>
+    <AppointmentDialogContext.Provider value={{ open, close, isOpen }}>
       {children}
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="max-w-lg max-h-[90vh] overflow-y-auto">

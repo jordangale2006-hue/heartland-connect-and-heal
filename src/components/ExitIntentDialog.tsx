@@ -1,26 +1,59 @@
 import { useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Heart } from "lucide-react";
 import { useAppointmentDialog } from "./AppointmentDialogProvider";
 
 const STORAGE_KEY = "heartland-exit-intent-shown";
+const SUBMITTED_KEY = "heartland-form-submitted";
+
+// Never interrupt crisis, booking, contact, application, or legal pages
+const BLOCKED_PATHS = ["/crisis", "/book", "/contact", "/careers", "/privacy", "/hipaa-notice", "/unsubscribe"];
+
+const storage = {
+  get(key: string): string | null {
+    try { return sessionStorage.getItem(key); } catch { return null; }
+  },
+  set(key: string, value: string) {
+    try { sessionStorage.setItem(key, value); } catch { /* ignore */ }
+  },
+};
 
 const ExitIntentDialog = () => {
   const [open, setOpen] = useState(false);
   const triggered = useRef(false);
-  const { open: openAppointment } = useAppointmentDialog();
+  const formTouched = useRef(false);
+  const { open: openAppointment, isOpen: appointmentOpen } = useAppointmentDialog();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (sessionStorage.getItem(STORAGE_KEY)) return;
+    if (BLOCKED_PATHS.some((p) => pathname.startsWith(p))) return;
+    if (storage.get(STORAGE_KEY)) return;
+    if (storage.get(SUBMITTED_KEY)) return;
+
+    const canShow = () =>
+      !triggered.current &&
+      !formTouched.current &&
+      !appointmentOpen &&
+      !storage.get(SUBMITTED_KEY);
 
     const trigger = () => {
-      if (triggered.current) return;
+      if (!canShow()) return;
       triggered.current = true;
-      sessionStorage.setItem(STORAGE_KEY, "1");
+      storage.set(STORAGE_KEY, "1");
       setOpen(true);
     };
+
+    // If the visitor has focused or typed in any form field, never interrupt them
+    const onFocusIn = (e: FocusEvent) => {
+      const t = e.target as HTMLElement | null;
+      if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.tagName === "SELECT")) {
+        formTouched.current = true;
+      }
+    };
+    document.addEventListener("focusin", onFocusIn);
 
     const isMobile = window.matchMedia("(max-width: 767px)").matches;
     let timeoutId: number | undefined;
@@ -43,11 +76,12 @@ const ExitIntentDialog = () => {
     }
 
     return () => {
+      document.removeEventListener("focusin", onFocusIn);
       window.removeEventListener("scroll", onScroll);
       document.removeEventListener("mouseleave", onMouseLeave);
       if (timeoutId) window.clearTimeout(timeoutId);
     };
-  }, []);
+  }, [pathname, appointmentOpen]);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>

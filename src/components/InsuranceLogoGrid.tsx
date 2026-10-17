@@ -43,6 +43,7 @@ const InsuranceLogoGrid = ({ size = "md", exclude = [], className = "", plans = 
                   src={b.logo}
                   alt={b.name}
                   loading="lazy"
+                  {...(b.logoWidth && b.logoHeight ? { width: b.logoWidth, height: b.logoHeight } : {})}
                   className={`${(typeof b.logoClass === "object" ? b.logoClass?.[size] : b.logoClass) || s.img} w-full max-w-full object-contain`}
                   onError={(event) => { event.currentTarget.style.display = "none"; }}
                 />
