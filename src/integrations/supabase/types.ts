@@ -206,6 +206,27 @@ export type Database = {
         }
         Relationships: []
       }
+      form_rate_limits: {
+        Row: {
+          created_at: string
+          function_name: string
+          id: string
+          ip_hash: string
+        }
+        Insert: {
+          created_at?: string
+          function_name: string
+          id?: string
+          ip_hash: string
+        }
+        Update: {
+          created_at?: string
+          function_name?: string
+          id?: string
+          ip_hash?: string
+        }
+        Relationships: []
+      }
       job_applications: {
         Row: {
           convicted: string

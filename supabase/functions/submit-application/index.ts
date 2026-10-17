@@ -1,10 +1,6 @@
 import { createClient } from 'npm:@supabase/supabase-js@2'
 import { sendEmail } from '../_shared/send-email.ts'
-
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-}
+import { corsHeadersFor, isHoneypotFilled, isRateLimited, runInBackground } from '../_shared/security.ts'
 
 interface Body {
   firstName?: unknown
@@ -15,6 +11,7 @@ interface Body {
   convictionDetails?: unknown
   fingerprintCard?: unknown
   resume?: unknown // { filename, contentType, base64 }
+  website?: unknown // honeypot — must stay empty
 }
 
 const isStr = (v: unknown): v is string => typeof v === 'string'
@@ -51,14 +48,14 @@ function safeFilename(name: string): string {
   return name.replace(/[^a-zA-Z0-9._-]/g, '_').slice(-120)
 }
 
-function jsonResponse(status: number, data: unknown) {
-  return new Response(JSON.stringify(data), {
-    status,
-    headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-  })
-}
-
 Deno.serve(async (req) => {
+  const corsHeaders = corsHeadersFor(req)
+  const jsonResponse = (status: number, data: unknown) =>
+    new Response(JSON.stringify(data), {
+      status,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    })
+
   if (req.method === 'OPTIONS') return new Response(null, { headers: corsHeaders })
   if (req.method !== 'POST') return jsonResponse(405, { error: 'Method not allowed' })
 
@@ -67,6 +64,20 @@ Deno.serve(async (req) => {
     body = await req.json()
   } catch {
     return jsonResponse(400, { error: 'Invalid JSON' })
+  }
+
+  // Honeypot: pretend success, save nothing, send nothing
+  if (isHoneypotFilled(body.website)) {
+    return jsonResponse(200, { success: true })
+  }
+
+  const supabase = createClient(
+    Deno.env.get('SUPABASE_URL')!,
+    Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
+  )
+
+  if (await isRateLimited(supabase, req, 'submit-application')) {
+    return jsonResponse(429, { error: 'Too many requests. Please call us at (520) 595-5709.' })
   }
 
   const firstName = isStr(body.firstName) ? body.firstName.trim() : ''
@@ -122,11 +133,6 @@ Deno.serve(async (req) => {
     resumeUpload = { filename: safeFilename(filename), contentType: detected, bytes }
   }
 
-  const supabase = createClient(
-    Deno.env.get('SUPABASE_URL')!,
-    Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
-  )
-
   const id = crypto.randomUUID()
   let resumePath: string | null = null
   let resumeUrl: string | undefined
@@ -169,7 +175,8 @@ Deno.serve(async (req) => {
     return jsonResponse(500, { error: 'Failed to save application' })
   }
 
-  await Promise.all([
+  // Send emails in the background so the user gets an instant response
+  await runInBackground(Promise.all([
     sendEmail(supabase, {
       templateName: 'application-confirmation',
       recipientEmail: email,
@@ -191,7 +198,7 @@ Deno.serve(async (req) => {
         resumeFilename: resumeUpload?.filename,
       },
     }),
-  ])
+  ]))
 
   return jsonResponse(200, { success: true })
 })
