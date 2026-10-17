@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { X, Share, Plus, Smartphone } from "lucide-react";
 
 type BeforeInstallPromptEvent = Event & {
@@ -7,16 +8,36 @@ type BeforeInstallPromptEvent = Event & {
 };
 
 const DISMISS_KEY = "hmh-a2hs-dismissed-v1";
+const VISIT_KEY = "hmh-visit-count";
+
+// Never show the install card on conversion or crisis pages
+const BLOCKED_PATHS = ["/book", "/contact", "/careers", "/crisis"];
+
+const storage = {
+  get(key: string): string | null {
+    try { return localStorage.getItem(key); } catch { return null; }
+  },
+  set(key: string, value: string) {
+    try { localStorage.setItem(key, value); } catch { /* ignore */ }
+  },
+};
 
 const AddToHomeScreen = () => {
   const [visible, setVisible] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const [platform, setPlatform] = useState<"ios" | "android" | "other">("other");
   const [deferred, setDeferred] = useState<BeforeInstallPromptEvent | null>(null);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (localStorage.getItem(DISMISS_KEY)) return;
+    if (BLOCKED_PATHS.some((p) => pathname.startsWith(p))) return;
+    if (storage.get(DISMISS_KEY)) return;
+
+    // Only show on a return visit (2nd+ session), never the first page view
+    const visits = parseInt(storage.get(VISIT_KEY) ?? "0", 10) || 0;
+    storage.set(VISIT_KEY, String(visits + 1));
+    if (visits < 1) return;
 
     const ua = window.navigator.userAgent;
     const isIOS = /iPhone|iPad|iPod/i.test(ua) && !/CriOS|FxiOS|EdgiOS/i.test(ua);
@@ -39,16 +60,29 @@ const AddToHomeScreen = () => {
     };
     window.addEventListener("beforeinstallprompt", handler);
 
-    const t = window.setTimeout(() => setVisible(true), 4000);
+    // Never show while the AI chat widget is expanded — hide as soon as the
+    // visitor interacts with it, for the rest of this page view.
+    let widgetUsed = false;
+    const widget = document.querySelector("elevenlabs-convai");
+    const onWidgetUse = () => {
+      widgetUsed = true;
+      setVisible(false);
+    };
+    widget?.addEventListener("pointerdown", onWidgetUse);
+
+    const t = window.setTimeout(() => {
+      if (!widgetUsed) setVisible(true);
+    }, 4000);
 
     return () => {
       window.removeEventListener("beforeinstallprompt", handler);
+      widget?.removeEventListener("pointerdown", onWidgetUse);
       window.clearTimeout(t);
     };
-  }, []);
+  }, [pathname]);
 
   const dismiss = () => {
-    localStorage.setItem(DISMISS_KEY, "1");
+    storage.set(DISMISS_KEY, "1");
     setVisible(false);
   };
 
