@@ -3,6 +3,7 @@ import { createContext, useContext } from "react";
 export interface AppointmentDialogCtx {
   open: (source?: string) => void;
   close: () => void;
+  isOpen: boolean;
 }
 
 export const AppointmentDialogContext = createContext<AppointmentDialogCtx | null>(null);
