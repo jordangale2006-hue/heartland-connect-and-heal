@@ -72,6 +72,7 @@ const QuickAppointmentForm = ({ onSuccess, compact = false }: Props) => {
         throw error;
       }
       setDone(true);
+      try { sessionStorage.setItem("heartland-form-submitted", "1"); } catch { /* ignore */ }
       toast({ title: "Request received", description: "We'll be in touch within one business day." });
       onSuccess?.();
     } catch (err) {

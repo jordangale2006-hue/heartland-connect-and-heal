@@ -1,8 +1,14 @@
 import { Phone, CalendarPlus } from "lucide-react";
+import { useLocation } from "react-router-dom";
 import { useAppointmentDialog } from "./AppointmentDialogProvider";
 
 const StickyMobileCTA = () => {
   const { open } = useAppointmentDialog();
+  const { pathname } = useLocation();
+
+  // Keep the crisis page focused on crisis resources — no booking CTA
+  if (pathname.startsWith("/crisis")) return null;
+
   return (
     <div
       className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-card/95 backdrop-blur-sm border-t border-border shadow-[0_-4px_16px_rgba(0,0,0,0.06)]"
