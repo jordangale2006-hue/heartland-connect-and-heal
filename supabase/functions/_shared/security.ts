@@ -80,15 +80,13 @@ export async function isRateLimited(supabase: any, req: Request, functionName: s
   }
 }
 
-// Run work in the background when the edge runtime supports it, otherwise await it.
-export function runInBackground(promise: Promise<unknown>): void {
+// Run work in the background when the edge runtime supports it; otherwise the
+// caller awaits the returned promise. Always `await runInBackground(...)`.
+export function runInBackground(promise: Promise<unknown>): Promise<unknown> {
   const edgeRuntime = (globalThis as any).EdgeRuntime
   if (edgeRuntime && typeof edgeRuntime.waitUntil === 'function') {
     edgeRuntime.waitUntil(promise)
-  } else {
-    // Fallback: attach a catch so failures are logged, and let the caller await
-    // via the returned microtask only if needed. We still fire-and-forget here
-    // but keep a reference so unhandled rejections don't crash the isolate.
-    promise.catch((e) => console.error('Background task failed', e))
+    return Promise.resolve()
   }
+  return promise
 }
