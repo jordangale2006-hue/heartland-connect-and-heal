@@ -18,6 +18,7 @@ const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [honeypot, setHoneypot] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -35,8 +36,13 @@ const Contact = () => {
           name: parsed.data.name,
           email: parsed.data.email,
           message: parsed.data.message,
+          website: honeypot,
         },
       });
+      if ((error as { context?: { status?: number } } | null)?.context?.status === 429) {
+        toast.error("Too many requests — please call us at (520) 595-5709.");
+        return;
+      }
       if (error || !data?.success) throw error || new Error("Submission failed");
 
       toast.success("Message sent! We'll get back to you soon.");
@@ -113,6 +119,19 @@ const Contact = () => {
                     rows={5}
                     placeholder="How can we help you?"
                     className="w-full rounded-lg border border-input bg-background px-4 py-3 text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none"
+                  />
+                </div>
+                {/* Honeypot: hidden from users and screen readers; bots fill it in */}
+                <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", top: "-9999px", height: 0, overflow: "hidden" }}>
+                  <label htmlFor="contact-website">Website</label>
+                  <input
+                    id="contact-website"
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
                   />
                 </div>
                 <Button type="submit" variant="warmCta" size="lg" disabled={submitting} className="w-full text-base">

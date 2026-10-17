@@ -35,6 +35,7 @@ const QuickAppointmentForm = ({ onSuccess, compact = false }: Props) => {
   const [values, setValues] = useState<FormState>({
     name: "", phone: "", email: "", state: "Arizona", insurance: "", reason: "", preferredTime: "",
   });
+  const [honeypot, setHoneypot] = useState("");
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
 
   const update = (k: keyof FormState, v: string) => {
@@ -57,9 +58,19 @@ const QuickAppointmentForm = ({ onSuccess, compact = false }: Props) => {
     setSubmitting(true);
     try {
       const { error } = await supabase.functions.invoke("submit-appointment-request", {
-        body: parsed.data,
+        body: { ...parsed.data, website: honeypot },
       });
-      if (error) throw error;
+      if (error) {
+        if ((error as { context?: { status?: number } })?.context?.status === 429) {
+          toast({
+            title: "Too many requests",
+            description: "Please call us at (520) 595-5709.",
+            variant: "destructive",
+          });
+          return;
+        }
+        throw error;
+      }
       setDone(true);
       toast({ title: "Request received", description: "We'll be in touch within one business day." });
       onSuccess?.();
@@ -161,6 +172,20 @@ const QuickAppointmentForm = ({ onSuccess, compact = false }: Props) => {
         <Textarea id="qa-reason" rows={3} maxLength={500}
           placeholder="A few words is plenty — e.g. anxiety, ADHD evaluation, medication management."
           value={values.reason} onChange={(e) => update("reason", e.target.value)} />
+      </div>
+
+      {/* Honeypot: hidden from users and screen readers; bots fill it in */}
+      <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", top: "-9999px", height: 0, overflow: "hidden" }}>
+        <label htmlFor="qa-website">Website</label>
+        <input
+          id="qa-website"
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
+        />
       </div>
 
       <p className="text-xs text-muted-foreground leading-relaxed">

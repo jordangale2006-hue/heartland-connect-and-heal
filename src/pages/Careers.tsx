@@ -53,6 +53,7 @@ const Careers = () => {
   const [convictionDetails, setConvictionDetails] = useState("");
   const [fingerprintCard, setFingerprintCard] = useState<"" | "yes" | "no">("");
   const [resume, setResume] = useState<File | null>(null);
+  const [honeypot, setHoneypot] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -114,9 +115,15 @@ const Careers = () => {
       }
 
       const { error } = await supabase.functions.invoke("submit-application", {
-        body: { ...parsed.data, resume: resumePayload },
+        body: { ...parsed.data, resume: resumePayload, website: honeypot },
       });
-      if (error) throw error;
+      if (error) {
+        if ((error as { context?: { status?: number } })?.context?.status === 429) {
+          toast.error("Too many requests — please call us at (520) 595-5709.");
+          return;
+        }
+        throw error;
+      }
 
       toast.success("Application submitted! Check your inbox for a confirmation.");
       resetForm();
@@ -255,6 +262,19 @@ const Careers = () => {
                 </div>
               </div>
 
+              {/* Honeypot: hidden from users and screen readers; bots fill it in */}
+              <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", top: "-9999px", height: 0, overflow: "hidden" }}>
+                <label htmlFor="careers-website">Website</label>
+                <input
+                  id="careers-website"
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                />
+              </div>
               <Button type="submit" variant="warmCta" size="lg" className="w-full" disabled={submitting}>
                 {submitting ? (
                   <>
