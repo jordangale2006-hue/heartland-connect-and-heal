@@ -74,7 +74,7 @@ const PsychiatryQuiz = () => {
               </p>
               <p className="text-sm text-muted-foreground mb-6 max-w-md mx-auto">
                 You answered "yes" to {yesCount} of {QUESTIONS.length} questions. Our Arizona- and Iowa-licensed
-                providers can meet with you virtually — most insurance accepted.
+                provider can meet with you virtually — most insurance accepted.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Button variant="warmCta" size="lg" onClick={() => open("quiz")}>

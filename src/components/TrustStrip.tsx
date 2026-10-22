@@ -1,7 +1,7 @@
 import { Award, ShieldCheck, MapPin, Clock } from "lucide-react";
 
 const items = [
-  { icon: Award, text: "Board-Certified PMHNPs" },
+  { icon: Award, text: "Board-Certified PMHNP" },
   { icon: Clock, text: "16+ years experience" },
   { icon: ShieldCheck, text: "HIPAA-secure telehealth" },
   { icon: MapPin, text: "Serving Arizona & Iowa" },
