@@ -2,11 +2,10 @@ import { Link } from "react-router-dom";
 import { Calendar, Clock, ShieldCheck, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import providerImage from "@/assets/provider-headshot.png";
-import gwenImage from "@/assets/gwen-headshot.png";
 import { useAppointmentDialog } from "@/components/AppointmentDialogProvider";
 
 interface ProviderInfo {
-  id: "rebecca" | "gwen";
+  id: "rebecca";
   name: string;
   credentials: string;
   image: string;
@@ -25,15 +24,6 @@ const providers: ProviderInfo[] = [
     availability: "Typically books within 5–7 days",
     experience: "16+ years experience",
   },
-  {
-    id: "gwen",
-    name: "Gwendoline Besong",
-    credentials: "RN, MSN, PMHNP-BC",
-    image: gwenImage,
-    specialties: ["Mood Disorders", "Trauma", "Substance Use", "Chronic Mental Illness"],
-    availability: "Typically books within 5–7 days",
-    experience: "15+ years experience",
-  },
 ];
 
 interface Props {
@@ -50,16 +40,16 @@ const ProviderCards = ({ heading, subheading }: Props) => {
     <section className="section-padding">
       <div className="container-narrow mx-auto">
         <div className="text-center mb-12">
-          <p className="text-accent font-semibold text-sm uppercase tracking-wider mb-2">Your Care Team</p>
+          <p className="text-accent font-semibold text-sm uppercase tracking-wider mb-2">Your Provider</p>
           <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-foreground mb-4">
-            {heading ?? "Meet our board-certified providers"}
+            {heading ?? "Meet our board-certified provider"}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            {subheading ?? "Arizona- and Iowa-licensed PMHNPs delivering compassionate virtual psychiatric care."}
+            {subheading ?? "An Arizona- and Iowa-licensed PMHNP delivering compassionate virtual psychiatric care."}
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 gap-6 max-w-lg mx-auto">
           {providers.map((p) => (
             <article
               key={p.id}

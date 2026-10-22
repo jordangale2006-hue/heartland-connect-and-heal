@@ -11,7 +11,7 @@ export interface Condition {
   };
   symptoms: string[];
   treatmentApproach: string[];
-  treatedBy: ("rebecca" | "gwen")[];
+  treatedBy: "rebecca"[];
   faqs: { q: string; a: string }[];
 }
 
@@ -44,7 +44,7 @@ export const CONDITIONS: Condition[] = [
       "Practical coaching strategies for focus, sleep, and routines",
       "Coordination with therapists or PCPs when helpful",
     ],
-    treatedBy: ["rebecca", "gwen"],
+    treatedBy: ["rebecca"],
     faqs: [
       {
         q: "Can you prescribe ADHD medication via telehealth in Arizona and Iowa?",
@@ -52,7 +52,7 @@ export const CONDITIONS: Condition[] = [
       },
       {
         q: "Do you prescribe controlled substances such as ADHD stimulants?",
-        a: "Yes. When clinically indicated as part of your treatment plan, our providers may prescribe stimulant medications for ADHD through telehealth. Medication is only prescribed after appropriate evaluation and in line with applicable federal and state telemedicine prescribing rules. Note: current federal telehealth prescribing flexibilities for controlled substances are extended through December 31, 2026, and state requirements may differ. Your provider will discuss whether medication is appropriate for you during your visit.",
+        a: "Yes. When clinically indicated as part of your treatment plan, our provider may prescribe stimulant medications for ADHD through telehealth. Medication is only prescribed after appropriate evaluation and in line with applicable federal and state telemedicine prescribing rules. Note: current federal telehealth prescribing flexibilities for controlled substances are extended through December 31, 2026, and state requirements may differ. Your provider will discuss whether medication is appropriate for you during your visit.",
       },
       {
         q: "Do I need prior records to be evaluated?",
@@ -90,7 +90,7 @@ export const CONDITIONS: Condition[] = [
       "Discussion of non-medication tools: CBT principles, breathwork, sleep hygiene",
       "Referral to therapy partners when helpful",
     ],
-    treatedBy: ["rebecca", "gwen"],
+    treatedBy: ["rebecca"],
     faqs: [
       {
         q: "Will I have to take medication forever?",
@@ -107,7 +107,7 @@ export const CONDITIONS: Condition[] = [
     name: "Depression",
     metaTitle: "Depression Treatment in Arizona & Iowa | Online Care",
     metaDescription:
-      "Compassionate virtual depression treatment in Arizona and Iowa, with psychiatric evaluation and medication management from board-certified PMHNPs.",
+      "Compassionate virtual depression treatment in Arizona and Iowa, with psychiatric evaluation and medication management from a board-certified PMHNP.",
     hero: {
       eyebrow: "Depression Care",
       headline: "Depression treatment, without leaving home",
@@ -128,7 +128,7 @@ export const CONDITIONS: Condition[] = [
       "Close follow-up during the first 6–8 weeks",
       "Coordination with therapy for combined treatment",
     ],
-    treatedBy: ["rebecca", "gwen"],
+    treatedBy: ["rebecca"],
     faqs: [
       {
         q: "How long until antidepressants work?",
@@ -145,7 +145,7 @@ export const CONDITIONS: Condition[] = [
     name: "Bipolar Disorder",
     metaTitle: "Bipolar Treatment in Arizona & Iowa | Telepsychiatry",
     metaDescription:
-      "Virtual bipolar disorder evaluation and medication management across Arizona and Iowa, with stable ongoing care from board-certified PMHNPs.",
+      "Virtual bipolar disorder evaluation and medication management across Arizona and Iowa, with stable ongoing care from a board-certified PMHNP.",
     hero: {
       eyebrow: "Mood Stabilization",
       headline: "Stable, long-term care for bipolar disorder",
@@ -165,7 +165,7 @@ export const CONDITIONS: Condition[] = [
       "Regular follow-up and lab monitoring when needed",
       "Crisis planning and family education",
     ],
-    treatedBy: ["rebecca", "gwen"],
+    treatedBy: ["rebecca"],
     faqs: [
       {
         q: "Can bipolar disorder be managed by telehealth?",
@@ -198,7 +198,7 @@ export const CONDITIONS: Condition[] = [
       "Medications shown to help PTSD symptoms (SSRIs, prazosin for nightmares, etc.)",
       "Coordination with trauma-focused therapists (EMDR, CPT, PE)",
     ],
-    treatedBy: ["rebecca", "gwen"],
+    treatedBy: ["rebecca"],
     faqs: [
       {
         q: "Do I have to talk about the trauma in detail?",
@@ -211,10 +211,10 @@ export const CONDITIONS: Condition[] = [
     name: "OCD (Obsessive-Compulsive Disorder)",
     metaTitle: "OCD Treatment in Arizona & Iowa | Online Psychiatrist",
     metaDescription:
-      "Virtual OCD evaluation and medication management in Arizona and Iowa from board-certified psychiatric providers.",
+      "Virtual OCD evaluation and medication management in Arizona and Iowa from a board-certified psychiatric provider.",
     hero: {
       eyebrow: "OCD Care",
-      headline: "OCD treatment from Arizona- and Iowa-licensed psychiatric providers",
+      headline: "OCD treatment from an Arizona- and Iowa-licensed psychiatric provider",
       intro:
         "Intrusive thoughts and compulsive behaviors can take hours from your day. We provide evidence-based medication treatment and refer to ERP-trained therapists for combined care.",
     },
@@ -229,7 +229,7 @@ export const CONDITIONS: Condition[] = [
       "SSRIs at OCD-appropriate doses",
       "Referral to ERP (Exposure and Response Prevention) therapy when indicated",
     ],
-    treatedBy: ["rebecca", "gwen"],
+    treatedBy: ["rebecca"],
     faqs: [
       {
         q: "Is OCD just being 'neat'?",
@@ -261,7 +261,7 @@ export const CONDITIONS: Condition[] = [
       "CBT-I principles and sleep hygiene coaching",
       "Targeted medication when indicated — used thoughtfully and short-term where possible",
     ],
-    treatedBy: ["rebecca", "gwen"],
+    treatedBy: ["rebecca"],
     faqs: [
       {
         q: "Will you just give me a sleeping pill?",
@@ -294,7 +294,7 @@ export const CONDITIONS: Condition[] = [
       "Coordination with MAT providers and recovery support when needed",
       "Harm-reduction conversations rooted in respect",
     ],
-    treatedBy: ["rebecca", "gwen"],
+    treatedBy: ["rebecca"],
     faqs: [
       {
         q: "Do I have to be sober to start?",
@@ -326,7 +326,7 @@ export const CONDITIONS: Condition[] = [
       "Medication options compatible with breastfeeding when applicable",
       "Coordination with OB/GYN and pediatrician",
     ],
-    treatedBy: ["rebecca", "gwen"],
+    treatedBy: ["rebecca"],
     faqs: [
       {
         q: "Can I take antidepressants while breastfeeding?",
@@ -357,7 +357,7 @@ export const CONDITIONS: Condition[] = [
       "SSRIs and short-term targeted medications",
       "Coordination with CBT-trained therapists",
     ],
-    treatedBy: ["rebecca", "gwen"],
+    treatedBy: ["rebecca"],
     faqs: [
       {
         q: "Are panic attacks dangerous?",
@@ -390,7 +390,7 @@ export const CONDITIONS: Condition[] = [
       "Family education and support",
       "Coordination with case management and therapy",
     ],
-    treatedBy: ["rebecca", "gwen"],
+    treatedBy: ["rebecca"],
     faqs: [
       {
         q: "Do you provide care for first-episode psychosis?",
@@ -423,7 +423,7 @@ export const CONDITIONS: Condition[] = [
       "Coordination with school counselors and therapists",
       "Confidential, respectful space for the teen",
     ],
-    treatedBy: ["rebecca", "gwen"],
+    treatedBy: ["rebecca"],
     faqs: [
       {
         q: "Do parents have to be in the visit?",
