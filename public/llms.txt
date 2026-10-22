@@ -8,8 +8,8 @@ Insurance varies by state. Arizona options include Aetna, Blue Cross Blue Shield
 
 ## Pages
 
-- [/](/): Virtual psychiatry and medication management across Arizona and Iowa. Book a telehealth visit with board-certified providers.
-- [/about](/about): Meet our board-certified psychiatric nurse practitioners — clinical backgrounds, credentials, and approach to patient-centered care.
+- [/](/): Virtual psychiatry and medication management across Arizona and Iowa. Book a telehealth visit with a board-certified provider.
+- [/about](/about): Meet our board-certified psychiatric nurse practitioner — clinical background, credentials, and approach to patient-centered care.
 - [/services](/services): Complete A–Z directory of 90+ mental health conditions treated, including anxiety, depression, ADHD, bipolar disorder, PTSD, OCD, and more.
 - [/conditions/adhd](/conditions/adhd): Virtual ADHD evaluation and medication management for adults and adolescents in Arizona and Iowa.
 - [/conditions/anxiety](/conditions/anxiety): Online anxiety treatment — comprehensive care for generalized anxiety, social anxiety, panic disorder, and related conditions.

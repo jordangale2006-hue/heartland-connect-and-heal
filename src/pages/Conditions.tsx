@@ -25,7 +25,7 @@ const Conditions = () => {
               Mental health conditions we treat through virtual care
             </h1>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Our board-certified psychiatric providers offer virtual evaluation, medication management, and ongoing care for adolescents and adults across Arizona and Iowa.
+              Our board-certified psychiatric provider offers virtual evaluation, medication management, and ongoing care for adolescents and adults across Arizona and Iowa.
             </p>
           </div>
         </div>

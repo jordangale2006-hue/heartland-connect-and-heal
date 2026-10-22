@@ -16,7 +16,7 @@ const BLOG_SEO_TITLES: Record<string, string> = {
 };
 
 const BLOG_SEO_DESCRIPTIONS: Record<string, string> = {
-  "do-i-need-therapy-medication-or-both": "Explore therapy, psychiatric medication, and combined care with Heartland’s PMHNPs, serving Arizona and Iowa through personalized virtual visits.",
+  "do-i-need-therapy-medication-or-both": "Explore therapy, psychiatric medication, and combined care with Heartland’s PMHNP, serving Arizona and Iowa through personalized virtual visits.",
   "is-telehealth-psychiatry-right-for-you": "Learn how telehealth psychiatry works, who it may help, and what to expect from secure online mental health care in Arizona and Iowa.",
   "online-adhd-treatment-care": "Learn what to expect from online ADHD evaluation, medication management, and ongoing care for patients in Arizona and Iowa.",
   "anxiety-vs-depression-how-to-tell-the-difference": "Anxiety and depression can overlap. Learn common signs, key differences, and when to seek professional support in Arizona or Iowa.",
