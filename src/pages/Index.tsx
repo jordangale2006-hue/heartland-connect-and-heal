@@ -187,7 +187,7 @@ const Index = () => {
               Online Psychiatry in Arizona & Iowa — often booked within the week.
             </h1>
             <p className="text-lg sm:text-xl text-primary-foreground/85 mb-6 leading-relaxed font-light" style={{ animationDelay: "0.15s" }}>
-              Compassionate virtual mental health care from an Arizona- and Iowa-licensed provider. Iowa: Wellmark Blue Cross Blue Shield, Medicare, Aetna, Cigna, and self-pay accepted. Same-week openings often available.
+              Compassionate virtual mental health care from Arizona- and Iowa-licensed providers. Iowa: Wellmark Blue Cross Blue Shield, Medicare, Aetna, Cigna, and self-pay accepted. Same-week openings often available.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-6" style={{ animationDelay: "0.3s" }}>
               <Button variant="warmCta" size="lg" className="text-base px-8 py-6" asChild>

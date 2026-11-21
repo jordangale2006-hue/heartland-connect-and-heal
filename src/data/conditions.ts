@@ -11,7 +11,7 @@ export interface Condition {
   };
   symptoms: string[];
   treatmentApproach: string[];
-  treatedBy: "rebecca"[];
+  treatedBy: ("rebecca" | "angela")[];
   faqs: { q: string; a: string }[];
 }
 
@@ -44,7 +44,7 @@ export const CONDITIONS: Condition[] = [
       "Practical coaching strategies for focus, sleep, and routines",
       "Coordination with therapists or PCPs when helpful",
     ],
-    treatedBy: ["rebecca"],
+    treatedBy: ["rebecca", "angela"],
     faqs: [
       {
         q: "Can you prescribe ADHD medication via telehealth in Arizona and Iowa?",
@@ -90,7 +90,7 @@ export const CONDITIONS: Condition[] = [
       "Discussion of non-medication tools: CBT principles, breathwork, sleep hygiene",
       "Referral to therapy partners when helpful",
     ],
-    treatedBy: ["rebecca"],
+    treatedBy: ["rebecca", "angela"],
     faqs: [
       {
         q: "Will I have to take medication forever?",
@@ -128,7 +128,7 @@ export const CONDITIONS: Condition[] = [
       "Close follow-up during the first 6–8 weeks",
       "Coordination with therapy for combined treatment",
     ],
-    treatedBy: ["rebecca"],
+    treatedBy: ["rebecca", "angela"],
     faqs: [
       {
         q: "How long until antidepressants work?",
@@ -165,7 +165,7 @@ export const CONDITIONS: Condition[] = [
       "Regular follow-up and lab monitoring when needed",
       "Crisis planning and family education",
     ],
-    treatedBy: ["rebecca"],
+    treatedBy: ["rebecca", "angela"],
     faqs: [
       {
         q: "Can bipolar disorder be managed by telehealth?",

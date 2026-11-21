@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Award, BookOpen, Heart, Users } from "lucide-react";
 import providerImage from "@/assets/provider-headshot.png";
+import angelaImage from "@/assets/angela-woodman.jpeg.asset.json";
 import telehealthImage from "@/assets/telehealth-session.webp";
 import sunriseImage from "@/assets/sunrise-field.jpg";
 import SEO from "@/components/SEO";
@@ -24,8 +25,8 @@ const About = () => {
   return (
     <main>
       <SEO
-        title="About Our Online Psychiatry Provider | Heartland"
-        description="Meet Heartland's board-certified psychiatric provider offering 100% virtual mental health care to patients across Arizona and Iowa."
+        title="About Our Online Psychiatry Providers | Heartland"
+        description="Meet Heartland's board-certified psychiatric providers offering 100% virtual mental health care to patients across Arizona and Iowa."
         path="/about"
       />
       {/* Hero with sunrise image */}
@@ -35,7 +36,7 @@ const About = () => {
           <div className="absolute inset-0 bg-foreground/50" />
         </div>
         <div className="relative container-narrow mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="font-heading text-4xl sm:text-5xl font-bold text-primary-foreground mb-4">About Our Online Psychiatry Provider</h1>
+          <h1 className="font-heading text-4xl sm:text-5xl font-bold text-primary-foreground mb-4">About Our Online Psychiatry Providers</h1>
           <p className="text-primary-foreground/85 text-lg max-w-2xl mx-auto">Get to know the heart behind Heartland Mental Health Services.</p>
         </div>
       </section>
@@ -81,8 +82,84 @@ const About = () => {
         </div>
       </section>
 
+      {/* Provider Bio — Angela Woodman */}
+      <section id="angela" className="section-padding scroll-mt-24 bg-card">
+        <div className="container-narrow mx-auto">
+          <div className="grid md:grid-cols-5 gap-12 items-start">
+            <div className="md:col-span-2">
+              <div className="rounded-2xl shadow-xl w-full aspect-[4/5] overflow-hidden">
+                <img
+                  src={angelaImage.url}
+                  alt="Portrait of Angela Woodman, PMHNP-BC, board-certified psychiatric mental health nurse practitioner"
+                  width={640}
+                  height={800}
+                  loading="lazy"
+                  className="w-full h-full object-cover scale-[1.1]"
+                />
+              </div>
+            </div>
+            <div className="md:col-span-3">
+              <p className="text-accent font-semibold text-sm uppercase tracking-wider mb-2">Meet Your Provider</p>
+              <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-foreground mb-6">Angela Woodman, PMHNP-BC</h2>
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <p>
+                  Angela Woodman is a board-certified Psychiatric Mental Health Nurse Practitioner who provides compassionate, individualized care for children, adolescents, adults, and older adults. Her clinical interests include depression, anxiety, ADHD, and bipolar disorder.
+                </p>
+                <p>
+                  Angela believes meaningful care begins with listening. She takes time to understand each patient's experiences, concerns, and goals, creating a welcoming space where they feel heard and respected. Through evidence-based medication management and therapeutic support, she partners with patients to develop treatment plans tailored to their needs.
+                </p>
+                <p>
+                  She values the lasting relationships she builds with patients and finds fulfillment in supporting their confidence, well-being, and progress.
+                </p>
+                <p>
+                  Angela earned her degrees from Arizona State University and Regis College. Outside of work, she enjoys reading, gardening, spending time outdoors, and making memories with her family.
+                </p>
+              </div>
+
+              <div className="mt-8 grid sm:grid-cols-2 gap-6">
+                <div>
+                  <h3 className="font-heading font-semibold text-foreground mb-3">Areas of Focus</h3>
+                  <div className="flex flex-wrap gap-1.5">
+                    {["Depression", "Anxiety", "ADHD", "Bipolar Disorder"].map((s) => (
+                      <span key={s} className="text-xs px-2 py-1 rounded-md bg-secondary text-foreground">
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <h3 className="font-heading font-semibold text-foreground mb-3">Age Groups</h3>
+                  <div className="flex flex-wrap gap-1.5">
+                    {["Children", "Adolescents", "Adults", "Older Adults"].map((s) => (
+                      <span key={s} className="text-xs px-2 py-1 rounded-md bg-secondary text-foreground">
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8">
+                <h3 className="font-heading font-semibold text-foreground mb-3">Credentials & Background</h3>
+                <ul className="space-y-2">
+                  {[
+                    "Board Certified Psychiatric Mental Health Nurse Practitioner (PMHNP-BC)",
+                    "Degrees from Arizona State University and Regis College",
+                  ].map((c) => (
+                    <li key={c} className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Award className="h-4 w-4 text-accent shrink-0" />
+                      {c}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Values */}
-      <section className="section-padding bg-card">
+      <section className="section-padding">
         <div className="container-narrow mx-auto">
           <div className="text-center mb-12">
             <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-foreground mb-4">Our Approach & Values</h2>

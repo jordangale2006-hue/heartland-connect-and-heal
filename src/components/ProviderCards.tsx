@@ -2,16 +2,20 @@ import { Link } from "react-router-dom";
 import { Calendar, Clock, ShieldCheck, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import providerImage from "@/assets/provider-headshot.png";
+import angelaImage from "@/assets/angela-woodman.jpeg.asset.json";
 import { useAppointmentDialog } from "@/components/AppointmentDialogProvider";
 
 interface ProviderInfo {
-  id: "rebecca";
+  id: "rebecca" | "angela";
   name: string;
   credentials: string;
   image: string;
+  imageAlt: string;
+  /** Slight zoom to crop letterbox bars from the source photo */
+  imageZoom?: boolean;
   specialties: string[];
-  availability: string;
-  experience: string;
+  availability?: string;
+  experience?: string;
 }
 
 const providers: ProviderInfo[] = [
@@ -20,9 +24,20 @@ const providers: ProviderInfo[] = [
     name: "Rebecca Nabosa",
     credentials: "APRN, PMHNP",
     image: providerImage,
+    imageAlt: "Rebecca Nabosa, APRN, PMHNP",
     specialties: ["ADHD", "Anxiety", "Depression", "PTSD", "Substance Use"],
     availability: "Typically books within 5–7 days",
     experience: "16+ years experience",
+  },
+  {
+    id: "angela",
+    name: "Angela Woodman",
+    credentials: "PMHNP-BC",
+    image: angelaImage.url,
+    imageAlt:
+      "Portrait of Angela Woodman, PMHNP-BC, board-certified psychiatric mental health nurse practitioner",
+    imageZoom: true,
+    specialties: ["Depression", "Anxiety", "ADHD", "Bipolar Disorder"],
   },
 ];
 
@@ -40,30 +55,43 @@ const ProviderCards = ({ heading, subheading }: Props) => {
     <section className="section-padding">
       <div className="container-narrow mx-auto">
         <div className="text-center mb-12">
-          <p className="text-accent font-semibold text-sm uppercase tracking-wider mb-2">Your Provider</p>
+          <p className="text-accent font-semibold text-sm uppercase tracking-wider mb-2">Your Providers</p>
           <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-foreground mb-4">
-            {heading ?? "Meet our board-certified provider"}
+            {heading ?? "Meet our board-certified providers"}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            {subheading ?? "An Arizona- and Iowa-licensed PMHNP delivering compassionate virtual psychiatric care."}
+            {subheading ?? "Arizona- and Iowa-licensed PMHNPs delivering compassionate virtual psychiatric care."}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 max-w-lg mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {providers.map((p) => (
             <article
               key={p.id}
               className="bg-card rounded-2xl border border-border/50 shadow-sm overflow-hidden flex flex-col hover:shadow-lg transition-shadow"
             >
               <div className="flex gap-4 p-5 sm:p-6">
-                <img
-                  src={p.image}
-                  alt={`${p.name}, ${p.credentials}`}
-                  width={160}
-                  height={200}
-                  loading="lazy"
-                  className="w-24 h-28 sm:w-32 sm:h-36 rounded-xl object-cover shrink-0"
-                />
+                {p.imageZoom ? (
+                  <div className="w-24 h-28 sm:w-32 sm:h-36 rounded-xl overflow-hidden shrink-0">
+                    <img
+                      src={p.image}
+                      alt={p.imageAlt}
+                      width={160}
+                      height={200}
+                      loading="lazy"
+                      className="w-full h-full object-cover scale-[1.1]"
+                    />
+                  </div>
+                ) : (
+                  <img
+                    src={p.image}
+                    alt={p.imageAlt}
+                    width={160}
+                    height={200}
+                    loading="lazy"
+                    className="w-24 h-28 sm:w-32 sm:h-36 rounded-xl object-cover shrink-0"
+                  />
+                )}
                 <div className="flex-1 min-w-0">
                   <h3 className="font-heading text-xl font-semibold text-foreground leading-tight">
                     {p.name}
@@ -75,10 +103,12 @@ const ProviderCards = ({ heading, subheading }: Props) => {
                     Board-Certified PMHNP
                   </div>
 
-                  <div className="mt-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
-                    <Clock className="h-3.5 w-3.5" />
-                    {p.availability}
-                  </div>
+                  {p.availability && (
+                    <div className="mt-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
+                      <Clock className="h-3.5 w-3.5" />
+                      {p.availability}
+                    </div>
+                  )}
                 </div>
               </div>
 
