@@ -32,10 +32,29 @@ export const INSURANCES_BY_STATE: Record<ServiceState, string[]> = {
 
 export const INSURANCE_NOTICES: Record<ServiceState, string> = {
   Arizona: "We do not accept Arizona AHCCCS/Medicaid plans.",
-  Iowa: "In Iowa, we currently accept Wellmark Blue Cross Blue Shield of Iowa, Medicare, Aetna, Cigna, and cash pay.",
+  Iowa: "In Iowa, HMHS is contracted with Wellmark Blue Cross Blue Shield of Iowa, Medicare, Aetna, and Cigna. Self-pay is available as a separate payment option.",
 };
 
-// We accept only the plans listed above.
+// Self-pay is a payment option, not an insurer. It stays in the per-state lists so its tile renders.
+export const SELF_PAY_PLAN = "Cashpay";
+
+export const isSelfPay = (plan: string) => plan === SELF_PAY_PLAN;
+
+export const INSURANCE_SECTION_HEADING = "Insurance and payment options";
+
+export const SELF_PAY_NOTE =
+  "Self-pay is a separate payment option and is not an insurance plan.";
+
+export const PROVIDER_NETWORK_NOTE =
+  "Please contact our office to confirm whether a provider is contracted with your network.";
+
+/** Result line shown by the insurance checker for a plan listed in the given state. */
+export const planStatusMessage = (plan: string, state: ServiceState) =>
+  isSelfPay(plan)
+    ? `Self-pay is available in ${state}.`
+    : `HMHS is contracted with ${plan} in ${state}.`;
+
+// HMHS is contracted only with the plans listed above.
 export const ALL_INSURANCES: string[] = FEATURED_INSURANCES;
 
 // Brand styling for logo cards. Colors approximate each carrier's identity.

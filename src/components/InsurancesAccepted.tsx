@@ -1,6 +1,13 @@
 import { ShieldCheck, AlertCircle } from "lucide-react";
+import { Link } from "react-router-dom";
 import InsuranceLogoGrid from "./InsuranceLogoGrid";
-import { INSURANCES_BY_STATE, INSURANCE_NOTICES, type ServiceState } from "@/data/insurances";
+import {
+  INSURANCES_BY_STATE,
+  INSURANCE_NOTICES,
+  INSURANCE_SECTION_HEADING,
+  SELF_PAY_NOTE,
+  type ServiceState,
+} from "@/data/insurances";
 
 interface Props {
   variant?: "section" | "card";
@@ -40,13 +47,18 @@ const InsurancesAccepted = ({ variant = "section" }: Props) => {
     <>
       <div className="flex items-center justify-center gap-2 mb-3">
         <ShieldCheck className="h-6 w-6 text-primary" />
-        <p className="text-accent font-semibold text-sm uppercase tracking-wider">In-Network Insurance</p>
+        <p className="text-accent font-semibold text-sm uppercase tracking-wider">Contracted Insurance &amp; Self-Pay</p>
       </div>
       <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-foreground text-center mb-3">
-        Insurances we accept
+        {INSURANCE_SECTION_HEADING}
       </h2>
       <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-8">
-        Quality mental health care should be accessible. View current payment options for each state.
+        Heartland Mental Health Services (HMHS) is contracted with the insurance companies listed
+        below. Please{" "}
+        <Link to="/contact" className="text-accent underline underline-offset-2 hover:opacity-80">
+          contact our office
+        </Link>{" "}
+        to confirm whether a provider is contracted with your network. {SELF_PAY_NOTE}
       </p>
 
       <div className={`grid ${variant === "section" ? "md:grid-cols-2" : "grid-cols-1"} gap-8 lg:gap-12 mb-6`}>

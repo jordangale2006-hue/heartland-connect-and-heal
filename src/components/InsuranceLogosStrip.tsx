@@ -15,7 +15,7 @@ const InsuranceLogosStrip = () => {
         <div className="flex flex-col items-center gap-3">
           <div className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-muted-foreground font-semibold">
             <ShieldCheck className="h-4 w-4 text-primary" />
-            In-Network Insurance
+            Contracted Insurance
           </div>
           <InsuranceLogoGrid
             size="lg"

@@ -2,7 +2,14 @@ import { useState } from "react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, AlertCircle, ShieldCheck } from "lucide-react";
-import { INSURANCES_BY_STATE, type ServiceState } from "@/data/insurances";
+import {
+  INSURANCES_BY_STATE,
+  PROVIDER_NETWORK_NOTE,
+  SELF_PAY_NOTE,
+  isSelfPay,
+  planStatusMessage,
+  type ServiceState,
+} from "@/data/insurances";
 import { useAppointmentDialog } from "./AppointmentDialogProvider";
 
 const NOT_ACCEPTED = ["Arizona AHCCCS", "Arizona Medicaid"];
@@ -29,7 +36,7 @@ const InsuranceChecker = () => {
             Do we take your insurance?
           </h2>
           <p className="text-muted-foreground text-center mb-6">
-            Choose your state and plan to see the insurance options available for virtual care.
+            Choose your state and plan to see the insurance and payment options available for virtual care.
           </p>
 
           <div className="max-w-md mx-auto">
@@ -48,7 +55,7 @@ const InsuranceChecker = () => {
               </SelectTrigger>
               <SelectContent>
                 {plans.map((n) => (
-                  <SelectItem key={n} value={n}>{n}</SelectItem>
+                  <SelectItem key={n} value={n}>{isSelfPay(n) ? "Self-pay" : n}</SelectItem>
                 ))}
                 {state === "Arizona" && NOT_ACCEPTED.map((n) => (
                   <SelectItem key={n} value={n}>{n}</SelectItem>
@@ -62,10 +69,12 @@ const InsuranceChecker = () => {
                 <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                 <div className="flex-1">
                   <p className="text-sm text-foreground font-medium mb-1">
-                    Yes — we accept {selected} for telehealth psychiatry in {state}.
+                    {planStatusMessage(selected, state)}
                   </p>
                   <p className="text-xs text-muted-foreground mb-3">
-                    Coverage details vary by plan. We'll verify your specific benefits before your visit.
+                    {isSelfPay(selected)
+                      ? SELF_PAY_NOTE
+                      : PROVIDER_NETWORK_NOTE}
                   </p>
                   <Button variant="warmCta" size="sm" onClick={() => open("insurance-checker")}>
                     Request Appointment

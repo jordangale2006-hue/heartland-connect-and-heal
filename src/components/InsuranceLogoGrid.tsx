@@ -24,7 +24,7 @@ const InsuranceLogoGrid = ({ size = "md", exclude = [], className = "", plans = 
   return (
     <ul
       className={`grid ${gridColumns} gap-3 sm:gap-4 ${className}`}
-      aria-label="Insurance plans accepted"
+      aria-label="Insurance and payment options"
     >
       {items.map((name) => {
         const b = INSURANCE_BRANDS[name];
