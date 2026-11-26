@@ -39,7 +39,7 @@ const testimonials = [
 ];
 
 const faqs = [
-  { q: "Do you accept insurance?", a: "Heartland Mental Health Services (HMHS) is contracted with the insurance companies listed on this page, which vary by state. In Iowa, HMHS is contracted with Wellmark Blue Cross Blue Shield, Medicare, Aetna, and Cigna. Self-pay is available as a separate payment option. Please contact our office to confirm whether a provider is contracted with your network." },
+  { q: "Which insurance companies is HMHS contracted with?", a: "Heartland Mental Health Services (HMHS) is contracted with the insurance companies listed on this page, which vary by state. In Iowa, HMHS is contracted with Wellmark Blue Cross Blue Shield, Medicare, Aetna, and Cigna. Self-pay is available as a separate payment option. Please contact our office to confirm whether a provider is contracted with your network." },
   { q: "What should I expect at my first session?", a: "Your first session is an opportunity for us to get to know you, understand your concerns, and develop a personalized care plan together." },
   { q: "Is everything I share confidential?", a: "Absolutely. All sessions and communications are protected by strict HIPAA privacy regulations. Your information is safe with us." },
   { q: "How long are sessions?", a: "Standard sessions are typically 45–60 minutes. Initial evaluations may be longer to ensure we understand your needs fully." },

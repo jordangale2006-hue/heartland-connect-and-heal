@@ -33,7 +33,7 @@ const InsuranceChecker = () => {
             <p className="text-accent font-semibold text-sm uppercase tracking-wider">Insurance Checker</p>
           </div>
           <h2 className="font-heading text-2xl sm:text-3xl font-semibold text-foreground text-center mb-3">
-            Do we take your insurance?
+            Check your insurance options
           </h2>
           <p className="text-muted-foreground text-center mb-6">
             Choose your state and plan to see the insurance and payment options available for virtual care.

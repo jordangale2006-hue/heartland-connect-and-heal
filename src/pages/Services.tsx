@@ -241,10 +241,11 @@ const Services = () => {
             <h2 className="font-heading text-3xl font-semibold text-foreground">Insurance & Payment</h2>
           </div>
           <p className="text-muted-foreground max-w-2xl mx-auto mb-4">
-            We accept most major insurance plans and also offer self-pay options. Our team will work with you to verify benefits and explore affordable solutions so that cost is never a barrier to care.
+            HMHS is contracted with the insurance companies listed for each state on our{" "}
+            <Link to="/book" className="text-primary underline underline-offset-2 hover:no-underline">booking page</Link>, and self-pay is available as a separate payment option. Our team will work with you to verify benefits and explore affordable solutions so that cost is never a barrier to care.
           </p>
           <p className="text-sm text-muted-foreground mb-8">
-            Please contact us to verify your specific insurance coverage before your first appointment.
+            Please contact our office to confirm whether a provider is contracted with your network before your first appointment.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="warmCta" size="lg" asChild>
